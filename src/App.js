@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm'
 import AuthAdapter from './adapters/authAdapter'
 import { Route, Link } from 'react-router-dom'
 import Welcome from './components/Welcome'
+import RecipeForm from './components/RecipeForm'
 
 class App extends Component {
   
@@ -25,6 +26,7 @@ class App extends Component {
         <Route exact path={'/'} component={Welcome}/>
         <Route exact path={'/login'} render={({history}) => <LoginForm history={history}/>}/>
         <Route exact path={'/signup'} render={({history}) => <SignupForm history={history}/>}/>
+        <Route exact path={'/recipe/new'} component={RecipeForm}/>
       </div>
     );
   }
