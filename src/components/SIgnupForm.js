@@ -3,8 +3,8 @@ import AuthAdapter from '../adapters/authAdapter'
 
 class SignupForm extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			username: '',
 			password: '',
@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
 		event.preventDefault();
 		AuthAdapter.signup(this.state)
 			.then( user => {
-				localStorage.setItem('token', user.jwt)
+				localStorage.setItem('jwt', user.jwt)
 				this.props.history.replace("/")
 			})
 		//connect
@@ -44,8 +44,11 @@ class SignupForm extends React.Component {
 		console.log(this.state)
 		return (
 			<form onSubmit={this.handleSubmit}>
+				<label>Username</label>
 				<input onChange={this.handleInputChange} name='username' type='text' />
+				<label>Email</label>
 				<input onChange={this.handleInputChange} name='email' type='text' />
+				<label>Password</label>
 				<input onChange={this.handleInputChange} name='password' type='password' />
 				<input type='submit' />
 			</form>
