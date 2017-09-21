@@ -8,8 +8,8 @@ function GravityABV(props) {
 	
 	return (
 		<div>
-			<input name='og' type='number' onChange={handleChange} placeholder='OG'/>
-			<input name='fg' type='number' onChange={handleChange} placeholder='FG'/>
+			<input name='og' type='number' step="0.01" onChange={handleChange} placeholder='OG'/>
+			<input name='fg' type='number' step="0.01" onChange={handleChange} placeholder='FG'/>
 			<p>{props.data.abv}%</p>
 		</div>
 	)
