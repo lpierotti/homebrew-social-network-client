@@ -1,5 +1,7 @@
 import React from 'react'
 import AuthAdapter from '../adapters/authAdapter'
+import { connect } from 'react-redux'
+import { loginUser } from '../actions/users'
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -12,11 +14,13 @@ class LoginForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		AuthAdapter.login(this.state)
-			.then(user => {
-				localStorage.setItem('jwt', user.jwt)
-				this.props.history.replace("/")
-			})
+		// AuthAdapter.login(this.state)
+		// 	.then(user => {
+		// 		localStorage.setItem('jwt', user.jwt)
+		// 		this.props.history.replace("/")
+		// 	})
+		this.props.login(this.state, this.props.history)
+		//this.props.history.replace("/")
 	}
 
 	handleInputChange = (event) => {
@@ -43,6 +47,14 @@ class LoginForm extends React.Component {
 	}
 }
 
-export default LoginForm
+function mapDispatchToProps(dispatch) {
+	return {
+		login: (userparams, history) => {
+			dispatch(loginUser(userparams, history))
+		}
+	}
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)
 
 

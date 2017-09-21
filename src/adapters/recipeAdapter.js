@@ -1,6 +1,6 @@
 export default class RecipeAdapter {
 
-	saveRecipe(recipeParams) {
+	static saveRecipe(recipeParams) {
 		const recipeJSON = JSON.stringify(recipeParams)
 		const token = localStorage.getItem("jwt")
 		return fetch('http://localhost:3000/api/v1/recipes', {

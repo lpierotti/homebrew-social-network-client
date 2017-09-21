@@ -1,5 +1,8 @@
 import React from 'react'
 import AuthAdapter from '../adapters/authAdapter'
+import { connect } from 'react-redux'
+import { signupUser } from '../actions/users'
+
 
 class SignupForm extends React.Component {
 
@@ -21,12 +24,13 @@ class SignupForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		AuthAdapter.signup(this.state)
-			.then( user => {
-				localStorage.setItem('jwt', user.jwt)
-				this.props.history.replace("/")
-			})
+		// AuthAdapter.signup(this.state)
+		// 	.then( user => {
+		// 		localStorage.setItem('jwt', user.jwt)
+		// 		this.props.history.replace("/")
+		// 	})
 		//connect
+		this.props.signup(this.state, this.props.history)
 	}
 
 
@@ -48,6 +52,13 @@ class SignupForm extends React.Component {
 
 }
 
+function mapDispatchToProps(dispatch) {
+	return {
+		signup: (userparams, history) => {
+			dispatch(signupUser(userparams, history))
+		}
+	}
+}
 
 
-export default SignupForm
+export default connect(null, mapDispatchToProps)(SignupForm)
