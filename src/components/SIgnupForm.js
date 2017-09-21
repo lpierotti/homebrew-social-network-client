@@ -13,19 +13,10 @@ class SignupForm extends React.Component {
 	}
 
 	handleInputChange = (event) => {
-		switch (event.target.name) {
-			case 'username':
-				this.setState({username: event.target.value});
-				break;
-			case 'email':
-				this.setState({email: event.target.value});
-				break;
-			case 'password':
-				this.setState({password: event.target.value});
-				break;
-			default:
-				return;
-		}
+		console.log('INPUTCHANGE',event.target.name)
+		this.setState({
+			[event.target.name]: event.target.value
+		})
 	}
 
 	handleSubmit = (event) => {

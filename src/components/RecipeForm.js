@@ -1,6 +1,7 @@
 import React from 'react'
 import IngredientForm from './IngredientForm'
 import GravityABV from './GravityABV'
+import RecipeAdapter from '../adapters/recipeAdapter'
 
 class RecipeForm extends React.Component {
 
@@ -9,7 +10,12 @@ class RecipeForm extends React.Component {
 		this.state = {
 			ingredientObjects: [],
 			counter: 0,
-			abvCalc: {og: 0.0, fg: 0.0}
+			abvCalc: {og: 0.0, fg: 0.0, abv: 0.0},
+			name: '',
+			description: '',
+			style: '',
+			type: '',
+			instructions: ''
 		}
 	}
 	
@@ -53,28 +59,42 @@ class RecipeForm extends React.Component {
 	changeGravity = (target, newValue) => {
 		this.setState({
 			abvCalc: Object.assign({}, this.state.abvCalc, {[target]: newValue} )
+		}, () => {
+			this.setState({
+				abvCalc: Object.assign({}, this.state.abvCalc, {abv: this.calculateABV()})
+			})
 		})
+	}
+
+	calculateABV = () => {
+		console.log(this.state.abvCalc)
+		return ((this.state.abvCalc.og - this.state.abvCalc.fg) * 131.25).toFixed(2)
+	}
+
+	handleChange = (event) => {
+		this.setState({[event.target.name]: event.target.value})
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault()
+		const adapter = new RecipeAdapter()
+		adapter.saveRecipe(this.state)
 	}
 
 
 
 	render() {
-		console.log(this.state.abvCalc)
 		return (
 			<form onSubmit={this.handleSubmit}>
-				<input type='text' placeholder='Name' />
-				<input type='text' placeholder='Style' /><br/>
-				<input type='radio' name='type' value='all-grain' />All-grain
-				<input type='radio' name='type' value='extract-grain' />Extract<br/>
-				<input type='textarea' placeholder='Description' />
+				<input  type='text' name='name' onChange={this.handleChange} placeholder='Name' />
+				<input type='text' name='style' onChange={this.handleChange} placeholder='Style' /><br/>
+				<input type='radio' name='type' onChange={this.handleChange} value='all-grain' />All-grain
+				<input type='radio' name='type' onChange={this.handleChange} value='extract' />Extract<br/>
+				<input type='textarea' name='description' onChange={this.handleChange} placeholder='Description' />
 				<GravityABV changeGravity={this.changeGravity} data={this.state.abvCalc}/>
 				<button onClick={this.handleIngredientClick}>Add Ingredient</button>
 				{this.state.ingredientObjects.map((ingredient, index) => <IngredientForm key={index} changeIngredient={this.changeIngredient} addIngredient={this.addIngredient} removeIngredient={this.removeIngredient} data={ingredient}/>)}<br/>
-				<input type="textarea" placeholder='Instructions'/>
+				<input type="textarea" name='instructions' onChange={this.handleChange} placeholder='Instructions'/>
 				<input type='submit'/>
 			</form>
 		)

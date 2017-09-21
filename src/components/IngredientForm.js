@@ -3,19 +3,7 @@ import React from 'react'
 function IngredientForm(props) {
 
 	const handleChange = (event) => {
-		switch (event.target.name) {
-			case 'amount':
-				props.changeIngredient(props.data.id, 'amount', event.target.value)
-				break;
-			case 'unit':
-				props.changeIngredient(props.data.id, 'unit', event.target.value)
-				break;
-			case 'name':
-				props.changeIngredient(props.data.id, 'name', event.target.value)
-				break;
-			default:
-				break;
-		}
+		props.changeIngredient(props.data.id, event.target.name, event.target.value)
 	}
 
 	const handleClick = (event) => {
