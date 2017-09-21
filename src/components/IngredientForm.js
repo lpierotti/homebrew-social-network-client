@@ -2,26 +2,16 @@ import React from 'react'
 
 class IngredientForm extends React.Component {
 
-	constructor(props) {
-		super(props)
-		this.state = {
-			amount: '',
-			unit: '',
-			name: '',
-			submitted: false
-		}
-	}
-
 	handleChange = (event) => {
 		switch (event.target.name) {
 			case 'amount':
-				this.setState({amount: event.target.value, submitted: false});
+				this.props.changeIngredient(this.props.data.id, 'amount', event.target.value)
 				break;
 			case 'unit':
-				this.setState({unit: event.target.value, submitted: false});
+				this.props.changeIngredient(this.props.data.id, 'unit', event.target.value)
 				break;
 			case 'name':
-				this.setState({name: event.target.value, submitted: false});
+				this.props.changeIngredient(this.props.data.id, 'name', event.target.value)
 				break;
 			default:
 				break;
@@ -30,25 +20,22 @@ class IngredientForm extends React.Component {
 
 	handleClick = (event) => {
 		event.preventDefault()
-	console.log("handleClick",this.state)
-		this.setState({submitted: true})
-		this.props.addIngredient(this.state)
+		this.props.addIngredient(this.props.data)
 		
 	}
 
 	handleDelete = (event) => {
 		event.preventDefault()
-		console.log("In Handle delete",this.props)
-		this.props.removeIngredient(this.state, this.props.id)
+		this.props.removeIngredient(this.props.data)
 	}
 
 	render() {
-		if (this.state.submitted) {
+		if (this.props.data.submitted) {
 			return (
 				<div>
-					<p>{this.state.amount}</p>
-					<p>{this.state.unit}</p>
-					<p>{this.state.name}</p>
+					<p>{this.props.data.amount}</p>
+					<p>{this.props.data.unit}</p>
+					<p>{this.props.data.name}</p>
 					<button onClick={this.handleDelete}>Delete</button>
 				</div>
 			)

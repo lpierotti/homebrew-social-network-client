@@ -6,7 +6,6 @@ class RecipeForm extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			ingredientForms: [],
 			ingredientObjects: [],
 			counter: 0
 		}
@@ -15,21 +14,42 @@ class RecipeForm extends React.Component {
 	handleIngredientClick = (event) => {
 		event.preventDefault()
 		this.setState({
-			ingredientForms: [...this.state.ingredientForms, <IngredientForm id={this.state.counter} addIngredient={this.addIngredient} removeIngredient={this.removeIngredient}/>],
-			counter: this.state.counter++
+			counter: this.state.counter + 1,
+			ingredientObjects: [...this.state.ingredientObjects, {id: this.state.counter, name: '', amount: '', unit: '', submitted: false}]
 		})
+		console.log(this.state.counter)
 	}
 
-	addIngredient = (ingredientState) => {
-		this.setState({ingredientObjects: [...this.state.ingredientObjects, ingredientState]})
+	addIngredient = (ingredientProps) => {
+		var ingredientToSubmit = this.state.ingredientObjects.find(ingredient => ingredient === ingredientProps)
+		this.setState({ingredientObjects: this.state.ingredientObjects.map(ingredient => {
+				if(ingredient === ingredientToSubmit) {
+					ingredient["submitted"] = true;
+				}
+				return ingredient
+			})
+		})
 		console.log(this.state.ingredientObjects)
 	}
 
-	removeIngredient = (ingredientState, id) => {
-		console.log(ingredientState, id)
+	removeIngredient = (ingredientData) => {
+		//console.log("THIS IS WHAT I AM DELETEING",ingredientState)
+		//console.log("Filtered array", this.state.ingredientForms.filter(form => form.props.num !== id))
 		this.setState({
-			ingredientForms: this.state.ingredientForms.filter(form => form.id !== id),
-			ingredientObjects: this.state.ingredientObjects.filter(ingredient => ingredient !== ingredientState)
+			ingredientObjects: this.state.ingredientObjects.filter(ingredient => ingredient !== ingredientData)
+		}, () => {console.log("THIS IS THE NEW STATE",this.state)})
+	}
+
+	changeIngredient = (ingredientId, target, newValue) => {
+		console.log(ingredientId)
+		var ingredientToUpdate = this.state.ingredientObjects.find(ingredient => ingredient.id === ingredientId)
+		this.setState({
+			ingredientObjects: this.state.ingredientObjects.map(ingredient => {
+				if(ingredient === ingredientToUpdate) {
+					ingredient[target] = newValue;
+				}
+				return ingredient
+			})
 		})
 	}
 
@@ -37,7 +57,10 @@ class RecipeForm extends React.Component {
 		event.preventDefault()
 	}
 
+
+
 	render() {
+		console.log(this.state.ingredientObjects)
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<input type='text' placeholder='Name' />
@@ -45,7 +68,7 @@ class RecipeForm extends React.Component {
 				<input type='textarea' placeholder='Description' />
 
 				<button onClick={this.handleIngredientClick}>Add Ingredient</button>
-				{this.state.ingredientForms}
+				{this.state.ingredientObjects.map(ingredient => <IngredientForm changeIngredient={this.changeIngredient} addIngredient={this.addIngredient} removeIngredient={this.removeIngredient} data={ingredient}/>)}
 				<input type='submit'/>
 			</form>
 		)
