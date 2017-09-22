@@ -9,6 +9,7 @@ import Welcome from './components/Welcome'
 import RecipeForm from './components/RecipeForm'
 import Profile from './components/Profile'
 import Recipe from './components/Recipe'
+import RecipeList from './components/RecipeList'
 
 class App extends Component {
   
@@ -30,6 +31,8 @@ class App extends Component {
         <Route exact path={'/signup'} render={({history}) => <SignupForm history={history}/>}/>
         <Route exact path={'/recipe/new'} component={RecipeForm}/>
         <Route exact path={'/profile'} component={Profile}/>
+        <Route exact path={'/recipes'} component={RecipeList}/>
+        <Route exact path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
       </div>
     );
   }
