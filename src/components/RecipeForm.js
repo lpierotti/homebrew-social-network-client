@@ -77,8 +77,7 @@ class RecipeForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		const adapter = new RecipeAdapter()
-		adapter.saveRecipe(this.state)
+		RecipeAdapter.saveRecipe(this.state)
 	}
 
 

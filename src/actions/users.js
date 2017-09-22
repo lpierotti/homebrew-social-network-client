@@ -1,4 +1,5 @@
 import AuthAdapter from '../adapters/authAdapter'
+import UserAdapter from '../adapters/userAdapter'
 
 export function loginUser(user, history) {
 	 return function(dispatch) {
@@ -18,5 +19,14 @@ export function signupUser(user, history) {
 	 		})
 	 		.then(() => history.replace('/'))
 	 }
+}
+
+export function getRecipes() {
+	return function(dispatch) {
+		UserAdapter.getUserRecipes()
+			.then(recipes => {
+				dispatch({type: "GET_USER_RECIPES", payload: recipes})
+			})
+	}
 }
 

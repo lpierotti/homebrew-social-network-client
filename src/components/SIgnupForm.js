@@ -1,5 +1,4 @@
 import React from 'react'
-import AuthAdapter from '../adapters/authAdapter'
 import { connect } from 'react-redux'
 import { signupUser } from '../actions/users'
 
@@ -24,12 +23,6 @@ class SignupForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		// AuthAdapter.signup(this.state)
-		// 	.then( user => {
-		// 		localStorage.setItem('jwt', user.jwt)
-		// 		this.props.history.replace("/")
-		// 	})
-		//connect
 		this.props.signup(this.state, this.props.history)
 	}
 

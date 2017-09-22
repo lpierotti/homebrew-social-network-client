@@ -1,13 +1,14 @@
-import React from 'react'
+// import React from 'react'
 
-class Recipe extends React.Component {
+// class Recipe extends React.Component {
 
+	
 
-	render() {
-		return (
+// 	render() {
+// 		return (
 
-		)
-	}
-}
+// 		)
+// 	}
+// }
 
-export default Recipe
+// export default Recipe

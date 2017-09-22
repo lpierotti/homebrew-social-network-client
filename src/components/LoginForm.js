@@ -1,5 +1,4 @@
 import React from 'react'
-import AuthAdapter from '../adapters/authAdapter'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/users'
 
@@ -14,13 +13,7 @@ class LoginForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		// AuthAdapter.login(this.state)
-		// 	.then(user => {
-		// 		localStorage.setItem('jwt', user.jwt)
-		// 		this.props.history.replace("/")
-		// 	})
 		this.props.login(this.state, this.props.history)
-		//this.props.history.replace("/")
 	}
 
 	handleInputChange = (event) => {
