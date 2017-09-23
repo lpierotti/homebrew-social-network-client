@@ -14,7 +14,7 @@ class RecipeList extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.props.recipes ? this.props.recipes.map((recipe, index) => <Link to={`/recipe/${recipe.id}`}><RecipeDisplay key={index} data={recipe}/></Link>) : null}
+				{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
 			</div>
 		)
 	}

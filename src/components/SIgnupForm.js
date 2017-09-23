@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { signupUser } from '../actions/users'
 
 
+
 class SignupForm extends React.Component {
 
 	constructor(props) {
@@ -26,7 +27,7 @@ class SignupForm extends React.Component {
 		this.props.signup(this.state, this.props.history)
 	}
 
-
+	
 
 	render() {
 		console.log(this.state)
@@ -38,6 +39,7 @@ class SignupForm extends React.Component {
 				<input onChange={this.handleInputChange} name='email' type='text' />
 				<label>Password</label>
 				<input onChange={this.handleInputChange} name='password' type='password' />
+				
 				<input type='submit' />
 			</form>
 		)

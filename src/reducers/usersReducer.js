@@ -9,6 +9,9 @@ export default function usersReducer(state = {current: {}, userRecipes: []}, act
 		case "GET_USER_RECIPES":
 			console.log("INREDUCER", action.payload.recipes)
 			return Object.assign({}, state, {userRecipes: action.payload.recipes})
+		case "SET_USER_IMAGE":
+			console.log(action.payload)
+			return Object.assign({}, state, {current: {...state.current, image: action.payload.image}})
 		default:
 			return state
 	}

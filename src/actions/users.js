@@ -30,3 +30,12 @@ export function getRecipes() {
 	}
 }
 
+export function setProfilePic(file) {
+	return function(dispatch) {
+		UserAdapter.setUserImage(file)
+			.then(file => {
+				dispatch({type: "SET_USER_IMAGE", payload: file})
+			})
+	}
+}
+

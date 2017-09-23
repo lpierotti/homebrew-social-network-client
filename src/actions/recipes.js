@@ -17,3 +17,12 @@ export function getRecipe(id) {
 		payload: id
 	}
 }
+
+export function getFromBackend(id) {
+	return function(dispatch) {
+		RecipeAdapter.getFromBackend(id) 
+			.then(recipe => {
+				dispatch({type: 'GET_FROM_BACK', payload: recipe})
+			})
+	}
+}
