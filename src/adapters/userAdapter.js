@@ -16,7 +16,7 @@ export default class UserAdapter {
 
 	static setUserImage(file) {
 		const token =localStorage.getItem('jwt')
-		const fileJSON = JSON.stringify({user: file})
+		const fileJSON = JSON.stringify({user: {url: file}})
 		return fetch('http://localhost:3000/api/v1/user/edit', {
 			method: 'POST',
 			body: fileJSON,
@@ -40,5 +40,19 @@ export default class UserAdapter {
 			}
 		})
 			.then(res => res.json())
+	}
+
+	static saveRecipeToUser(recipeId) {
+		const token = localStorage.getItem('jwt')
+		const recipeJSON = JSON.stringify({id: recipeId})
+		return fetch('http://localhost:3000/api/v1/user_recipes', {
+			method: 'POST',
+			body: recipeJSON,
+			headers: {
+				'Authorization': token,
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		})
 	}
 }

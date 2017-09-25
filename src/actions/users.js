@@ -46,6 +46,13 @@ export function logUserOut() {
 	}
 }
 
+// export function addRecipe(recipe) {
+// 	return function(dispatch) {
+// 		UserAdapter.addRecipeToUser(recipe)
+			
+// 	}
+// }
+
 // export function getFollowers() {
 // 	return function(dispatch)
 // }

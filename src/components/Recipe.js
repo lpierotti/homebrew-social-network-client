@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getRecipe, getFromBackend } from '../actions/recipes'
 import { Link } from 'react-router-dom'
+import UserAdapter from '../adapters/userAdapter'
 
 class Recipe extends React.Component {
 
@@ -13,6 +14,12 @@ class Recipe extends React.Component {
 			this.props.getFromBackend(this.props.id)
 		}
 	}
+
+	handleSave = (event) => {
+		event.preventDefault()
+		UserAdapter.saveRecipeToUser(this.props.recipe.id)
+	}
+
 
 	render() {
 		console.log("RECIPE PROPS", this.props)
@@ -26,10 +33,13 @@ class Recipe extends React.Component {
 					<h5>{this.props.recipe.og}-{this.props.recipe.fg} * 131.25 = {this.props.recipe.abv}%</h5>
 					{this.props.recipe.ingredients ? this.props.recipe.ingredients.map(ingredient => <p>{ingredient.amount} {ingredient.unit} {ingredient.name}</p>) : null}
 					<p>{this.props.recipe.instructions}</p>
+					{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <button onClick={this.handleSave}>Save Recipe</button> : null}
 				</div>
 			)
 		} else {
-			<div></div>
+			return(
+				<div></div>
+			)
 		}	
 	}
 }
@@ -37,7 +47,9 @@ class Recipe extends React.Component {
 function mapStateToProps(state) {
 	return {
 		allRecipes: state.recipes.allRecipes,
-		recipe: state.recipes.currentRecipe
+		recipe: state.recipes.currentRecipe,
+		currentUser: state.users.current, 
+		userRecipes: state.users.userRecipes
 	}
 }
 
