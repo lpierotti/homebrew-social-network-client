@@ -16,6 +16,8 @@ export default function usersReducer(state = {current: {}, userRecipes: [], user
 			return Object.assign({}, state, {current: {}})
 		case 'GET_USER_FOLLOWS':
 			return Object.assign({}, state, {userFollowers: action.payload.followers, userFollowees: action.payload.followees})
+		case 'SAVE_FOLLOW':
+			return Object.assign({}, state, {userFollowees: [...state.userFollowees, action.payload.follow]})
 		default:
 			return state
 	}

@@ -61,3 +61,12 @@ export function getFollows(id) {
 			})
 	}
 }
+
+export function follow(id) {
+	return function(dispatch) {
+		UserAdapter.saveFollow(id)
+			.then(follow => {
+				dispatch({type: 'SAVE_FOLLOW', payload: id})
+			})
+	}
+}

@@ -31,7 +31,7 @@ export default class UserAdapter {
 
 	static getUserFollows(id) {
 		const token = localStorage.getItem('jwt')
-		return fetch('http://localhost:3000/api/v1/user/follows', {
+		return fetch('http://localhost:3000/api/v1/follows', {
 			method: 'POST',
 			body: JSON.stringify({id: id}),
 			headers: {
@@ -49,6 +49,20 @@ export default class UserAdapter {
 		return fetch('http://localhost:3000/api/v1/user_recipes', {
 			method: 'POST',
 			body: recipeJSON,
+			headers: {
+				'Authorization': token,
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		})
+	}
+
+	static saveFollow(id) {
+		const token = localStorage.getItem('jwt')
+		const followeeJSON = JSON.stringify({id: id})
+		return fetch('http://localhost:3000/api/v1/follow/new', {
+			method: 'POST',
+			body: followeeJSON,
 			headers: {
 				'Authorization': token,
 				'Content-Type': 'application/json',

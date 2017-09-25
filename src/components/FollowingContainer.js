@@ -18,10 +18,10 @@ class FollowingContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2>Followers</h2>
-				{this.props.followers ? this.props.followers.map((follower, index) => <FollowDisplay key={index} data={follower}/>) : null}
 				<h2>People You Follow</h2>
 				{this.props.follows ? this.props.follows.map((follow, index) => <FollowDisplay key={index} data={follow}/>) : null}
+				<h2>Followers</h2>
+				{this.props.followers ? this.props.followers.map((follower, index) => <FollowDisplay key={index} data={follower}/>) : null}
 			</div>
 		)
 	}
