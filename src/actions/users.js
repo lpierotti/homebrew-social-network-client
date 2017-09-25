@@ -49,10 +49,15 @@ export function logUserOut() {
 // export function addRecipe(recipe) {
 // 	return function(dispatch) {
 // 		UserAdapter.addRecipeToUser(recipe)
-			
+
 // 	}
 // }
 
-// export function getFollowers() {
-// 	return function(dispatch)
-// }
+export function getFollows(id) {
+	return function(dispatch) {
+		UserAdapter.getUserFollows(id)
+			.then(follows => {
+				dispatch({type: 'GET_USER_FOLLOWS', payload: id})
+			})
+	}
+}

@@ -3,6 +3,8 @@ import IngredientForm from './IngredientForm'
 import GravityABV from './GravityABV'
 import { connect } from 'react-redux'
 import { saveRecipe } from '../actions/recipes'
+import Dropzone from 'react-dropzone'
+import axios from 'axios'
 
 class RecipeForm extends React.Component {
 
@@ -16,10 +18,25 @@ class RecipeForm extends React.Component {
 			description: '',
 			style: '',
 			type: '',
-			instructions: ''
+			instructions: '',
+			image: ''
 		}
 	}
-	
+
+	handleDrop = (files) => {
+		const formData = new FormData();
+		formData.append('file', files[0])
+		formData.append('upload_preset', 'f9x8cstk')
+		axios.post('https://api.cloudinary.com/v1_1/dflt9qlwf/image/upload', formData, {
+			headers: { "X-Requested-With": "XMLHttpRequest" }
+		})
+			.then(res => {
+				const data = res.data
+				const fileURL = data.secure_url
+				this.setState({image: fileURL})
+			})
+	}
+
 	handleIngredientClick = (event) => {
 		event.preventDefault()
 		this.setState({
@@ -86,6 +103,7 @@ class RecipeForm extends React.Component {
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
+				{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 				<input  type='text' name='name' onChange={this.handleChange} placeholder='Name' />
 				<input type='text' name='style' onChange={this.handleChange} placeholder='Style' /><br/>
 				<input type='radio' name='type' onChange={this.handleChange} value='all-grain' />All-grain

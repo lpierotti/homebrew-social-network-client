@@ -26,6 +26,7 @@ class Recipe extends React.Component {
 		if (this.props.recipe) {
 			return (
 				<div>
+					<img src={this.props.recipe.image} alt=''/>
 					<h2>{this.props.recipe.name}</h2>
 					{this.props.recipe.author ? <h4><Link to={`/user/${this.props.recipe.author.id}/profile`}>{this.props.recipe.author.username}</Link></h4> : null}
 					<h3>{this.props.recipe.description}</h3>

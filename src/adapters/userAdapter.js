@@ -29,10 +29,11 @@ export default class UserAdapter {
 			.then(res => res.json())
 	}
 
-	static getUserFollows() {
+	static getUserFollows(id) {
 		const token = localStorage.getItem('jwt')
-		return fetch('http://localhost:3000/api/v1/user/recipes', {
-			method: 'GET',
+		return fetch('http://localhost:3000/api/v1/user/follows', {
+			method: 'POST',
+			body: JSON.stringify({id: id}),
 			headers: {
 				'Authorization': token,
 				'Content-Type': 'application/json',

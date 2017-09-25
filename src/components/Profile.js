@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RecipesContainer from './RecipesContainer'
-import FileBase64 from 'react-file-base64'
 import { setProfilePic } from '../actions/users'
 import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import FollowingContainer from './FollowingContainer'
 
 
 class Profile extends React.Component {
@@ -35,18 +35,12 @@ class Profile extends React.Component {
 		console.log(this.props, this.state)
 		return (
 			<div>
-				<img src={this.props.userInfo.image}/>
-				<Dropzone 
-				  onDrop={this.handleDrop} 
-				  multiple 
-				  accept="image/*" 
-				  
-				>
-				  <p>Drop your files or click here to upload</p>
-				</Dropzone>
+				<img src={this.props.userInfo.image} alt=''/>
+				{this.props.userInfo.image ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 				
 				<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
 				<RecipesContainer id={this.props.id}/>
+				<FollowingContainer id={this.props.id} />
 			</div>
 		)
 	}
