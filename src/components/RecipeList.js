@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getRecipes } from '../actions/recipes'
 import RecipeDisplay from './RecipeDisplay'
-import { Link } from 'react-router-dom'
+
 
 class RecipeList extends React.Component {
 

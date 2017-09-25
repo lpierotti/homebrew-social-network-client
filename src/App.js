@@ -17,20 +17,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-          <Navbar />
-        </div>
+        <Navbar />
         
         
         <Route exact path={'/'} component={Welcome}/>
         <Route exact path={'/login'} render={({history}) => <LoginForm history={history}/>}/>
         <Route exact path={'/signup'} render={({history}) => <SignupForm history={history}/>}/>
-        <Route exact path={'/recipe/new'} component={RecipeForm}/>
+        <Route exact path={'/recipes/new'} render={({history}) => <RecipeForm history={history}/>}/>
         <Route path={'/user/:id/profile'} render={({match}) => <Profile id={match.params.id}/>}/>
         <Route exact path={'/recipes'} component={RecipeList}/>
-        <Route exact path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
+        <Route path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
       </div>
     );
   }

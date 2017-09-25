@@ -3,7 +3,8 @@ export default class UserAdapter {
 	static getUserRecipes(id) {
 		const token = localStorage.getItem('jwt')
 		return fetch('http://localhost:3000/api/v1/user/recipes', {
-			method: 'GET',
+			method: 'POST',
+			body: JSON.stringify({id: id}),
 			headers: {
 				'Authorization': token,
 				'Content-Type': 'application/json',

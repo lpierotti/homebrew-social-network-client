@@ -12,6 +12,8 @@ export default function usersReducer(state = {current: {}, userRecipes: []}, act
 		case "SET_USER_IMAGE":
 			console.log(action.payload)
 			return Object.assign({}, state, {current: {...state.current, image: action.payload.image}})
+		case 'REMOVE_CURRENT_USER':
+			return Object.assign({}, state, {current: {}})
 		default:
 			return state
 	}

@@ -26,3 +26,13 @@ export function getFromBackend(id) {
 			})
 	}
 }
+
+export function saveRecipe(recipeParams, history) {
+	return function(dispatch) {
+		RecipeAdapter.saveRecipe(recipeParams)
+			.then(recipe => {
+				dispatch({type: 'RECIPE_SAVE', payload: recipe})
+			})
+			.then(() => history.replace(`/`))
+	}
+}

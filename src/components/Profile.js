@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import RecipesContainer from './RecipesContainer'
 import FileBase64 from 'react-file-base64'
 import { setProfilePic } from '../actions/users'
+import { Link } from 'react-router-dom'
 
 
 class Profile extends React.Component {
@@ -22,7 +23,8 @@ class Profile extends React.Component {
 			<div>
 				<img src={this.state.image.base64}/>
 				<FileBase64 multiple={false} onDone={ this.getFiles}/>
-				<RecipesContainer/>
+				<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
+				<RecipesContainer id={this.props.id}/>
 			</div>
 		)
 	}

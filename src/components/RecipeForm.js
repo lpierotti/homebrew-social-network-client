@@ -1,7 +1,8 @@
 import React from 'react'
 import IngredientForm from './IngredientForm'
 import GravityABV from './GravityABV'
-import RecipeAdapter from '../adapters/recipeAdapter'
+import { connect } from 'react-redux'
+import { saveRecipe } from '../actions/recipes'
 
 class RecipeForm extends React.Component {
 
@@ -77,7 +78,7 @@ class RecipeForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		RecipeAdapter.saveRecipe(this.state)
+		this.props.saveRecipe(this.state, this.props.history)
 	}
 
 
@@ -100,4 +101,10 @@ class RecipeForm extends React.Component {
 	}
 }
 
-export default RecipeForm
+function mapDispatchToProps(dispatch) {
+	return {
+		saveRecipe: (recipeParams, history) => {dispatch(saveRecipe(recipeParams, history))}
+	}
+}
+
+export default connect(null, mapDispatchToProps)(RecipeForm)

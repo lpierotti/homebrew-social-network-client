@@ -21,9 +21,9 @@ export function signupUser(user, history) {
 	 }
 }
 
-export function getRecipes() {
+export function getRecipes(id) {
 	return function(dispatch) {
-		UserAdapter.getUserRecipes()
+		UserAdapter.getUserRecipes(id)
 			.then(recipes => {
 				dispatch({type: "GET_USER_RECIPES", payload: recipes})
 			})
@@ -36,6 +36,13 @@ export function setProfilePic(file) {
 			.then(file => {
 				dispatch({type: "SET_USER_IMAGE", payload: file})
 			})
+	}
+}
+
+export function logUserOut() {
+	AuthAdapter.logOut()
+	return {
+		type: 'REMOVE_CURRENT_USER'
 	}
 }
 
