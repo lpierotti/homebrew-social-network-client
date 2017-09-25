@@ -27,7 +27,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
 	return {
-		getUserRecipes: () => dispatch(getRecipes())
+		getUserRecipes: (id) => dispatch(getRecipes(id))
 	}
 }
 

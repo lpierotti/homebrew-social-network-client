@@ -6,9 +6,9 @@ export default function RecipesReducer(state = {currentRecipe: {}, allRecipes: [
 		case 'GET_RECIPE':
 			const recipe = state.allRecipes.find(recipe => recipe.id === parseInt(action.payload, 10))
 			console.log(recipe)
-			return Object.assign({}, state, {currentRecipe: recipe})
+			return Object.assign({}, state, {currentRecipe: recipe, currentAuthor: action.payload.author})
 		case 'GET_FROM_BACK':
-			return Object.assign({}, state, {currentRecipe: action.payload.recipe})
+			return Object.assign({}, state, {currentRecipe: action.payload.recipe, currentAuthor: action.payload.author})
 		default:
 			return state
 	}

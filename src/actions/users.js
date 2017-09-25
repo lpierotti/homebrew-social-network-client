@@ -39,3 +39,6 @@ export function setProfilePic(file) {
 	}
 }
 
+// export function getFollowers() {
+// 	return function(dispatch)
+// }
