@@ -38,7 +38,7 @@ class Recipe extends React.Component {
 					<p>{this.props.recipe.instructions}</p>
 					{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <button onClick={this.handleSave}>Save Recipe</button> : null}
 					<ReviewForm recipeId={this.props.id}/>
-					{this.props.recipe.reviews ? this.props.recipe.reviews.map(review => <Review data={review} />) : null}
+					{this.props.recipe.reviews ? this.props.recipe.reviews.map((review, index) => <Review key={index} author={review.author.username} rating={review.rating} text={review.text} />) : null}
 				</div>
 			)
 		} else {

@@ -6,15 +6,15 @@ function Review(props) {
 
 	return (
 		<div>
-			<h3>{props.data.author}</h3>
+			<h3>{props.author}</h3>
 			<Rating 
 				empty={<img src='/beer-outline.png' className='rating' alt=''/>}
 				full={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
-				placeholderRate={props.data.rating}
+				placeholderRate={props.rating}
+				placeholder={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
 				readonly={true}
 			/>
-			<p>{props.data.text}</p>
-			<h4>{props.data.author}</h4>
+			<p>{props.text}</p>
 		</div>
 	)
 }

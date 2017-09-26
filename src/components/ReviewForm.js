@@ -48,7 +48,7 @@ class ReviewForm extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		saveRecipeReview: (review) => {dispatch(saveRecipeReview(review))}
+		saveRecipeReview: (review, id) => {dispatch(saveRecipeReview(review, id))}
 	}
 }
 
