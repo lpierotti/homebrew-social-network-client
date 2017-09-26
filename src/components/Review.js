@@ -1,12 +1,14 @@
 import React from 'react'
 import Rating from 'react-rating'
+import { Link } from 'react-router-dom'
 
 function Review(props) {
 
 
 	return (
 		<div>
-			<h3>{props.author}</h3>
+			<img className='icon' src={props.authorImage} alt=''/>
+			<h3><Link to={`/user/${props.authorID}/profile`}>{props.author}</Link></h3>
 			<Rating 
 				empty={<img src='/beer-outline.png' className='rating' alt=''/>}
 				full={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
