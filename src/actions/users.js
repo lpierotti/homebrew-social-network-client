@@ -57,7 +57,7 @@ export function getFollows(id) {
 	return function(dispatch) {
 		UserAdapter.getUserFollows(id)
 			.then(follows => {
-				dispatch({type: 'GET_USER_FOLLOWS', payload: id})
+				dispatch({type: 'GET_USER_FOLLOWS', payload: follows})
 			})
 	}
 }
@@ -65,8 +65,17 @@ export function getFollows(id) {
 export function follow(id) {
 	return function(dispatch) {
 		UserAdapter.saveFollow(id)
-			.then(follow => {
-				dispatch({type: 'SAVE_FOLLOW', payload: id})
+			.then(followee => {
+				dispatch({type: 'SAVE_FOLLOW', payload: followee})
+			})
+	}
+}
+
+export function getUserInfo(id) {
+	return function(dispatch) {
+		UserAdapter.getInfo(id)
+			.then(info => {
+				dispatch({type: 'GET_INFO', payload: info})
 			})
 	}
 }

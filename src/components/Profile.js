@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RecipesContainer from './RecipesContainer'
-import { setProfilePic } from '../actions/users'
+import { setProfilePic, getUserInfo } from '../actions/users'
 import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
@@ -13,6 +13,19 @@ class Profile extends React.Component {
 	constructor() {
 		super()
 		this.state = {image: ''}
+	}
+
+	componentDidMount() {
+		console.log(this.props.id)
+		this.props.getUserInfo(this.props.id)
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (this.props.id !== nextProps.id){
+			this.props.getUserInfo(nextProps.id)
+		} else if (this.props.viewing.image === null) {
+			this.props.getUserInfo(this.props.id)
+		}
 	}
 
 	handleDrop = (files) => {
@@ -33,27 +46,34 @@ class Profile extends React.Component {
 
 	render() {
 		console.log(this.props, this.state)
-		return (
-			<div>
-				<img src={this.props.userInfo.image} alt=''/>
-				{this.props.userInfo.image ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
-				
-				<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
-				<RecipesContainer id={this.props.id}/>
-				<FollowingContainer id={this.props.id} />
-			</div>
-		)
+		if (this.props.viewing){
+			return (
+				<div>
+					<img src={this.props.viewing.image} alt=''/>
+					{this.props.viewing.image || this.props.id === this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
+					{}
+					<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
+					<RecipesContainer id={this.props.id}/>
+					<FollowingContainer id={this.props.id} />
+				</div>
+			)
+		} else {
+			return <div></div>
+		}
+		
 	}
 }
 
 function mapStateToProps(state) {
 	return {
-		userInfo: state.users.current
+		currentUser: state.users.current,
+		viewing: state.users.viewingUser 
 	}
 }
 function mapDispatchToProps(dispatch) {
 	return {
-		setProfilePic: (file) => {dispatch(setProfilePic(file))}
+		setProfilePic: (file) => {dispatch(setProfilePic(file))},
+		getUserInfo: (id) => {dispatch(getUserInfo(id))}
 	}
 }
 
