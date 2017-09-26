@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { getRecipe, getFromBackend } from '../actions/recipes'
 import { Link } from 'react-router-dom'
 import UserAdapter from '../adapters/userAdapter'
+import ReviewForm from './ReviewForm'
+import Review from './Review'
 
 class Recipe extends React.Component {
 
@@ -32,9 +34,11 @@ class Recipe extends React.Component {
 					<h3>{this.props.recipe.description}</h3>
 					<h4>{this.props.recipe.style}--{this.props.recipe.type_of_brew}</h4>
 					<h5>{this.props.recipe.og}-{this.props.recipe.fg} * 131.25 = {this.props.recipe.abv}%</h5>
-					{this.props.recipe.ingredients ? this.props.recipe.ingredients.map(ingredient => <p>{ingredient.amount} {ingredient.unit} {ingredient.name}</p>) : null}
+					{this.props.recipe.ingredients ? this.props.recipe.ingredients.map((ingredient, index) => <p key={index}>{ingredient.amount} {ingredient.unit} {ingredient.name}</p>) : null}
 					<p>{this.props.recipe.instructions}</p>
 					{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <button onClick={this.handleSave}>Save Recipe</button> : null}
+					<ReviewForm recipeId={this.props.id}/>
+					{this.props.recipe.reviews ? this.props.recipe.reviews.map(review => <Review data={review} />) : null}
 				</div>
 			)
 		} else {

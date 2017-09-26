@@ -36,3 +36,12 @@ export function saveRecipe(recipeParams, history) {
 			.then(() => history.replace(`/`))
 	}
 }
+
+export function saveRecipeReview(review, id) {
+	return function(dispatch) {
+		RecipeAdapter.saveReview(review, id)
+			.then(review => {
+				dispatch({type: 'SAVE_RECIPE_REVIEW', payload: review})
+			})
+	}
+}

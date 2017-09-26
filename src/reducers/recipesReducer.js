@@ -11,6 +11,8 @@ export default function RecipesReducer(state = {currentRecipe: {}, allRecipes: [
 			return Object.assign({}, state, {currentRecipe: action.payload.recipe})
 		case 'RECIPE_SAVE':
 			return Object.assign({}, state, {currentRecipe: action.payload.recipe})
+		case 'SAVE_RECIPE_REVIEW': 
+			return Object.assign({}, state, {currentRecipe: {...state.currentRecipe, reviews: [state.currentRecipe.reviews, action.payload.review]}})
 		default:
 			return state
 	}

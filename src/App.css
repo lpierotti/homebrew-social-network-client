@@ -26,3 +26,8 @@
 .fixed .menu {
   overflow: auto;
 }
+
+.rating {
+  height: 30px;
+  width: 30px;
+}
