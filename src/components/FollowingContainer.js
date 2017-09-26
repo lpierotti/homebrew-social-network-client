@@ -16,6 +16,7 @@ class FollowingContainer extends React.Component {
 	}
 
 	render() {
+		console.log(this.props)
 		return (
 			<div>
 				<h2>People You Follow</h2>

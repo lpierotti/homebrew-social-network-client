@@ -15,7 +15,7 @@ export default function usersReducer(state = {current: {}, userRecipes: [], user
 		case 'REMOVE_CURRENT_USER':
 			return Object.assign({}, state, {current: {}})
 		case 'GET_USER_FOLLOWS':
-			return Object.assign({}, state, {userFollowers: action.payload.follower_ids, userFollowees: action.payload.followee_ids})
+			return Object.assign({}, state, {userFollowers: action.payload.followers, userFollowees: action.payload.followees})
 		case 'SAVE_FOLLOW':
 			return Object.assign({}, state, {current: {...state.currrent, followees: [state.current.followees, action.payload.followee]}})
 		case 'GET_INFO':

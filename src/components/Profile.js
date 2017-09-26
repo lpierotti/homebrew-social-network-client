@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RecipesContainer from './RecipesContainer'
-import { setProfilePic, getUserInfo } from '../actions/users'
+import { setProfilePic, getUserInfo, follow } from '../actions/users'
 import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
@@ -28,6 +28,11 @@ class Profile extends React.Component {
 		}
 	}
 
+	handleFollow = (event) => {
+		event.preventDefault()
+		this.props.followUser(this.props.id)
+	}
+
 	handleDrop = (files) => {
 		const formData = new FormData();
 		formData.append('file', files[0])
@@ -51,7 +56,7 @@ class Profile extends React.Component {
 				<div>
 					<img src={this.props.viewing.image} alt=''/>
 					{this.props.viewing.image || this.props.id === this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
-					{}
+					{this.props.currentUser.id !== this.props.viewing.id ? <button onClick={this.handleFollow}>Follow</button> : null}
 					<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
 					<RecipesContainer id={this.props.id}/>
 					<FollowingContainer id={this.props.id} />
@@ -73,7 +78,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		setProfilePic: (file) => {dispatch(setProfilePic(file))},
-		getUserInfo: (id) => {dispatch(getUserInfo(id))}
+		getUserInfo: (id) => {dispatch(getUserInfo(id))},
+		followUser: (id) => {dispatch(follow(id))}
 	}
 }
 
