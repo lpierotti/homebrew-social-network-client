@@ -79,3 +79,12 @@ export function getUserInfo(id) {
 			})
 	}
 }
+
+export function getCurrentUser() {
+	return function(dispatch) {
+		UserAdapter.getCurrent()
+			.then(user => {
+				dispatch({type: 'GET_CURRENT', payload: user})
+			})
+	}
+}

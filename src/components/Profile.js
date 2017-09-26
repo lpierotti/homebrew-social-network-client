@@ -12,7 +12,9 @@ class Profile extends React.Component {
 
 	constructor() {
 		super()
-		this.state = {image: ''}
+		this.state = {
+			image: ''
+		}
 	}
 
 	componentDidMount() {

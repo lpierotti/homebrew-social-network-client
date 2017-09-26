@@ -18,6 +18,7 @@ class Navbar extends React.Component {
 				{localStorage.getItem('jwt') ? <div><button onClick={this.handleClick}>Logout</button><Link to={`/user/${this.props.user.id}/profile`}><button>Profile</button></Link><Link to={'/recipes'}><button>All Recipes</button></Link></div> : <div><Link to={'/signup'}>Signup</Link><br/><Link to={'/login'}>Login</Link></div>}
 
 			</div>
+			
 		)
 	}
 	

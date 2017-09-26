@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import Welcome from './components/Welcome'
 import RecipeForm from './components/RecipeForm'
 import Profile from './components/Profile'
 import Recipe from './components/Recipe'
 import RecipeList from './components/RecipeList'
 import Navbar from './components/Navbar'
+import { connect } from 'react-redux'
+import { getCurrentUser } from './actions/users'
 
 class App extends Component {
   
+  componentWillMount() {
+    this.props.getCurrentUser()
+  }
   
   render() {
     return (
@@ -31,4 +36,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    getCurrentUser: () => {dispatch(getCurrentUser())}
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));
