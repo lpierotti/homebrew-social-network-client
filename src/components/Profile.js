@@ -25,7 +25,7 @@ class Profile extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		if (this.props.id !== nextProps.id){
 			this.props.getUserInfo(nextProps.id)
-		} else if (this.props.viewing.image === null) {
+		} else if (this.props.viewing.image === null && this.state.image && this.props !== nextProps) {
 			this.props.getUserInfo(this.props.id)
 		}
 	}
@@ -57,7 +57,7 @@ class Profile extends React.Component {
 			return (
 				<div>
 					<img className='profPic' src={this.props.viewing.image} alt=''/>
-					{this.props.viewing.image || this.props.id === this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
+					{this.props.viewing.image || parseInt(this.props.id) !== this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					{this.props.currentUser.id !== this.props.viewing.id && this.props.followers.includes(this.props.currentUser) ? <button onClick={this.handleFollow}>Follow</button> : null}
 					<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
 					<RecipesContainer id={this.props.id}/>

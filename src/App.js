@@ -11,6 +11,7 @@ import RecipeList from './components/RecipeList'
 import Navbar from './components/Navbar'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/users'
+import MapContainer from './components/MapContainer'
 
 class App extends Component {
   
@@ -31,6 +32,7 @@ class App extends Component {
         <Route path={'/user/:id/profile'} render={({match}) => (localStorage.getItem('jwt') ? <Profile id={match.params.id}/> : <Redirect to='/'/>)}/>
         <Route exact path={'/recipes'} component={RecipeList}/>
         <Route path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
+        <Route exact path={'/map'} component={MapContainer}/>
       </div>
     );
   }
