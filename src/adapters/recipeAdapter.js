@@ -52,6 +52,7 @@ export default class RecipeAdapter {
 				'Accept': 'application/json'
 			}
 		})
+			.then(res => res.json())
 	}
 
 }

@@ -25,6 +25,10 @@ class ReviewForm extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault()
 		this.props.saveRecipeReview(this.state, this.props.recipeId)
+		this.setState({
+			rating: 0,
+			text: ''
+		})
 	}
 
 	render() {
@@ -38,7 +42,7 @@ class ReviewForm extends React.Component {
 					placeholderRate={this.state.rating}
 					placeholder={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
 				/>
-				<input onChange={this.handleChange} type='textarea' placeholder='Review'/>
+				<input  value={this.state.text} onChange={this.handleChange} type='textarea' placeholder='Review'/>
 				<input type='submit' />
 
 			</form>

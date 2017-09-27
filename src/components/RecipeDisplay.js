@@ -13,12 +13,6 @@ const RecipeDisplay = (props) => {
 			      <Card.Meta>{props.data.style}--{props.data.abv}</Card.Meta>
 			      <Card.Description>{props.data.description}</Card.Description>
 			    </Card.Content>
-			    <Card.Content extra>
-			      <a>
-			        <Icon name='user' />
-			        10 Friends
-			      </a>
-			    </Card.Content>
 			</Card>
 			
 			
