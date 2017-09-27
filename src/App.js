@@ -28,7 +28,7 @@ class App extends Component {
         <Route exact path={'/login'} render={({history}) => (localStorage.getItem('jwt') ? <Redirect to='/'/> : <LoginForm history={history}/>)}/>
         <Route exact path={'/signup'} render={({history}) => (localStorage.getItem('jwt') ? <Redirect to='/'/> : <SignupForm history={history}/>)}/>
         <Route exact path={'/recipes/new'} render={({history}) => <RecipeForm history={history}/>}/>
-        <Route path={'/user/:id/profile'} render={({match}) => <Profile id={match.params.id}/>}/>
+        <Route path={'/user/:id/profile'} render={({match}) => (localStorage.getItem('jwt') ? <Profile id={match.params.id}/> : <Redirect to='/'/>)}/>
         <Route exact path={'/recipes'} component={RecipeList}/>
         <Route path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
       </div>

@@ -58,7 +58,7 @@ class Profile extends React.Component {
 				<div>
 					<img className='profPic' src={this.props.viewing.image} alt=''/>
 					{this.props.viewing.image || this.props.id === this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
-					{this.props.currentUser.id !== this.props.viewing.id ? <button onClick={this.handleFollow}>Follow</button> : null}
+					{this.props.currentUser.id !== this.props.viewing.id && this.props.followers.includes(this.props.currentUser) ? <button onClick={this.handleFollow}>Follow</button> : null}
 					<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
 					<RecipesContainer id={this.props.id}/>
 					<FollowingContainer id={this.props.id} />
@@ -74,7 +74,8 @@ class Profile extends React.Component {
 function mapStateToProps(state) {
 	return {
 		currentUser: state.users.current,
-		viewing: state.users.viewingUser 
+		viewing: state.users.viewingUser,
+		followers: state.users.userFollowers 
 	}
 }
 function mapDispatchToProps(dispatch) {
