@@ -9,8 +9,10 @@ import Review from './Review'
 class Recipe extends React.Component {
 
 	componentDidMount() {
-		const recipe = this.props.allRecipes.find(recipe => recipe.id === this.props.id)
+		const recipe = this.props.allRecipes.find(recipe => recipe.id === parseInt(this.props.id, 10))
+		console.log(this.props.allRecipes, this.props.id)
 		if (recipe) {
+			console.log('IN FRONTEND')
 			this.props.getRecipe(this.props.id)
 		} else {
 			this.props.getFromBackend(this.props.id)

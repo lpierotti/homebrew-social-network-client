@@ -6,7 +6,7 @@ const FollowDisplay = (props) => {
 
 	return (
 		<div>
-			{props.data.image ? <img className='smallDisplay' src={props.data.image} alt=''/> : <img className='smallDisplay' src='/default-profile' alt=''/>}
+			{props.data.image ? <img className='smallDisplay' src={props.data.image} alt=''/> : <img className='smallDisplay' src='/default-profile.png' alt=''/>}
 			<Link to={`/user/${props.data.id}/profile`}>{props.data.username}</Link>
 		</div>
 	)

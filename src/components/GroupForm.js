@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { getAllUsers } from '../actions/users'
 import Select from 'react-select';
 import FollowDisplay from './FollowDisplay'
+import { createGroup } from '../actions/groups'
+import Dropzone from 'react-dropzone'
+import axios from 'axios'
 
 
 
@@ -13,12 +16,27 @@ class GroupForm extends React.Component {
 		this.state = {
 			name: '',
 			description: '',
-			members: []
+			members: [], 
+			image: ''
 		}
 	}
 
 	componentDidMount() {
 		this.props.getAllUsers()
+	}
+
+	handleDrop = (files) => {
+		const formData = new FormData();
+		formData.append('file', files[0])
+		formData.append('upload_preset', 'f9x8cstk')
+		axios.post('https://api.cloudinary.com/v1_1/dflt9qlwf/image/upload', formData, {
+			headers: { "X-Requested-With": "XMLHttpRequest" }
+		})
+			.then(res => {
+				const data = res.data
+				const fileURL = data.secure_url
+				this.setState({image: fileURL})
+			})
 	}
 
 	handleChange = (event) => {
@@ -27,6 +45,11 @@ class GroupForm extends React.Component {
 
 	handleSelect = (selected) => {
 		this.setState({members: [...this.state.members, selected.value]})
+	}
+
+	handleSubmit = (event) => {
+		event.preventDefault()
+		this.props.createGroup(this.state)
 	}
 
 	render() {
@@ -42,7 +65,8 @@ class GroupForm extends React.Component {
 			})
 			return (
 				<div>
-					<form>
+					<form onSubmit={this.handleSubmit}>
+					{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Add a group picture here!</p></Dropzone>}
 						<label>Name</label>
 						<input onChange={this.handleChange} name='name' type='text' />
 						<label>Description</label>
@@ -74,7 +98,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
 	return {
-		getAllUsers: () => {dispatch(getAllUsers())}
+		getAllUsers: () => {dispatch(getAllUsers())},
+		createGroup: (params) => {dispatch(createGroup(params))}
 	}
 }
 

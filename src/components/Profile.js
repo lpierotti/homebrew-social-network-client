@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RecipesContainer from './RecipesContainer'
-import { setProfilePic, getUserInfo, follow } from '../actions/users'
+import { setProfilePic, getUserInfo, follow, clearUserProfile } from '../actions/users'
 import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
@@ -30,6 +30,11 @@ class Profile extends React.Component {
 		}
 	}
 
+	componentWillUnmount() {
+		console.log('CLEARING')
+		this.props.clearUserProfile()
+	}
+
 	handleFollow = (event) => {
 		event.preventDefault()
 		this.props.followUser(this.props.id)
@@ -56,7 +61,7 @@ class Profile extends React.Component {
 		if (this.props.viewing){
 			return (
 				<div>
-					<img className='profPic' src={this.props.viewing.image} alt=''/>
+					{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
 					{this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					{this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <button onClick={this.handleFollow}>Follow</button> : null}
 					{this.props.currentUser.id === this.props.viewing.id ? <Link to={'/recipes/new'}><button>Add a Recipe!</button></Link> : null}
@@ -82,7 +87,8 @@ function mapDispatchToProps(dispatch) {
 	return {
 		setProfilePic: (file) => {dispatch(setProfilePic(file))},
 		getUserInfo: (id) => {dispatch(getUserInfo(id))},
-		followUser: (id) => {dispatch(follow(id))}
+		followUser: (id) => {dispatch(follow(id))},
+		clearUserProfile: () => {dispatch(clearUserProfile())} 
 	}
 }
 

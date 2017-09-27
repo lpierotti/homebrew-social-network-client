@@ -46,13 +46,6 @@ export function logUserOut() {
 	}
 }
 
-// export function addRecipe(recipe) {
-// 	return function(dispatch) {
-// 		UserAdapter.addRecipeToUser(recipe)
-
-// 	}
-// }
-
 export function getFollows(id) {
 	return function(dispatch) {
 		UserAdapter.getUserFollows(id)
@@ -95,5 +88,11 @@ export function getAllUsers() {
 			.then(users => {
 				dispatch({type: 'GET_ALL', payload: users})
 			})
+	}
+}
+
+export function clearUserProfile() {
+	return {
+		type: 'CLEAR_VIEWING_USER'
 	}
 }

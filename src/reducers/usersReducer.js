@@ -27,6 +27,8 @@ export default function usersReducer(state = {current: {}, userRecipes: [], user
 		case 'GET_ALL':
 			console.log('GETTING ALL', action.payload)
 			return Object.assign({}, state, {all: action.payload.users})
+		case 'CLEAR_VIEWING_USER':
+			return Object.assign({}, state, {viewing_user: {}})
 		default:
 			return state
 	}
