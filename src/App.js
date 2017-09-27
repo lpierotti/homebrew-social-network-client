@@ -12,6 +12,7 @@ import Navbar from './components/Navbar'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/users'
 import MapContainer from './components/MapContainer'
+import GroupForm from './components/GroupForm'
 
 class App extends Component {
   
@@ -33,6 +34,7 @@ class App extends Component {
         <Route exact path={'/recipes'} component={RecipeList}/>
         <Route path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
         <Route exact path={'/map'} component={MapContainer}/>
+        <Route exact path={'/group/new'} component={GroupForm}/>
       </div>
     );
   }

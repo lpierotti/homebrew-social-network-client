@@ -1,4 +1,4 @@
-export default function usersReducer(state = {current: {}, userRecipes: [], userFollowers: [], userFollowees: [], viewingUser: {}}, action) {
+export default function usersReducer(state = {current: {}, userRecipes: [], userFollowers: [], userFollowees: [], viewingUser: {}, all:[]}, action) {
 	switch (action.type) {
 		case "LOGIN_USER":
 			localStorage.setItem("jwt", action.payload.jwt)
@@ -24,6 +24,9 @@ export default function usersReducer(state = {current: {}, userRecipes: [], user
 		case 'GET_CURRENT':
 			console.log(action.payload)
 			return Object.assign({}, state, {current: action.payload.user})
+		case 'GET_ALL':
+			console.log('GETTING ALL', action.payload)
+			return Object.assign({}, state, {all: action.payload.users})
 		default:
 			return state
 	}

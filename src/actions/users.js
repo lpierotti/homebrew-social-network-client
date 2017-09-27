@@ -88,3 +88,12 @@ export function getCurrentUser() {
 			})
 	}
 }
+
+export function getAllUsers() {
+	return function(dispatch) {
+		UserAdapter.getAllUsers()
+			.then(users => {
+				dispatch({type: 'GET_ALL', payload: users})
+			})
+	}
+}
