@@ -26,14 +26,20 @@ class GroupForm extends React.Component {
 	}
 
 	handleSelect = (selected) => {
-		console.log(selected)
-		this.setState({members: [...this.state.members, selected]})
+		this.setState({members: [...this.state.members, selected.value]})
 	}
 
 	render() {
 		console.log(this.props, this.state.members)
 		if (this.props.allUsers) {
-			const options = this.props.allUsers.map(user => ({value: user.username, label: user.username}))
+			const options = this.props.allUsers.map(user => {
+				if (this.state.members.find(member => member === user.username)) {
+					console.log('in here')
+					return {value: '', label: ''}
+				} else{
+					return {value: user.username, label: user.username}
+				}
+			})
 			return (
 				<div>
 					<form>
@@ -44,7 +50,6 @@ class GroupForm extends React.Component {
 						<Select 
 							options={options}
 							onChange={this.handleSelect}
-							multi={true}
 						/>
 						<input type='submit' />
 					</form>
