@@ -8,3 +8,12 @@ export function createGroup(params) {
 			})
 	}
 }
+
+export function getGroupInfo(id) {
+	return function(dispatch) {
+		GroupAdapter.getGroupInfo(id)
+			.then(group => {
+				dispatch({type: 'GET_GROUP_INFO', payload: group})
+			})
+	}
+}

@@ -10,9 +10,10 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import usersReducer from './reducers/usersReducer'
 import { BrowserRouter as Router } from 'react-router-dom'
 import recipesReducer from './reducers/recipesReducer'
+import groupsReducer from './reducers/groupsReducer'
 
 
-const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer})
+const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer, groups: groupsReducer})
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
