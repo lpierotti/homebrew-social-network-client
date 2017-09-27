@@ -37,3 +37,17 @@
   width: 50px;
 }
 
+.smallDisplay {
+  height: auto;
+  width: 100px;
+}
+
+.profPic {
+  width: 300px;
+  height: auto;
+}
+
+.beerDisplay {
+  width: 200px;
+  height: auto;
+}

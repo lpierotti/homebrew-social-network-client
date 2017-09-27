@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom'
 const FollowDisplay = (props) => {
 
 	return (
-		<Link to={`/user/${props.data.id}/profile`}>{props.data.username}</Link>
+		<div>
+			<img className='smallDisplay' src={props.data.image}/>
+			<Link to={`/user/${props.data.id}/profile`}>{props.data.username}</Link>
+		</div>
 	)
 }
 

@@ -56,7 +56,7 @@ class Profile extends React.Component {
 		if (this.props.viewing){
 			return (
 				<div>
-					<img src={this.props.viewing.image} alt=''/>
+					<img className='profPic' src={this.props.viewing.image} alt=''/>
 					{this.props.viewing.image || this.props.id === this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					{this.props.currentUser.id !== this.props.viewing.id ? <button onClick={this.handleFollow}>Follow</button> : null}
 					<Link to={'/recipes/new'}><button>Add a Recipe!</button></Link>
