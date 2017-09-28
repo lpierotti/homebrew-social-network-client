@@ -27,4 +27,5 @@ export default class GroupAdapter {
 		})
 			.then(res => res.json())
 	}
+
 }

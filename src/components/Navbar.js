@@ -16,7 +16,19 @@ class Navbar extends React.Component {
 		console.log(this.props)
 		return (
 			<div>
-				{localStorage.getItem('jwt') ? <div><button onClick={this.handleClick}>Logout</button><Link to={`/user/${this.props.user.id}/profile`}><button>Profile</button></Link><Link to={'/recipes'}><button>All Recipes</button></Link><Link to={`/user/${this.props.user.id}/groups`}><button>Your Groups</button></Link></div> : <div><Link to={'/signup'}>Signup</Link><br/><Link to={'/login'}>Login</Link></div>}
+				{localStorage.getItem('jwt') ? 
+					<div>
+						<button onClick={this.handleClick}>Logout</button>
+						<Link to={`/user/${this.props.user.id}/profile`}><button>Profile</button></Link>
+						<Link to={'/recipes'}><button>All Recipes</button></Link>
+						<Link to={`/user/${this.props.user.id}/groups`}><button>Your Groups</button></Link>
+						<Link to={`/map`}><button>Breweries Near You!</button></Link>
+					</div> : 
+					<div>
+						<Link to={'/signup'}>Signup</Link><br/>
+						<Link to={'/login'}>Login</Link>
+						<Link to={`/map`}><button>Breweries Near You!</button></Link>
+					</div>}
 
 			</div>
 

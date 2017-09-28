@@ -40,7 +40,7 @@ class MapContainer extends React.Component {
 		} else {
 			return (
 				<Map google={this.props.google}
-					zoom={this.props.zoom}
+					zoom={13}
 					onReady={this.fetchBreweries}
 					initialCenter={{
 						lat: this.state.lat,

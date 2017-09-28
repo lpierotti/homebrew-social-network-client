@@ -6,6 +6,7 @@ import FollowDisplay from './FollowDisplay'
 import { createGroup } from '../actions/groups'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import 'react-select/dist/react-select.css';
 
 
 
