@@ -15,6 +15,8 @@ import MapContainer from './components/MapContainer'
 import GroupForm from './components/GroupForm'
 import Group from './components/Group'
 import GroupList from './components/GroupList'
+import ActionCableProvider from 'react-actioncable-provider'
+
 
 class App extends Component {
   
@@ -37,7 +39,7 @@ class App extends Component {
         <Route path={'/recipe/:id'} render={({match}) => <Recipe id={match.params.id} />}/>
         <Route exact path={'/map'} component={MapContainer}/>
         <Route exact path={'/groups/new'} component={GroupForm}/>
-        <Route path={'/group/:id'} render={({match}) => <Group id={match.params.id} />}/>
+        <Route path={'/group/:id'} render={({match}) => <ActionCableProvider><Group id={match.params.id} /></ActionCableProvider>}/>
         <Route path={'/user/:id/groups'} render={({match}) => <GroupList id={match.params.id} />}/>
       </div>
     );
