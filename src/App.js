@@ -37,6 +37,7 @@ class App extends Component {
         <Route exact path={'/map'} component={MapContainer}/>
         <Route exact path={'/group/new'} component={GroupForm}/>
         <Route path={'/group/:id'} render={({match}) => <Group id={match.params.id} />}/>
+        <Route path={'/group/:id'} render={({match}) => <Group id={match.params.id} />}/>
       </div>
     );
   }
