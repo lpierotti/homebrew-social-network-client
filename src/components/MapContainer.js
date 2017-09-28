@@ -1,6 +1,5 @@
 import React from 'react'
 import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
-import BreweryAdapter from '../adapters/breweryAdapter'
 
 
 class MapContainer extends React.Component {
