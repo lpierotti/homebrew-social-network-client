@@ -1,4 +1,4 @@
-export default function usersReducer(state = {current: {}, userRecipes: [], userFollowers: [], userFollowees: [], viewingUser: {}, all:[]}, action) {
+export default function usersReducer(state = {current: {}, userRecipes: [], userFollowers: [], userFollowees: [], viewingUser: {}, all: [], userGroups: []}, action) {
 	switch (action.type) {
 		case "LOGIN_USER":
 			localStorage.setItem("jwt", action.payload.jwt)
@@ -29,6 +29,8 @@ export default function usersReducer(state = {current: {}, userRecipes: [], user
 			return Object.assign({}, state, {all: action.payload.users})
 		case 'CLEAR_VIEWING_USER':
 			return Object.assign({}, state, {viewing_user: {}})
+		case 'GET_USER_GROUPS': 
+			return Object.assign({}, state, {userGroups: action.payload.userGroups})
 		default:
 			return state
 	}

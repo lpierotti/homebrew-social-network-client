@@ -96,3 +96,13 @@ export function clearUserProfile() {
 		type: 'CLEAR_VIEWING_USER'
 	}
 }
+
+
+export function getGroups() {
+	return function(dispatch) {
+		UserAdapter.getUserGroups()
+			.then(groups => {
+				dispatch({type: 'GET_USER_GROUPS', payload: groups})
+			})
+	}
+}

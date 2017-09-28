@@ -65,7 +65,7 @@ class Profile extends React.Component {
 					{this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					{this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <button onClick={this.handleFollow}>Follow</button> : null}
 					{this.props.currentUser.id === this.props.viewing.id ? <Link to={'/recipes/new'}><button>Add a Recipe!</button></Link> : null}
-					<Link to={'/group/new'}><button>Create Group</button></Link>
+					<Link to={'/groups/new'}><button>Create Group</button></Link>
 					<RecipesContainer id={this.props.id}/>
 					<FollowingContainer id={this.props.id} username={this.props.viewing.username}/>
 				</div>
