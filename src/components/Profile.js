@@ -89,7 +89,7 @@ function mapDispatchToProps(dispatch) {
 		setProfilePic: (file) => {dispatch(setProfilePic(file))},
 		getUserInfo: (id) => {dispatch(getUserInfo(id))},
 		followUser: (id) => {dispatch(follow(id))},
-		clearUserProfile: () => {dispatch(clearUserProfile())} 
+		clearUserProfile: () => {dispatch(clearUserProfile())}
 	}
 }
 

@@ -11,9 +11,9 @@ import usersReducer from './reducers/usersReducer'
 import { BrowserRouter as Router } from 'react-router-dom'
 import recipesReducer from './reducers/recipesReducer'
 import groupsReducer from './reducers/groupsReducer'
+import breweriesReducer from './reducers/breweriesReducer'
 
-
-const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer, groups: groupsReducer})
+const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer, groups: groupsReducer, breweries: breweriesReducer})
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
