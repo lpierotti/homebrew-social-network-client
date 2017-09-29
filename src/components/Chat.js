@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import {ActionCable} from 'react-actioncable-provider'
 
-export default class Chat extends Component {
+export default class Chat extends React.Component {
     
     constructor() {
     	super()
@@ -29,7 +29,7 @@ export default class Chat extends Component {
     render () {
         return (
             <div>
-                <ActionCable ref='roomChannel' channel={{channel: 'RoomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
+                <ActionCable ref='roomChannel' channel={{channel: 'ChatroomsChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
                 <ul>
                     {this.state.messages.map((message) =>
                         <li key={message.id}>{message.body}</li>

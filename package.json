@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.1.4",
     "axios": "^0.16.2",
     "google-maps-react": "^1.1.0",
     "react": "^15.6.1",
