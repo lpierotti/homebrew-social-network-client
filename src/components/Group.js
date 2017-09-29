@@ -17,7 +17,7 @@ class Group extends React.Component {
 				{this.props.groupInfo.image ? <img src={this.props.groupInfo.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
 				<h1>{this.props.groupInfo.name}</h1>
 				<h3>{this.props.groupInfo.description}</h3>
-				<Chat />
+				<Chat id={this.props.id}/>
 				{this.props.groupInfo.members ? this.props.groupInfo.members.map((member, index) => <FollowDisplay key={index} data={member}/>) : null}
 			</div>
 		)
