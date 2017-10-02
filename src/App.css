@@ -45,9 +45,39 @@
 .profPic {
   width: 300px;
   height: auto;
+  float: left;
 }
 
 .beerDisplay {
-  width: 200px;
+  width: 250px;
   height: auto;
+
+}
+
+.recipeDisplay {
+  float: left;
+  text-overflow:clip;
+  max-height: 400px;
+}
+
+.ui.card {
+  word-break: break-all;
+}
+
+p {
+  text-overflow:clip;
+}
+
+.imgUpload {
+  padding-top: 20px;
+  clear: right;
+  float: left;
+}
+
+.recipeContainer {
+  float: right; 
+}
+
+.followingContainer {
+  clear: both;
 }

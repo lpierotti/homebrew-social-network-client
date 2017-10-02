@@ -3,6 +3,13 @@ import {ActionCable} from 'react-actioncable-provider'
 
 class Chat extends React.Component {
 
+    constructor() {
+        super()
+        this.state = {
+            text: ""
+        }
+    }
+    
 
     onReceived = (message) => {
         console.log('RECEIVING', message.message)
@@ -12,7 +19,12 @@ class Chat extends React.Component {
     sendMessage = () => {
         const message = this.refs.newMessage.value
         // Call perform or send
+        this.setState({text: ""})
         this.refs.roomChannel.perform('send_message', {message})
+    }
+
+    handleChange = (event) => {
+        this.setState({text: event.target.value})
     }
 
     render () {
@@ -25,7 +37,7 @@ class Chat extends React.Component {
                         <li key={message.id}><h1>{message.body}</h1></li>
                     )}
                 </ul> : null}
-                <input ref='newMessage' type='text' />
+                <input onChange={this.handleChange} value={this.state.text} ref='newMessage' type='text' />
                 <button onClick={this.sendMessage}>Send</button>
             </div>
         )

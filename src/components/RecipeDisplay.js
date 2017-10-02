@@ -5,13 +5,13 @@ import { Card, Image } from 'semantic-ui-react'
 const RecipeDisplay = (props) => {
 
 	return (
-		<div className='ui centered card'>
+		<div className='ui centered card recipeDisplay'>
 			<Card>
-			    {props.data.image ? <Image className='beerDisplay' src={props.data.image} alt=''/>: <Image className='beerDisplay' src='/default-beer.jpeg' alt=''/>}
+			    {props.data.image ? <Image className='beerDisplay' src={props.data.image} alt='' centered={true}/>: <Image className='beerDisplay' src='/default-beer.jpeg' alt='' centered={true}/>}
 			    <Card.Content>
 			      <Card.Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Card.Header>
 			      <Card.Meta>{props.data.style}--{props.data.abv}</Card.Meta>
-			      <Card.Description>{props.data.description}</Card.Description>
+			      <Card.Description className={'recipeDescription'} as={'p'}>{props.data.description}</Card.Description>
 			    </Card.Content>
 			</Card>
 			

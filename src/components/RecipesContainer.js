@@ -18,7 +18,8 @@ class RecipesContainer extends React.Component {
 	render() {
 		console.log(this.props)
 		return (
-			<div>
+			<div className={'recipeContainer'}>
+				{this.props.currentUser === this.props.viewing ? <h3>Your Recipes</h3> : <h3>{this.props.viewing}'s Recipes</h3>} 
 				{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
 			</div>
 		)

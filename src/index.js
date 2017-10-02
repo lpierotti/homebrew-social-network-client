@@ -12,6 +12,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import recipesReducer from './reducers/recipesReducer'
 import groupsReducer from './reducers/groupsReducer'
 import breweriesReducer from './reducers/breweriesReducer'
+import 'semantic-ui-css/semantic.min.css';
 
 const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer, groups: groupsReducer, breweries: breweriesReducer})
 
