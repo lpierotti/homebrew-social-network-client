@@ -64,7 +64,7 @@ class Profile extends React.Component {
 				<Grid relaxed>
 					<Grid.Row>
 						<Grid.Column width={1}/>
-						<Grid.Column width={4} textAlign={'center'}>
+						<Grid.Column width={4} textAlign='center'>
 							{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
 							<Menu text vertical>
 						        {this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Menu.Item><Dropzone onDrop={this.handleDrop} accept="image/*" className={'imgUpload'}><Button>Upload Profile Picture</Button></Dropzone></Menu.Item>}

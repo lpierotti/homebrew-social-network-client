@@ -18,7 +18,7 @@ class Navbar extends React.Component {
 		return (
 			<div>
 				{localStorage.getItem('jwt') ? 
-					<Menu color={'black'}>
+					<Menu>
 				        <Menu.Item>
 				        	<Link to={`/user/${this.props.user.id}/profile`}><Button>Profile</Button></Link>
 				        </Menu.Item>
@@ -31,7 +31,7 @@ class Navbar extends React.Component {
 				        	<Link to={`/user/${this.props.user.id}/groups`}><Button>Your Groups</Button></Link>
 				        </Menu.Item>
 				        <h3>Home</h3>
-				        <Menu.Menu color={'black'} position='right'>
+				        <Menu.Menu position='right'>
 				          <Menu.Item>
 				          	<Button onClick={this.handleClick}>Logout</Button>
 				          </Menu.Item>

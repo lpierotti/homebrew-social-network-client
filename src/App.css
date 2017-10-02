@@ -64,23 +64,23 @@
   word-break: break-all;
 }
 
-p {
-  text-overflow:clip;
-}
-
 .recipeContainer {
   margin-top: 20px;
 }
 
-.followingContainer {
-  clear: both;
-}
-
-.recipeContainer .recipeDisplay {
-  max-height: 250px; 
-}
-
 .recipeContainer .recipeDisplay .beerDisplay {
   width: 150px; 
-  height: auto;
+  height: auto; 
+}
+
+div.ui.menu {
+  background-color: #c1c1c1;
+}
+
+button.ui.button {
+  background: #c1c1c1;
+}
+
+div.ui.text.vertical.menu {
+  margin: auto; 
 }
