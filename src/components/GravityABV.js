@@ -1,4 +1,5 @@
 import React from 'react'
+import { Form } from 'semantic-ui-react'
 
 function GravityABV(props) {
 
@@ -7,11 +8,13 @@ function GravityABV(props) {
 	}
 	
 	return (
-		<div>
-			<input name='og' type='number' step="0.01" onChange={handleChange} placeholder='OG'/>
-			<input name='fg' type='number' step="0.01" onChange={handleChange} placeholder='FG'/>
-			<p>{props.data.abv}%</p>
-		</div>
+		
+		<Form.Group widths={'equal'}>
+			<Form.Input name='og' type='number' step="0.01" onChange={handleChange} placeholder='OG' />
+			<Form.Input name='fg' type='number' step="0.01" onChange={handleChange} placeholder='FG' />
+			<Form.Input placeholder='ABV' value={`${props.data.abv}%`} />
+		</Form.Group>
+		
 	)
 }
 

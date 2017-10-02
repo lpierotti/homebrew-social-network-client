@@ -1,4 +1,5 @@
-import React from 'react' 
+import React from 'react'
+import { Button, Form } from 'semantic-ui-react' 
 
 function IngredientForm(props) {
 
@@ -21,20 +22,18 @@ function IngredientForm(props) {
 	if (props.data.submitted) {
 		return (
 			<div>
-				<p>{props.data.amount}</p>
-				<p>{props.data.unit}</p>
-				<p>{props.data.name}</p>
-				<button onClick={handleDelete}>Delete</button>
+				<p>{props.data.amount} {props.data.unit} {props.data.name}</p>
+				<Button onClick={handleDelete}>Delete</Button>
 			</div>
 		)
 	} else {
 		return (
-			<div>
-				<input name='amount' onChange={handleChange} type='text' placeholder='Amount'/>
-				<input name='unit' onChange={handleChange} type='text' placeholder='Unit'/>
-				<input name='name' onChange={handleChange} type='text' placeholder='Name'/>
-				<button onClick={handleClick}>Add</button>
-			</div>
+			<Form.Group>
+				<Form.Input name='amount' onChange={handleChange} placeholder='Amount' width={5}/>
+				<Form.Input name='unit' onChange={handleChange} placeholder='Unit' width={5}/>
+				<Form.Input name='name' onChange={handleChange} placeholder='Name' width={5}/>
+				<Button onClick={handleClick}>Add</Button>
+			</Form.Group>
 		)
 	}
 	

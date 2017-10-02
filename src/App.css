@@ -84,3 +84,19 @@ button.ui.button {
 div.ui.text.vertical.menu {
   margin: auto; 
 }
+
+div.ui.three.cards {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+p.description.recipeDescription {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  size: auto
+}
+
+.recipeForm {
+  max-width: 800px;
+  margin: auto;
+}

@@ -61,7 +61,7 @@ class Profile extends React.Component {
 		console.log(this.props, this.state)
 		if (this.props.viewing){
 			return (
-				<Grid relaxed>
+				<Grid relaxed >
 					<Grid.Row>
 						<Grid.Column width={1}/>
 						<Grid.Column width={4} textAlign='center'>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { saveRecipe } from '../actions/recipes'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import { Button, Form } from 'semantic-ui-react'
 
 class RecipeForm extends React.Component {
 
@@ -103,19 +104,25 @@ class RecipeForm extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
-				<input  type='text' name='name' onChange={this.handleChange} placeholder='Name' />
-				<input type='text' name='style' onChange={this.handleChange} placeholder='Style' /><br/>
-				<input type='radio' name='type' onChange={this.handleChange} value='all-grain' />All-grain
-				<input type='radio' name='type' onChange={this.handleChange} value='extract' />Extract<br/>
-				<input type='textarea' name='description' onChange={this.handleChange} placeholder='Description' />
-				<GravityABV changeGravity={this.changeGravity} data={this.state.abvCalc}/>
-				<button onClick={this.handleIngredientClick}>Add Ingredient</button>
-				{this.state.ingredientObjects.map((ingredient, index) => <IngredientForm key={index} changeIngredient={this.changeIngredient} addIngredient={this.addIngredient} removeIngredient={this.removeIngredient} data={ingredient}/>)}<br/>
-				<input type="textarea" name='instructions' onChange={this.handleChange} placeholder='Instructions'/>
-				<input type='submit'/>
-			</form>
+			<div className={'recipeForm'}>
+				<Form onSubmit={this.handleSubmit} >
+					{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
+					<Form.Group>
+						<Form.Input name='name' onChange={this.handleChange} placeholder='Name' width={8}/>
+						<Form.Input name='style' onChange={this.handleChange} placeholder='Style' width={8}/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Radio name='type' onChange={this.handleChange} value='all-grain' label='All-grain' />
+						<Form.Radio name='type' onChange={this.handleChange} value='extract' label='Extract' />
+					</Form.Group>
+					<Form.TextArea name='description' onChange={this.handleChange} placeholder='Description' />
+					<GravityABV changeGravity={this.changeGravity} data={this.state.abvCalc}/>
+					<Button onClick={this.handleIngredientClick} style={{marginBottom: '10px'}}>Add Ingredient</Button>
+					{this.state.ingredientObjects.map((ingredient, index) => <IngredientForm key={index} changeIngredient={this.changeIngredient} addIngredient={this.addIngredient} removeIngredient={this.removeIngredient} data={ingredient}/>)}<br/>
+					<Form.TextArea name='instructions' onChange={this.handleChange} placeholder='Instructions' />
+					<Form.Button style={{margin: 'auto'}}>Submit</Form.Button>
+				</Form>
+			</div>
 		)
 	}
 }
