@@ -17,8 +17,6 @@ import Group from './components/Group'
 import GroupList from './components/GroupList'
 import ActionCableProvider from 'react-actioncable-provider'
 
-import Chat from './components/Chat'
-
 
 class App extends Component {
   
@@ -43,7 +41,6 @@ class App extends Component {
         <Route exact path={'/groups/new'} component={GroupForm}/>
         <Route path={'/group/:id'} render={({match}) => <ActionCableProvider url={`ws://localhost:3000/cable?token=${localStorage.getItem('jwt')}`}><Group id={match.params.id} /></ActionCableProvider>}/>
         <Route path={'/user/:id/groups'} render={({match}) => <GroupList id={match.params.id} />}/>
-        <Route exact path={'/chat'} render={(apiCable) => <Chat apiCable={apiCable}/>}/>
       </div>
     );
   }

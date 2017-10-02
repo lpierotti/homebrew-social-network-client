@@ -1,24 +1,12 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 import {ActionCable} from 'react-actioncable-provider'
 
-export default class Chat extends React.Component {
-    
-    constructor() {
-    	super()
-    	this.state = {
-	      messages: []
-	    };
-    }
-    
+class Chat extends React.Component {
+
 
     onReceived = (message) => {
         console.log('RECEIVING', message.message)
-        this.setState({
-            messages: [
-                ...this.state.messages,
-                message.message
-            ]
-        })
+        this.props.getGroupInfo(this.props.id)
     }
 
     sendMessage = () => {
@@ -28,19 +16,22 @@ export default class Chat extends React.Component {
     }
 
     render () {
+        console.log(this.props)
         return (
             <div>
                 <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
-                <ul>
-                    {this.state.messages.map((message) =>
+                {this.props.messages ?<ul>
+                    {this.props.messages.map((message) =>
                         <li key={message.id}><h1>{message.body}</h1></li>
                     )}
-                </ul>
+                </ul> : null}
                 <input ref='newMessage' type='text' />
                 <button onClick={this.sendMessage}>Send</button>
             </div>
         )
     }
 }
+
+export default Chat
 
 
