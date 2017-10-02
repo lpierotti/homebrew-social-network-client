@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getRecipes } from '../actions/users'
 import RecipeDisplay from './RecipeDisplay'
+import { Card } from 'semantic-ui-react'
 
 class RecipesContainer extends React.Component {
 
@@ -18,9 +19,11 @@ class RecipesContainer extends React.Component {
 	render() {
 		console.log(this.props)
 		return (
-			<div className={'recipeContainer'}>
-				{this.props.currentUser === this.props.viewing ? <h3>Your Recipes</h3> : <h3>{this.props.viewing}'s Recipes</h3>} 
-				{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
+			<div>
+				{this.props.currentUser === this.props.viewing ? <h3>Your Recipes</h3> : <h3>{this.props.viewing}'s Recipes</h3>}
+				<Card.Group className={'recipeContainer'} itemsPerRow={3}> 
+					{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
+				</Card.Group>
 			</div>
 		)
 	}

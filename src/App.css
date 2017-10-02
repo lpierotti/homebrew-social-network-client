@@ -45,7 +45,7 @@
 .profPic {
   width: 300px;
   height: auto;
-  float: left;
+  margin-top: 20px;
 }
 
 .beerDisplay {
@@ -68,16 +68,19 @@ p {
   text-overflow:clip;
 }
 
-.imgUpload {
-  padding-top: 20px;
-  clear: right;
-  float: left;
-}
-
 .recipeContainer {
-  float: right; 
+  margin-top: 20px;
 }
 
 .followingContainer {
   clear: both;
+}
+
+.recipeContainer .recipeDisplay {
+  max-height: 250px; 
+}
+
+.recipeContainer .recipeDisplay .beerDisplay {
+  width: 150px; 
+  height: auto;
 }

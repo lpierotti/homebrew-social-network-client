@@ -5,8 +5,8 @@ import { Card, Image } from 'semantic-ui-react'
 const RecipeDisplay = (props) => {
 
 	return (
-		<div className='ui centered card recipeDisplay'>
-			<Card>
+		
+			<Card className={'recipeDisplay'}>
 			    {props.data.image ? <Image className='beerDisplay' src={props.data.image} alt='' centered={true}/>: <Image className='beerDisplay' src='/default-beer.jpeg' alt='' centered={true}/>}
 			    <Card.Content>
 			      <Card.Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Card.Header>
@@ -16,7 +16,7 @@ const RecipeDisplay = (props) => {
 			</Card>
 			
 			
-		</div>
+		
 	)
 }
 

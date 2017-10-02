@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logUserOut } from '../actions/users'
+import { Menu, Button } from 'semantic-ui-react'
 
 
 class Navbar extends React.Component {
@@ -17,21 +18,47 @@ class Navbar extends React.Component {
 		return (
 			<div>
 				{localStorage.getItem('jwt') ? 
-					<div>
-						<button onClick={this.handleClick}>Logout</button>
-						<Link to={`/user/${this.props.user.id}/profile`}><button>Profile</button></Link>
-						<Link to={'/recipes'}><button>All Recipes</button></Link>
-						<Link to={`/user/${this.props.user.id}/groups`}><button>Your Groups</button></Link>
-						<Link to={`/map`}><button>Breweries Near You!</button></Link>
-					</div> : 
-					<div>
-						<Link to={'/signup'}>Signup</Link><br/>
-						<Link to={'/login'}>Login</Link>
-						<Link to={`/map`}><button>Breweries Near You!</button></Link>
-					</div>}
+					<Menu color={'black'}>
+				        <Menu.Item>
+				        	<Link to={`/user/${this.props.user.id}/profile`}><Button>Profile</Button></Link>
+				        </Menu.Item>
+				        	
+				        <Menu.Item >
+				        	<Link to={'/recipes'}><Button>All Recipes</Button></Link>
+				        </Menu.Item>
+
+				        <Menu.Item >
+				        	<Link to={`/user/${this.props.user.id}/groups`}><Button>Your Groups</Button></Link>
+				        </Menu.Item>
+				        <h3>Home</h3>
+				        <Menu.Menu color={'black'} position='right'>
+				          <Menu.Item>
+				          	<Button onClick={this.handleClick}>Logout</Button>
+				          </Menu.Item>
+
+				          <Menu.Item>
+				        	<Link to={`/map`}><Button>Breweries Near You!</Button></Link>
+				          </Menu.Item>
+				        </Menu.Menu>
+				    </Menu> : 
+					<Menu>
+				        <Menu.Item >
+				        	<Link to={'/signup'}>Signup</Link><br/>
+				        </Menu.Item>
+				        	
+				        <Menu.Item >
+				        	<Link to={'/login'}>Login</Link>
+				        </Menu.Item>
+
+				        <Menu.Menu position='right'>
+				          <Menu.Item>
+				        	<Link to={`/map`}><Button>Breweries Near You!</Button></Link>
+				          </Menu.Item>
+				        </Menu.Menu>
+				    </Menu>}
 
 			</div>
-
+			
 		)
 	}
 	

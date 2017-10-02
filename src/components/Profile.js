@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import FollowingContainer from './FollowingContainer'
+import { Grid, Button, Segment, Menu } from 'semantic-ui-react'
 
 
 class Profile extends React.Component {
@@ -60,15 +61,30 @@ class Profile extends React.Component {
 		console.log(this.props, this.state)
 		if (this.props.viewing){
 			return (
-				<div>
-					{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
-					{this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Dropzone onDrop={this.handleDrop} accept="image/*" className={'imgUpload'}><button>Drop your files or click here to upload</button></Dropzone>}
-					{this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <button onClick={this.handleFollow}>Follow</button> : null}
-					{this.props.currentUser.id === this.props.viewing.id ? <Link to={'/recipes/new'}><button>Add a Recipe!</button></Link> : null}
-					<Link to={'/groups/new'}><button>Create Group</button></Link>
-					<RecipesContainer id={this.props.id} currentUser={this.props.currentUser.username} viewing={this.props.viewing.username}/>
-					<FollowingContainer id={this.props.id} currentUser={this.props.currentUser.username} viewing={this.props.viewing.username}/>
-				</div>
+				<Grid relaxed>
+					<Grid.Row>
+						<Grid.Column width={1}/>
+						<Grid.Column width={4} textAlign={'center'}>
+							{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
+							<Menu text vertical>
+						        {this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Menu.Item><Dropzone onDrop={this.handleDrop} accept="image/*" className={'imgUpload'}><Button>Upload Profile Picture</Button></Dropzone></Menu.Item>}
+						        {this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <Menu.Item><Button onClick={this.handleFollow}>Follow</Button></Menu.Item> : null}
+						        {this.props.currentUser.id === this.props.viewing.id ? <Menu.Item><Link to={'/recipes/new'}><Button>Add a Recipe!</Button></Link></Menu.Item> : null}
+						        {this.props.currentUser.id === this.props.viewing.id ? <Menu.Item><Link to={'/groups/new'}><Button>Create Group</Button></Link></Menu.Item> : null}
+						    </Menu>
+						</Grid.Column>
+						<Grid.Column width={11} textAlign={'center'}>
+							<RecipesContainer id={this.props.id} currentUser={this.props.currentUser.username} viewing={this.props.viewing.username}/>
+						</Grid.Column>
+					</Grid.Row>
+					<Grid.Row>
+						<Grid.Column width={5}/>
+						<Grid.Column width={11}>
+							<FollowingContainer id={this.props.id} currentUser={this.props.currentUser.username} viewing={this.props.viewing.username}/>
+						</Grid.Column>
+					</Grid.Row>
+					
+				</Grid>
 			)
 		} else {
 			return <div></div>
