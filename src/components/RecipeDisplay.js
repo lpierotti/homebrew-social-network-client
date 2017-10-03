@@ -11,7 +11,7 @@ const RecipeDisplay = (props) => {
 			    <Card.Content>
 			      <Card.Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Card.Header>
 			      <Card.Meta>{props.data.style}--{props.data.abv}</Card.Meta>
-			      <Card.Description className={'recipeDescription'} as={'p'}>{props.data.description}</Card.Description>
+			      <Card.Description className={'recipeDescription'}>{props.data.description}</Card.Description>
 			    </Card.Content>
 			</Card>
 			

@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<div style={{maxWidth: '500px', margin: 'auto'}}>
-				<Header size='huge' attached={true, 'bottom'}>Login</Header>
+				<Header size='huge' attached={true}>Login</Header>
 				<Segment>
 					<Form onSubmit={this.handleSubmit}>
 						<Label>Email</Label>

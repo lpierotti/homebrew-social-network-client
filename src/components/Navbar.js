@@ -30,7 +30,7 @@ class Navbar extends React.Component {
 				        <Menu.Item >
 				        	<Link to={`/user/${this.props.user.id}/groups`}><Button>Your Groups</Button></Link>
 				        </Menu.Item>
-				        <h3>Home</h3>
+				        <h1><Link to={`/`}>Brew For You</Link></h1>
 				        <Menu.Menu position='right'>
 				          <Menu.Item>
 				          	<Button onClick={this.handleClick}>Logout</Button>

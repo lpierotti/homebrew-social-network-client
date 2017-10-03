@@ -29,7 +29,6 @@ class App extends Component {
       <div className="App">
         <Navbar />
         
-        
         <Route exact path={'/'} component={Welcome}/>
         <Route exact path={'/login'} render={({history}) => (localStorage.getItem('jwt') ? <Redirect to='/'/> : <LoginForm history={history}/>)}/>
         <Route exact path={'/signup'} render={({history}) => (localStorage.getItem('jwt') ? <Redirect to='/'/> : <SignupForm history={history}/>)}/>

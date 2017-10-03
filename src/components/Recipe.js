@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import UserAdapter from '../adapters/userAdapter'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
-import { Button, Image, Segment, List } from 'semantic-ui-react'
+import { Button, Image, Segment, List, Container } from 'semantic-ui-react'
 
 class Recipe extends React.Component {
 
@@ -31,8 +31,10 @@ class Recipe extends React.Component {
 		if (this.props.recipe) {
 			return (
 				<div style={{maxWidth: '1000px', margin: 'auto'}}>
-					{this.props.recipe.image ? <Image floated='right' className='profPic' src={this.props.recipe.image} alt=''/> : <Image floated='right' className='profPic' src='/default-beer.jpeg' alt=''/> }
-					{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <Button onClick={this.handleSave}>Save Recipe</Button> : null}
+					<Segment floated='right' compact={true}>
+						{this.props.recipe.image ? <Image className='profPic' src={this.props.recipe.image} alt=''/> : <Image  className='profPic' src='/default-beer.jpeg' alt=''/> }
+						{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <Button  onClick={this.handleSave}>Save Recipe</Button> : null}
+					</Segment>
 					<h2>{this.props.recipe.name}</h2>
 					{this.props.recipe.author ? <h4><Link to={`/user/${this.props.recipe.author.id}/profile`}>{this.props.recipe.author.username}</Link></h4> : null}
 					<h3>{this.props.recipe.description}</h3>

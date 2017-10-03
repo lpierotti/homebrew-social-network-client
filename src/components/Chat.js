@@ -1,6 +1,7 @@
 import React from 'react'
 import {ActionCable} from 'react-actioncable-provider'
-import {Launcher} from 'react-chat-window'
+import ChatBubble from 'react-chat-bubble';
+import { Form } from 'semantic-ui-react'
 
 class Chat extends React.Component {
 
@@ -17,8 +18,9 @@ class Chat extends React.Component {
         this.props.getGroupInfo(this.props.id)
     }
 
-    sendMessage = (message) => {
-        //const message = this.refs.newMessage.value
+    sendMessage = (event) => {
+        event.preventDefault()
+        const message = this.state.text
         // Call perform or send
         this.setState({text: ""})
         this.refs.roomChannel.perform('send_message', {message})
@@ -32,22 +34,18 @@ class Chat extends React.Component {
         console.log(this.props)
         return (
             <div>
-                <Launcher
-                    agentProfile={{
-                      teamName: 'react-live-chat',
-                      imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
-                    }}
-                    onMessageWasSent={this.sendMessage}
-                    messageList={this.props.messages}
-                  />
-                <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
-                {this.props.messages ?<div>
-                    {this.props.messages.map((message) =>
-                        <p key={message.id}>{message.body}</p>
-                    )}
-                </div> : null}
-                <input onChange={this.handleChange} value={this.state.text} ref='newMessage' type='text' />
-                <button onClick={this.sendMessage}>Send</button>
+                <div className='chat'>
+                    <ChatBubble messages = {this.props.messages} />
+                    <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
+                </div>
+                <div className='chatSubmit'>
+                    <Form onSubmit={this.sendMessage}>
+                        <Form.Group>
+                            <Form.Input onChange={this.handleChange} value={this.state.text}/>
+                            <Form.Input type='submit' />
+                        </Form.Group>
+                    </Form>
+                </div>
             </div>
         )
     }
