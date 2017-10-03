@@ -43,11 +43,11 @@ class Navbar extends React.Component {
 				    </Menu> : 
 					<Menu>
 				        <Menu.Item >
-				        	<Link to={'/signup'}>Signup</Link><br/>
+				        	<Link to={'/signup'}><Button>Signup</Button></Link><br/>
 				        </Menu.Item>
 				        	
 				        <Menu.Item >
-				        	<Link to={'/login'}>Login</Link>
+				        	<Link to={'/login'}><Button>Login</Button></Link>
 				        </Menu.Item>
 
 				        <Menu.Menu position='right'>

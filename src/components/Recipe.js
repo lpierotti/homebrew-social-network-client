@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import UserAdapter from '../adapters/userAdapter'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
+import { Button, Image, Segment, List } from 'semantic-ui-react'
 
 class Recipe extends React.Component {
 
@@ -29,18 +30,23 @@ class Recipe extends React.Component {
 		console.log("RECIPE PROPS", this.props)
 		if (this.props.recipe) {
 			return (
-				<div>
-					<img src={this.props.recipe.image} alt=''/>
+				<div style={{maxWidth: '1000px', margin: 'auto'}}>
+					{this.props.recipe.image ? <Image floated='right' className='profPic' src={this.props.recipe.image} alt=''/> : <Image floated='right' className='profPic' src='/default-beer.jpeg' alt=''/> }
+					{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <Button onClick={this.handleSave}>Save Recipe</Button> : null}
 					<h2>{this.props.recipe.name}</h2>
 					{this.props.recipe.author ? <h4><Link to={`/user/${this.props.recipe.author.id}/profile`}>{this.props.recipe.author.username}</Link></h4> : null}
 					<h3>{this.props.recipe.description}</h3>
 					<h4>{this.props.recipe.style}--{this.props.recipe.type_of_brew}</h4>
 					<h5>{this.props.recipe.og}-{this.props.recipe.fg} * 131.25 = {this.props.recipe.abv}%</h5>
-					{this.props.recipe.ingredients ? this.props.recipe.ingredients.map((ingredient, index) => <p key={index}>{ingredient.amount} {ingredient.unit} {ingredient.name}</p>) : null}
+					<List>
+						{this.props.recipe.ingredients ? this.props.recipe.ingredients.map((ingredient, index) => <List.Item key={index}>{ingredient.amount} {ingredient.unit} {ingredient.name}</List.Item>) : null}
+					</List>
 					<p>{this.props.recipe.instructions}</p>
-					{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <button onClick={this.handleSave}>Save Recipe</button> : null}
+					
 					<ReviewForm recipeId={this.props.id}/>
-					{this.props.recipe.reviews ? this.props.recipe.reviews.map((review, index) => <Review key={index} author={review.author.username} authorID={review.author.id} authorImage={review.author.image} rating={review.rating} text={review.text} />) : null}
+					<Segment.Group>
+						{this.props.recipe.reviews ? this.props.recipe.reviews.map((review, index) => <Review key={index} author={review.author.username} authorID={review.author.id} authorImage={review.author.image} rating={review.rating} text={review.text} />) : null}
+					</Segment.Group>
 				</div>
 			)
 		} else {

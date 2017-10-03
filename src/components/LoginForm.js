@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/users'
-import { Form, Label, Segment } from 'semantic-ui-react'
+import { Form, Label, Segment, Header } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -34,6 +34,7 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<div style={{maxWidth: '500px', margin: 'auto'}}>
+				<Header size='huge' attached={true, 'bottom'}>Login</Header>
 				<Segment>
 					<Form onSubmit={this.handleSubmit}>
 						<Label>Email</Label>

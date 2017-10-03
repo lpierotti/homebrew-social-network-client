@@ -19,7 +19,7 @@ class RecipesContainer extends React.Component {
 	render() {
 		console.log(this.props)
 		return (
-			<div>
+			<div className='savedRecipes'>
 				<Segment style={{minHeight: '400px'}}>
 					{this.props.currentUser === this.props.viewing ? <h2>Your Recipes</h2> : <h2>{this.props.viewing}'s Recipes</h2>}
 					<Divider />

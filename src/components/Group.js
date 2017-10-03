@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getGroupInfo } from '../actions/groups'
 import FollowDisplay from './FollowDisplay'
 import Chat from './Chat'
-import { Button } from 'semantic-ui-react'
+import { Button, Image } from 'semantic-ui-react'
 
 class Group extends React.Component {
 
@@ -27,7 +27,7 @@ class Group extends React.Component {
 		console.log(this.props.groupInfo)
 		return (
 			<div>
-				{this.props.groupInfo.image ? <img src={this.props.groupInfo.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
+				{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
 				<h1>{this.props.groupInfo.name}</h1>
 				<h3>{this.props.groupInfo.description}</h3>
 				<Button onClick={this.handleClick}>Group Chat</Button>

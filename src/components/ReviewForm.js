@@ -2,6 +2,7 @@ import React from 'react'
 import Rating from 'react-rating';
 import { connect } from 'react-redux'
 import { saveRecipeReview } from '../actions/recipes'
+import { Form, Segment, Divider } from 'semantic-ui-react'
 
 class ReviewForm extends React.Component {
 
@@ -34,18 +35,22 @@ class ReviewForm extends React.Component {
 	render() {
 		console.log(this.state)
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<Rating 
-					empty={<img src='/beer-outline.png' className='rating' alt=''/>}
-					full={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
-					onChange={this.handleClick}
-					placeholderRate={this.state.rating}
-					placeholder={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
-				/>
-				<input  value={this.state.text} onChange={this.handleChange} type='textarea' placeholder='Review'/>
-				<input type='submit' />
+			<Segment style={{maxWidth: '500px'}}>
+				<h2>Leave a Review</h2>
+				<Divider />
+				<Form onSubmit={this.handleSubmit}>
+					<Rating 
+						empty={<img src='/beer-outline.png' className='rating' alt=''/>}
+						full={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
+						onChange={this.handleClick}
+						placeholderRate={this.state.rating}
+						placeholder={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
+					/>
+					<Form.TextArea  value={this.state.text} onChange={this.handleChange} type='textarea' placeholder='Review'/>
+					<Form.Button>Submit</Form.Button>
 
-			</form>
+				</Form>
+			</Segment>
 		)
 	}
 }

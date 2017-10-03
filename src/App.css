@@ -100,3 +100,12 @@ p.description.recipeDescription {
   max-width: 800px;
   margin: auto;
 }
+
+.followingContainer {
+  max-width: 800px
+}
+
+.savedRecipes {
+  margin-top: 20px;
+  max-width: 800px
+}
