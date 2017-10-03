@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getGroupInfo } from '../actions/groups'
 import FollowDisplay from './FollowDisplay'
 import Chat from './Chat'
-import { Button, Image } from 'semantic-ui-react'
+import { Button, Image, Segment, Card } from 'semantic-ui-react'
 
 class Group extends React.Component {
 
@@ -27,12 +27,20 @@ class Group extends React.Component {
 		console.log(this.props.groupInfo)
 		return (
 			<div>
-				{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
-				<h1>{this.props.groupInfo.name}</h1>
-				<h3>{this.props.groupInfo.description}</h3>
+				<Segment floated='left' compact={true}>
+					{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
+					<h1>{this.props.groupInfo.name}</h1>
+					<h3>{this.props.groupInfo.description}</h3>
+				</Segment>
 				<Button onClick={this.handleClick}>Group Chat</Button>
+				
+				<div style={{maxWidth: '600px', float: 'right'}}>
+					<h3>Memebers</h3>
+					<Card.Group>
+						{this.props.groupInfo.members ? this.props.groupInfo.members.map((member, index) => <FollowDisplay key={index} data={member}/>) : null}
+					</Card.Group>
+				</div>
 				{this.state.chatOpen ? <Chat id={this.props.id} messages={this.props.groupInfo.messages} getGroupInfo={this.props.getGroupInfo}/> : null}
-				{this.props.groupInfo.members ? this.props.groupInfo.members.map((member, index) => <FollowDisplay key={index} data={member}/>) : null}
 			</div>
 		)
 	}
