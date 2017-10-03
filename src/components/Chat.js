@@ -17,8 +17,8 @@ class Chat extends React.Component {
         this.props.getGroupInfo(this.props.id)
     }
 
-    sendMessage = () => {
-        const message = this.refs.newMessage.value
+    sendMessage = (message) => {
+        //const message = this.refs.newMessage.value
         // Call perform or send
         this.setState({text: ""})
         this.refs.roomChannel.perform('send_message', {message})

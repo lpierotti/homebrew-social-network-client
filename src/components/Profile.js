@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import FollowingContainer from './FollowingContainer'
-import { Grid, Button, Menu } from 'semantic-ui-react'
+import { Grid, Button, Menu, Icon } from 'semantic-ui-react'
 
 
 class Profile extends React.Component {
@@ -14,7 +14,8 @@ class Profile extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			image: ''
+			image: '',
+			followed: false
 		}
 	}
 
@@ -68,7 +69,7 @@ class Profile extends React.Component {
 							{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
 							<Menu text vertical>
 						        {this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Menu.Item><Dropzone onDrop={this.handleDrop} accept="image/*" className={'imgUpload'}><Button>Upload Profile Picture</Button></Dropzone></Menu.Item>}
-						        {this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <Menu.Item><Button onClick={this.handleFollow}>Follow</Button></Menu.Item> : null}
+						        {this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <Menu.Item><Button onClick={this.handleFollow}>Follow</Button></Menu.Item> : <div>{this.props.currentUser.id === this.props.viewing.id ? null : <Menu.Item><Button >Following <Icon name={'checkmark'}/></Button></Menu.Item>}</div>}
 						        {this.props.currentUser.id === this.props.viewing.id ? <Menu.Item><Link to={'/recipes/new'}><Button>Add a Recipe!</Button></Link></Menu.Item> : null}
 						        {this.props.currentUser.id === this.props.viewing.id ? <Menu.Item><Link to={'/groups/new'}><Button>Create Group</Button></Link></Menu.Item> : null}
 						    </Menu>

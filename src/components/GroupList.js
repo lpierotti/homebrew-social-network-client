@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getGroups } from '../actions/users'
 import FollowDisplay from './FollowDisplay'
 import { Link } from 'react-router-dom'
+import { Segment } from 'semantic-ui-react'
 
 class GroupList extends React.Component {
 
@@ -16,10 +17,12 @@ class GroupList extends React.Component {
 			<div>
 				{this.props.userGroups.map((group, index) => {
 					return (
-						<div key={index}>
-							<Link to={`/group/${group.id}`}><h2>{group.name}</h2></Link>
-							<h4>{group.description}</h4>
-							{group.members.map((member, index) => <FollowDisplay  key={index} data={member} />)}
+						<div key={index} style={{maxWidth: '600px'}}>
+							<Segment >
+								<Link to={`/group/${group.id}`}><h2>{group.name}</h2></Link>
+								<h4>{group.description}</h4>
+								{group.members.map((member, index) => <FollowDisplay  key={index} data={member} />)}
+							</Segment>
 						</div>
 					)
 				})}

@@ -69,6 +69,7 @@ export default class UserAdapter {
 				'Accept': 'application/json'
 			}
 		})
+		.then(res => res.json())
 	}
 
 	static getInfo(id) {

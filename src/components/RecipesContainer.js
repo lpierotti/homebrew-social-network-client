@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getRecipes } from '../actions/users'
 import RecipeDisplay from './RecipeDisplay'
-import { Card } from 'semantic-ui-react'
+import { Card, Segment, Divider } from 'semantic-ui-react'
 
 class RecipesContainer extends React.Component {
 
@@ -20,10 +20,13 @@ class RecipesContainer extends React.Component {
 		console.log(this.props)
 		return (
 			<div>
-				{this.props.currentUser === this.props.viewing ? <h2>Your Recipes</h2> : <h2>{this.props.viewing}'s Recipes</h2>}
-				<Card.Group className={'recipeContainer'} itemsPerRow={3}> 
-					{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
-				</Card.Group>
+				<Segment style={{minHeight: '400px'}}>
+					{this.props.currentUser === this.props.viewing ? <h2>Your Recipes</h2> : <h2>{this.props.viewing}'s Recipes</h2>}
+					<Divider />
+					<Card.Group className={'recipeContainer'} itemsPerRow={3}> 
+						{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
+					</Card.Group>
+				</Segment>
 			</div>
 		)
 	}

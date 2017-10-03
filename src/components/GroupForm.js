@@ -7,6 +7,7 @@ import { createGroup } from '../actions/groups'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import 'react-select/dist/react-select.css';
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -18,7 +19,8 @@ class GroupForm extends React.Component {
 			name: '',
 			description: '',
 			members: [], 
-			image: ''
+			image: '',
+			submitted: false
 		}
 	}
 
@@ -51,10 +53,14 @@ class GroupForm extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault()
 		this.props.createGroup(this.state)
+		this.setState({submitted: true})
 	}
 
 	render() {
 		console.log(this.props, this.state.members)
+		if (this.state.submitted) {
+			return <Redirect to={`/user/${this.props.currentUser.id}/profile`}/>
+		}
 		if (this.props.allUsers) {
 			const options = this.props.allUsers.map(user => {
 				if (this.state.members.find(member => member === user.username)) {
@@ -94,7 +100,8 @@ class GroupForm extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		allUsers: state.users.all
+		allUsers: state.users.all,
+		currentUser: state.users.current
 	}
 }
 function mapDispatchToProps(dispatch) {
