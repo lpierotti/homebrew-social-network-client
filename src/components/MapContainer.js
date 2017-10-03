@@ -2,6 +2,7 @@ import React from 'react'
 import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import { connect } from 'react-redux'
 import { getBreweries } from '../actions/breweries'
+import { Loader } from 'semantic-ui-react'
 
 
 class MapContainer extends React.Component {
@@ -36,7 +37,11 @@ class MapContainer extends React.Component {
 	render(){
 		console.log(this.state, 'PROPS', this.props)
 		if (this.state.lat === 0) {
-			return <div></div>
+			return (
+				<div>
+					<Loader active={true} size='large'>Loading</Loader>
+				</div>
+			)
 		} else {
 			return (
 				<Map google={this.props.google}

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getRecipes } from '../actions/recipes'
 import RecipeDisplay from './RecipeDisplay'
-import { Card } from 'semantic-ui-react'
+import { Card, Loader } from 'semantic-ui-react'
 
 
 class RecipeList extends React.Component {
@@ -17,7 +17,7 @@ class RecipeList extends React.Component {
 			<div>
 				<h2>All Recipes</h2>
 				<Card.Group itemsPerRow={3}>
-					{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : null}
+					{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : <Loader active={true} size='large'>Loading</Loader>}
 				</Card.Group>
 			</div>
 		)

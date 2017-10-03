@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/users'
+import { Form, Label, Segment } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -32,11 +33,17 @@ class LoginForm extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<input onChange={this.handleInputChange} name='email' type='text' />
-				<input onChange={this.handleInputChange} name='password' type='password' />
-				<input type='submit' /> 
-			</form>
+			<div style={{maxWidth: '500px', margin: 'auto'}}>
+				<Segment>
+					<Form onSubmit={this.handleSubmit}>
+						<Label>Email</Label>
+						<Form.Input onChange={this.handleInputChange} name='email' type='text' />
+						<Label>Password</Label>
+						<Form.Input onChange={this.handleInputChange} name='password' type='password' />
+						<Form.Button>Submit</Form.Button>
+					</Form>
+				</Segment>
+			</div>
 		)
 	}
 }

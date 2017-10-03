@@ -7,7 +7,7 @@ function Review(props) {
 
 	return (
 		<div>
-			{props.authorImage ? <img className='icon' src={props.authorImage} alt=''/> : <img className='icon' src='/default-profile.png' /> }
+			{props.authorImage ? <img className='icon' src={props.authorImage} alt=''/> : <img className='icon' src='/default-profile.png' alt=''/> }
 			<h3><Link to={`/user/${props.authorID}/profile`}>{props.author}</Link></h3>
 			<Rating 
 				empty={<img src='/beer-outline.png' className='rating' alt=''/>}

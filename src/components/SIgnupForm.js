@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { signupUser } from '../actions/users'
+import { Form, Segment, Label } from 'semantic-ui-react'
 
 
 
@@ -32,16 +33,20 @@ class SignupForm extends React.Component {
 	render() {
 		console.log(this.state)
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label>Username</label>
-				<input onChange={this.handleInputChange} name='username' type='text' />
-				<label>Email</label>
-				<input onChange={this.handleInputChange} name='email' type='text' />
-				<label>Password</label>
-				<input onChange={this.handleInputChange} name='password' type='password' />
-				
-				<input type='submit' />
-			</form>
+			<div style={{maxWidth: '500px', margin: 'auto'}}>
+				<Segment>
+					<Form onSubmit={this.handleSubmit}>
+						<Label>Username</Label>
+						<Form.Input onChange={this.handleInputChange} name='username' type='text' />
+						<Label>Email</Label>
+						<Form.Input onChange={this.handleInputChange} name='email' type='text' />
+						<Label>Password</Label>
+						<Form.Input onChange={this.handleInputChange} name='password' type='password' />
+						
+						<Form.Button>Submit</Form.Button>
+					</Form>
+				</Segment>
+			</div>
 		)
 	}
 
