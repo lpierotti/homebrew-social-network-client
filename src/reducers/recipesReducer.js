@@ -1,4 +1,4 @@
-export default function RecipesReducer(state = {currentRecipe: {}, allRecipes: []}, action) {
+export default function RecipesReducer(state = {currentRecipe: {reviews: []}, allRecipes: []}, action) {
 	switch(action.type) {
 		case 'GET_ALL_RECIPES':
 			console.log(action.payload)

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import FollowingContainer from './FollowingContainer'
-import { Grid, Button, Segment, Menu } from 'semantic-ui-react'
+import { Grid, Button, Menu } from 'semantic-ui-react'
 
 
 class Profile extends React.Component {

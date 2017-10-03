@@ -1,5 +1,6 @@
 import React from 'react'
 import {ActionCable} from 'react-actioncable-provider'
+import {Launcher} from 'react-chat-window'
 
 class Chat extends React.Component {
 
@@ -31,12 +32,20 @@ class Chat extends React.Component {
         console.log(this.props)
         return (
             <div>
+                <Launcher
+                    agentProfile={{
+                      teamName: 'react-live-chat',
+                      imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
+                    }}
+                    onMessageWasSent={this.sendMessage}
+                    messageList={this.props.messages}
+                  />
                 <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
-                {this.props.messages ?<ul>
+                {this.props.messages ?<div>
                     {this.props.messages.map((message) =>
-                        <li key={message.id}><h1>{message.body}</h1></li>
+                        <p key={message.id}>{message.body}</p>
                     )}
-                </ul> : null}
+                </div> : null}
                 <input onChange={this.handleChange} value={this.state.text} ref='newMessage' type='text' />
                 <button onClick={this.sendMessage}>Send</button>
             </div>
