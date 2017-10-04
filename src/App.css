@@ -136,3 +136,7 @@ p.welcome {
   color: rgba(255,255,255,1);
   font-size: 2em;
 }
+
+#react-select-2--value > div.Select-input > input {
+  border: 0px;
+}

@@ -8,6 +8,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import 'react-select/dist/react-select.css';
 import { Redirect } from 'react-router-dom'
+import { Form, Segment, Card } from 'semantic-ui-react'
 
 
 
@@ -71,24 +72,26 @@ class GroupForm extends React.Component {
 				}
 			})
 			return (
-				<div>
-					<form onSubmit={this.handleSubmit}>
+				<div className='recipeForm'>
+					<Form onSubmit={this.handleSubmit}>
 					{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Add a group picture here!</p></Dropzone>}
 						<label>Name</label>
-						<input onChange={this.handleChange} name='name' type='text' />
+						<Form.Input onChange={this.handleChange} name='name' type='text' />
 						<label>Description</label>
-						<input onChange={this.handleChange} name='description' type='textarea' />
+						<Form.Input onChange={this.handleChange} name='description' type='textarea' />
 						<Select 
 							options={options}
 							onChange={this.handleSelect}
 						/>
-						<input type='submit' />
-					</form>
+						<Form.Button>Submit</Form.Button>
+					</Form>
+					<Card.Group itemsPerRow={3}>
 					{this.state.members ? this.state.members.map((name, index) => {
 						const foundUser = this.props.allUsers.find(user => user.username === name)
 						console.log(foundUser)
 						return <FollowDisplay key={index} data={foundUser} />
 						}) : null}
+					</Card.Group>
 				</div>
 			)
 		} else {

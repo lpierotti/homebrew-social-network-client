@@ -18,7 +18,7 @@ class GroupList extends React.Component {
 				{this.props.userGroups.map((group, index) => {
 					return (
 						<div key={index} style={{maxWidth: '600px'}}>
-							<Segment inverted color=''>
+							<Segment inverted style={{backgroundColor: 'rgba(230, 111, 14, 0.81)'}} >
 								<Link to={`/group/${group.id}`}><h2>{group.name}</h2></Link>
 								<h4>{group.description}</h4>
 								<Segment >
