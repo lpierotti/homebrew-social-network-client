@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getGroups } from '../actions/users'
 import FollowDisplay from './FollowDisplay'
 import { Link } from 'react-router-dom'
-import { Segment, Card } from 'semantic-ui-react'
+import { Segment, Card, Divider } from 'semantic-ui-react'
 
 class GroupList extends React.Component {
 
@@ -20,6 +20,7 @@ class GroupList extends React.Component {
 						<div key={index} style={{maxWidth: '600px'}}>
 							<Segment inverted style={{backgroundColor: 'rgba(230, 111, 14, 0.81)'}} >
 								<Link to={`/group/${group.id}`}><h2>{group.name}</h2></Link>
+								<Divider />
 								<h4>{group.description}</h4>
 								<Segment >
 									<Card.Group itemsPerRow={3} textAlign='center'>

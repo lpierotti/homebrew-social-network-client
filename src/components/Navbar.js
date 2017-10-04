@@ -30,14 +30,14 @@ class Navbar extends React.Component {
 				        <Menu.Item >
 				        	<Link to={`/user/${this.props.user.id}/groups`}><Button>Your Groups</Button></Link>
 				        </Menu.Item>
-				        <h1><Link to={`/`}>Brew For You</Link></h1>
+				        <Link style={{margin: 'auto'}} to={`/`}><h1 style={{ color: 'rgba(0,0,0,1'}}>Brew For You</h1></Link>
 				        <Menu.Menu position='right'>
 				          <Menu.Item>
 				          	<Button onClick={this.handleClick}>Logout</Button>
 				          </Menu.Item>
 
 				          <Menu.Item>
-				        	<Link to={`/map`}><Button>Breweries Near You!</Button></Link>
+				        	<Link to={`/map`}><Button >Breweries Near You!</Button></Link>
 				          </Menu.Item>
 				        </Menu.Menu>
 				    </Menu> : 

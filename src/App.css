@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgba(0,0,0,.1)
 }
 
 .App-logo {
@@ -72,7 +73,7 @@ img.recipePic {
 }
 
 div.ui.menu {
-  background-color: #c1c1c1;
+  background-color: rgba(0, 62, 73, .8);
 }
 
 button.ui.button {

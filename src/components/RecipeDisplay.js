@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { Card, Image, Modal, Button, Header } from 'semantic-ui-react'
+import { Card, Image, Modal } from 'semantic-ui-react'
 
 const RecipeDisplay = (props) => {
 	var img;

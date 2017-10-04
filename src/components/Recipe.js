@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import UserAdapter from '../adapters/userAdapter'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
-import { Button, Image, Segment, List, Container } from 'semantic-ui-react'
+import { Button, Image, Segment, List } from 'semantic-ui-react'
 
 class Recipe extends React.Component {
 

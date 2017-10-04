@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Card, Image, Header } from 'semantic-ui-react'
+import { Segment, Image, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const RecipeContainerDisplay = (props) => {

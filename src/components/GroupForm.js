@@ -8,7 +8,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import 'react-select/dist/react-select.css';
 import { Redirect } from 'react-router-dom'
-import { Form, Segment, Card } from 'semantic-ui-react'
+import { Form, Card } from 'semantic-ui-react'
 
 
 

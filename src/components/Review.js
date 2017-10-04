@@ -1,7 +1,7 @@
 import React from 'react'
 import Rating from 'react-rating'
 import { Link } from 'react-router-dom'
-import { Card, Image, Segment } from 'semantic-ui-react'
+import { Image, Segment } from 'semantic-ui-react'
 
 function Review(props) {
 	var img;
