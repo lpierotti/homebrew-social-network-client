@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Popup } from 'semantic-ui-react'
 
 function GravityABV(props) {
 
@@ -10,9 +10,18 @@ function GravityABV(props) {
 	return (
 		
 		<Form.Group widths={'equal'}>
-			<Form.Input name='og' type='number' step="0.01" onChange={handleChange} placeholder='OG' />
-			<Form.Input name='fg' type='number' step="0.01" onChange={handleChange} placeholder='FG' />
-			<Form.Input placeholder='ABV' value={`${props.data.abv}%`} />
+			<Popup
+			    trigger={<Form.Input name='og' type='number' step="0.01" onChange={handleChange} placeholder='OG' />}
+			    content='Original Gravity as measured by your hydrometer'
+			/>
+			<Popup
+			    trigger={<Form.Input name='fg' type='number' step="0.01" onChange={handleChange} placeholder='FG' />}
+			    content='Final Gravity as measured by your hydrometer'
+			/>
+			<Popup
+			    trigger={<Form.Input placeholder='ABV' value={`${props.data.abv}%`} />}
+			    content='The Alcohol by Volume claculted by subtracting the FG from the OG and multiplying by 131.25'
+			/>
 		</Form.Group>
 		
 	)

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { saveRecipe } from '../actions/recipes'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Popup } from 'semantic-ui-react'
 
 class RecipeForm extends React.Component {
 
@@ -109,17 +109,36 @@ class RecipeForm extends React.Component {
 					{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					<Form.Group>
 						<Form.Input name='name' onChange={this.handleChange} placeholder='Name' width={8}/>
-						<Form.Input name='style' onChange={this.handleChange} placeholder='Style' width={8}/>
+						<Popup
+						    trigger={<Form.Input name='style' onChange={this.handleChange} placeholder='Style' width={8}/>}
+						    content='What style is it? (ex. German Witbier, IPA)'
+						/>
 					</Form.Group>
 					<Form.Group>
-						<Form.Radio name='type' onChange={this.handleChange} value='all-grain' label='All-grain' />
-						<Form.Radio name='type' onChange={this.handleChange} value='extract' label='Extract' />
+						<Popup
+						    trigger={<Form.Radio name='type' onChange={this.handleChange} value='all-grain' label='All-grain' />}
+						    content='Made with malts and little or no added sugars or extracts'
+						/>
+						<Popup
+						    trigger={<Form.Radio name='type' onChange={this.handleChange} value='extract' label='Extract' />}
+						    content='Made with extracts with some or no specialty grains'
+						/>
 					</Form.Group>
-					<Form.TextArea name='description' onChange={this.handleChange} placeholder='Description' />
+					<Popup
+					    trigger={<Form.TextArea name='description' onChange={this.handleChange} placeholder='Description' />}
+					    content='Short description of beer'
+					/>
 					<GravityABV changeGravity={this.changeGravity} data={this.state.abvCalc}/>
-					<Button onClick={this.handleIngredientClick} style={{marginBottom: '10px'}}>Add Ingredient</Button>
+					<Popup
+					    trigger={<Button onClick={this.handleIngredientClick} style={{marginBottom: '10px'}}>Add Ingredient</Button>}
+					    content='Click here to add an ingredient to the recipe'
+					/>
 					{this.state.ingredientObjects.map((ingredient, index) => <IngredientForm key={index} changeIngredient={this.changeIngredient} addIngredient={this.addIngredient} removeIngredient={this.removeIngredient} data={ingredient}/>)}<br/>
-					<Form.TextArea name='instructions' onChange={this.handleChange} placeholder='Instructions' />
+					<Popup
+					    trigger={<Form.TextArea name='instructions' onChange={this.handleChange} placeholder='Instructions' />}
+					    content='Instructions for your fellow brewers to recreate your brew!'
+					/>
+
 					<Form.Button style={{margin: 'auto'}}>Submit</Form.Button>
 				</Form>
 			</div>

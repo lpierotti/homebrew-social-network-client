@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react' 
+import { Button, Form, Popup } from 'semantic-ui-react' 
 
 function IngredientForm(props) {
 
@@ -29,10 +29,14 @@ function IngredientForm(props) {
 	} else {
 		return (
 			<Form.Group>
+
 				<Form.Input name='amount' onChange={handleChange} placeholder='Amount' width={5}/>
 				<Form.Input name='unit' onChange={handleChange} placeholder='Unit' width={5}/>
 				<Form.Input name='name' onChange={handleChange} placeholder='Name' width={5}/>
-				<Button onClick={handleClick}>Add</Button>
+				<Popup
+				    trigger={<Button onClick={handleClick}>Add</Button>}
+				    content='Click to save the ingredient to your recipe'
+				/>
 			</Form.Group>
 		)
 	}
