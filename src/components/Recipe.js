@@ -32,9 +32,10 @@ class Recipe extends React.Component {
 			return (
 				<div style={{maxWidth: '1000px', margin: 'auto'}}>
 					<Segment floated='right' compact={true}>
-						{this.props.recipe.image ? <Image className='profPic' src={this.props.recipe.image} alt=''/> : <Image  className='profPic' src='/default-beer.jpeg' alt=''/> }
+						{this.props.recipe.image ? <Image className='recipePic' src={this.props.recipe.image} alt=''/> : <Image  className='recipePic' src='/default-beer.jpeg' alt=''/> }
 						{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <Button  onClick={this.handleSave}>Save Recipe</Button> : null}
 					</Segment>
+
 					<h2>{this.props.recipe.name}</h2>
 					{this.props.recipe.author ? <h4><Link to={`/user/${this.props.recipe.author.id}/profile`}>{this.props.recipe.author.username}</Link></h4> : null}
 					<h3>{this.props.recipe.description}</h3>

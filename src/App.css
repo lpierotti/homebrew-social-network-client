@@ -51,13 +51,11 @@
 .beerDisplay {
   width: 250px;
   height: auto;
-
 }
 
-.recipeDisplay {
-  float: left;
-  text-overflow:clip;
-  max-height: 400px;
+img.recipePic {
+  width: 300px;
+  height: auto;
 }
 
 .ui.card {
