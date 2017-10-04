@@ -26,7 +26,6 @@ class FollowingContainer extends React.Component {
 					<Card.Group itemsPerRow={4} textAlign='center'>
 						{this.props.follows ? this.props.follows.map((follow, index) => <FollowDisplay key={index} data={follow}/>) : null}
 					</Card.Group>
-					<Divider />
 					<h2>Followers</h2>
 					<Divider />
 					<Card.Group itemsPerRow={4} textAlign='center'>

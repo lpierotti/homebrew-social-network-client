@@ -7,8 +7,10 @@ const FollowDisplay = (props) => {
 
 	return (
 			<Card raised={true}>
-				{props.data.image ? <Link to={`/user/${props.data.id}/profile`}><Image className='smallDisplay' src={props.data.image} alt='' centered={true}/></Link> : <Link to={`/user/${props.data.id}/profile`}><Image className='smallDisplay' src='/default-profile.png' alt='' centered={true}/></Link>}
-				<Link to={`/user/${props.data.id}/profile`}>{props.data.username}</Link>
+				<div style={{margin: 'auto'}}>
+					{props.data.image ? <Link to={`/user/${props.data.id}/profile`}><Image className='smallDisplay' src={props.data.image} alt='' centered={true}/></Link> : <Link to={`/user/${props.data.id}/profile`}><Image className='smallDisplay' src='/default-profile.png' alt='' centered={true}/></Link>}
+					<Link to={`/user/${props.data.id}/profile`}>{props.data.username}</Link>
+				</div>
 			</Card>
 	)
 }

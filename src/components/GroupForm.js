@@ -79,11 +79,12 @@ class GroupForm extends React.Component {
 						<Form.Input onChange={this.handleChange} name='name' type='text' />
 						<label>Description</label>
 						<Form.Input onChange={this.handleChange} name='description' type='textarea' />
+						<label>Add Members</label>
 						<Select 
 							options={options}
 							onChange={this.handleSelect}
 						/>
-						<Form.Button>Submit</Form.Button>
+						<Form.Button style={{marginTop: '10px', marginBottom: '10px'}}>Submit</Form.Button>
 					</Form>
 					<Card.Group itemsPerRow={3}>
 					{this.state.members ? this.state.members.map((name, index) => {

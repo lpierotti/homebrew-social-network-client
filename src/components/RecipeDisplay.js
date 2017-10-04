@@ -6,7 +6,7 @@ const RecipeDisplay = (props) => {
 	var img;
 	{props.data.image ? img = props.data.image : img = '/default-beer.jpeg'}
 	return (
-			<Card className={'recipeDisplay'}>
+			<Card className={'recipeDisplay'} >
 			    <Modal dimmer={'blurring'} size={'small'} trigger={<Image className='beerDisplay' src={img} alt='' centered={true}/>}>
 				    <Modal.Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Modal.Header>
 				    <Modal.Content>
