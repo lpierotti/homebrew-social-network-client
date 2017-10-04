@@ -1,26 +1,28 @@
 import React from 'react'
 import Rating from 'react-rating'
 import { Link } from 'react-router-dom'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Segment } from 'semantic-ui-react'
 
 function Review(props) {
-
+	var img;
+	{props.authorImage ? img = props.authorImage : img = '/default-profile.png'}
 
 	return (
-		<div>
-			<Card>
-				{props.authorImage ? <Image floated='left' className='icon' src={props.authorImage} alt=''/> : <Image floated='left' className='icon' src='/default-profile.png' alt=''/> }
-				<h3><Link to={`/user/${props.authorID}/profile`}>{props.author}</Link></h3>
-				<Rating 
-					empty={<img src='/beer-outline.png' className='rating' alt=''/>}
-					full={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
-					placeholderRate={props.rating}
-					placeholder={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
-					readonly={true}
-				/>
+		<Segment style={{minHeight: '170px'}}>
+			<Image floated='left' className='icon' src={img} alt=''/>
+			<h3 style={{float: 'left'}}><Link to={`/user/${props.authorID}/profile`}>{props.author}</Link></h3>
+			<Rating 
+				empty={<img src='/beer-outline.png' className='rating' alt=''/>}
+				full={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
+				placeholderRate={props.rating}
+				placeholder={<img src='/beer-outline-filled.png' className='rating' alt=''/>}
+				readonly={true}
+				style={{float: 'left', clear: 'left'}}
+			/>
+			<Segment style={{maxWidth: '600px', textAlign: 'left', margin: 'auto'}}>
 				<p>{props.text}</p>
-			</Card>
-		</div>
+			</Segment>
+		</Segment>
 	)
 }
 

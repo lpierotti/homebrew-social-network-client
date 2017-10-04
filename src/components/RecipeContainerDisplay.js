@@ -6,7 +6,7 @@ const RecipeContainerDisplay = (props) => {
 	var img;
 	{props.data.image ? img = props.data.image : img = '/default-beer.jpeg'}
 	return (
-		<Segment style={{minWidth: '700px'}}className={'recipeDisplay'}>
+		<Segment style={{minWidth: '700px', maxWidth: '700px', margin: 'auto'}}className={'recipeDisplay'}>
 			<Image floated='left' className='beerDisplay' src={img} alt=''/>
 			<div style={{ maxWidth: '500px', display: 'inline'}}>
 				<Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Header>

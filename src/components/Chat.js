@@ -16,6 +16,7 @@ class Chat extends React.Component {
     onReceived = (message) => {
         console.log('RECEIVING', message.message)
         this.props.getGroupInfo(this.props.id)
+        
     }
 
     sendMessage = (event) => {

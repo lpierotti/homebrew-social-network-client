@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import FollowingContainer from './FollowingContainer'
-import { Grid, Button, Menu, Icon } from 'semantic-ui-react'
+import { Grid, Button, Menu, Icon, Header } from 'semantic-ui-react'
 
 
 class Profile extends React.Component {
@@ -66,6 +66,7 @@ class Profile extends React.Component {
 					<Grid.Row>
 						<Grid.Column width={1}/>
 						<Grid.Column width={4} textAlign='center'>
+							<Header as='h1'>{this.props.viewing.username}</Header>
 							{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
 							<Menu text vertical>
 						        {this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Menu.Item><Dropzone onDrop={this.handleDrop} accept="image/*" className={'imgUpload'}><Button>Upload Profile Picture</Button></Dropzone></Menu.Item>}
