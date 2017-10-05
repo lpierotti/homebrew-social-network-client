@@ -20,7 +20,7 @@ class FollowingContainer extends React.Component {
 		console.log(this.props)
 		return (
 			<div className={'followingContainer'}>
-				<Segment>
+				<Segment style={{backgroundColor: 'rgba(133,50,1,.5'}}>
 					<h2>{this.props.currentUser === this.props.viewing ? 'Your' : `People ${this.props.viewing}` } Follows</h2>
 					<Divider />
 					<Card.Group itemsPerRow={4} textAlign='center'>

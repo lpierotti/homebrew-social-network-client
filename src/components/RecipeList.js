@@ -16,9 +16,9 @@ class RecipeList extends React.Component {
 		return (
 			<div>
 				<h2>All Recipes</h2>
-				<Card.Group itemsPerRow={3}>
+				<div style={{maxWidth: '1200px', margin: 'auto'}}>
 					{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : <Loader active={true} size='large'>Loading</Loader>}
-				</Card.Group>
+				</div>
 			</div>
 		)
 	}

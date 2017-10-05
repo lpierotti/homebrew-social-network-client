@@ -20,7 +20,7 @@ class RecipesContainer extends React.Component {
 		console.log(this.props)
 		return (
 			<div className='savedRecipes'>
-				<Segment style={{minHeight: '400px'}}>
+				<Segment style={{minHeight: '400px', backgroundColor: 'rgba(255,185,0,.5'}}>
 					{this.props.currentUser === this.props.viewing ? <h2>Your Recipes</h2> : <h2>{this.props.viewing}'s Recipes</h2>}
 					<Divider />
 					<Card.Group className={'recipeContainer'} itemsPerRow={1}> 

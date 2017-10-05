@@ -14,13 +14,13 @@ class GroupList extends React.Component {
 	render() {
 		console.log(this.props)
 		return (
-			<div style={{maxWidth: '1200px', margin: 'auto'}}>
+			<div style={{maxWidth: '1250px', margin: 'auto'}}>
 			<Card.Group itemsPerRow={2}>
 				{this.props.userGroups.map((group, index) => {
 					return (
-						<div key={index} style={{maxWidth: '600px'}}>
+						<div key={index} style={{maxWidth: '600px', margin: '10px'}}>
 							<Segment inverted style={{backgroundColor: 'rgba(95, 122, 83, 0.81)'}} raised={true}>
-								<Link to={`/group/${group.id}`}><h2>{group.name}</h2></Link>
+								<Link to={`/group/${group.id}`}><h2 style={{color: 'black'}}>{group.name}</h2></Link>
 								<Divider />
 								<h4>{group.description}</h4>
 								<Segment >

@@ -6,8 +6,8 @@ const RecipeDisplay = (props) => {
 	var img;
 	{props.data.image ? img = props.data.image : img = '/default-beer.jpeg'}
 	return (
-			<Card className={'recipeDisplay'} >
-			    <Modal dimmer={'blurring'} size={'small'} trigger={<Image className='beerDisplay' src={img} alt='' centered={true}/>}>
+			<div className={'recipeDisplay'} style={{margin: '20px', maxWidth: '300px', float: 'left'}}>
+			    <Modal dimmer={'blurring'} size={'small'} trigger={<Image style={{borderRadius: '10px'}}className='beerDisplay' src={img} alt='' centered={true}/>}>
 				    <Modal.Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Modal.Header>
 				    <Modal.Content>
 				      <Modal.Description>
@@ -16,7 +16,7 @@ const RecipeDisplay = (props) => {
 				      </Modal.Description>
 				    </Modal.Content>
 				</Modal>
-			</Card>
+			</div>
 			
 		
 	)
