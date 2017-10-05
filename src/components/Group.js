@@ -26,7 +26,9 @@ class Group extends React.Component {
 	render() {
 		console.log(this.props.groupInfo)
 		return (
-			<div>
+			<div style={{width: '100%', height: '100vh', backgroundColor: 'rgba(0,0,0,.1)'}}>
+			<div style={{maxWidth: '1000px', margin: 'auto'}}>
+			<div style={{ float: 'left'}}>
 				<Segment floated='left' compact={true}>
 					{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
 					<h1>{this.props.groupInfo.name}</h1>
@@ -35,12 +37,14 @@ class Group extends React.Component {
 				<Button onClick={this.handleClick}>Group Chat</Button>
 				
 				<div style={{maxWidth: '600px', float: 'right'}}>
-					<h3>Memebers</h3>
+					<h3>Members</h3>
 					<Card.Group>
 						{this.props.groupInfo.members ? this.props.groupInfo.members.map((member, index) => <FollowDisplay key={index} data={member}/>) : null}
 					</Card.Group>
 				</div>
 				{this.state.chatOpen ? <Chat id={this.props.id} messages={this.props.groupInfo.messages} getGroupInfo={this.props.getGroupInfo}/> : null}
+			</div>
+			</div>
 			</div>
 		)
 	}

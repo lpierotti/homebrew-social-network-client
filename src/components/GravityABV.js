@@ -20,7 +20,7 @@ function GravityABV(props) {
 			/>
 			<Popup
 			    trigger={<Form.Input placeholder='ABV' value={`${props.data.abv}%`} />}
-			    content='The Alcohol by Volume claculted by subtracting the FG from the OG and multiplying by 131.25'
+			    content='The Alcohol by Volume calculated by subtracting the FG from the OG and multiplying by 131.25'
 			/>
 		</Form.Group>
 		

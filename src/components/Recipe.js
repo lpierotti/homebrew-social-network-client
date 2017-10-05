@@ -35,11 +35,14 @@ class Recipe extends React.Component {
 						{this.props.recipe.image ? <Image className='recipePic' src={this.props.recipe.image} alt=''/> : <Image  className='recipePic' src='/default-beer.jpeg' alt=''/> }
 						{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <Button  onClick={this.handleSave}>Save Recipe</Button> : null}
 					</Segment>
-					<h1>{this.props.recipe.name}</h1>
-					{this.props.recipe.author ? <h2>Brewer: <Link to={`/user/${this.props.recipe.author.id}/profile`}>{this.props.recipe.author.username}</Link></h2> : null}
-					<h3>{this.props.recipe.description}</h3>
-					<h4>{this.props.recipe.style}--{this.props.recipe.type_of_brew}</h4>
-					<h5>{this.props.recipe.og}-{this.props.recipe.fg} x 131.25 = {this.props.recipe.abv}%</h5>
+					<Segment compact={true}>
+						<h1>{this.props.recipe.name}</h1>
+						{this.props.recipe.author ? <h2>Brewer: <Link to={`/user/${this.props.recipe.author.id}/profile`}>{this.props.recipe.author.username}</Link></h2> : null}
+						<h3>Description: {this.props.recipe.description}</h3>
+						<h4>Style: {this.props.recipe.style}</h4>
+						<h4>Type: {this.props.recipe.type_of_brew}</h4>
+						<h5>(OG: {this.props.recipe.og} - FG: {this.props.recipe.fg}) x 131.25 = ABV: {this.props.recipe.abv}%</h5>
+					</Segment>
 					<h2>Ingredients</h2>
 					<List size='big' style={{float: 'left', textAlign: 'left', paddingLeft: '100px'}}>
 						{this.props.recipe.ingredients ? this.props.recipe.ingredients.map((ingredient, index) => <List.Item key={index}>{ingredient.amount} {ingredient.unit} {ingredient.name}</List.Item>) : null}

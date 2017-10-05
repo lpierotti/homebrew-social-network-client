@@ -14,8 +14,8 @@ class RecipeList extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h2>All Recipes</h2>
+			<div style={{backgroundColor: 'rgba(0,0,0,.1)'}}>
+				<h1>All Recipes</h1>
 				<div style={{maxWidth: '1200px', margin: 'auto'}}>
 					{this.props.recipes ? this.props.recipes.map((recipe, index) => <RecipeDisplay key={index} data={recipe}/>) : <Loader active={true} size='large'>Loading</Loader>}
 				</div>

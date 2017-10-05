@@ -10,8 +10,9 @@ const RecipeContainerDisplay = (props) => {
 			<Image floated='left' className='beerDisplay' src={img} alt=''/>
 			<div style={{ maxWidth: '500px', display: 'inline'}}>
 				<Header><Link to={`/recipe/${props.data.id}`}>{props.data.name}</Link></Header>
-				<Header.Subheader>{props.data.style}--{props.data.abv}</Header.Subheader>
-				<p>{props.data.description}</p>
+				<p>Style: {props.data.style}</p>
+				<p>ABV: {props.data.abv}</p>
+				<p>Description: {props.data.description}</p>
 			</div>
 		</Segment>
 	)

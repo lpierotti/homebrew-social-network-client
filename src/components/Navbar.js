@@ -20,39 +20,39 @@ class Navbar extends React.Component {
 				{localStorage.getItem('jwt') ? 
 					<Menu>
 				        <Menu.Item>
-				        	<Link to={`/user/${this.props.user.id}/profile`}><Button>Profile</Button></Link>
+				        	<Link to={`/user/${this.props.user.id}/profile`}>Profile</Link>
 				        </Menu.Item>
 				        	
 				        <Menu.Item >
-				        	<Link to={'/recipes'}><Button>All Recipes</Button></Link>
+				        	<Link to={'/recipes'}>All Recipes</Link>
 				        </Menu.Item>
 
 				        <Menu.Item >
-				        	<Link to={`/user/${this.props.user.id}/groups`}><Button>Your Groups</Button></Link>
+				        	<Link to={`/user/${this.props.user.id}/groups`}>Your Groups</Link>
 				        </Menu.Item>
-				        <Link style={{margin: 'auto'}} to={`/`}><h1 style={{ color: 'rgba(0,0,0,1'}}>Brew For You</h1></Link>
+				        <Link style={{margin: 'auto'}} to={`/`}><h1 style={{ color: 'white', fontSize: '4em'}}>Brew For You</h1></Link>
 				        <Menu.Menu position='right'>
 				          <Menu.Item>
-				          	<Button onClick={this.handleClick}>Logout</Button>
+				          	<a onClick={this.handleClick}>Logout</a>
 				          </Menu.Item>
 
 				          <Menu.Item>
-				        	<Link to={`/map`}><Button >Breweries Near You!</Button></Link>
+				        	<Link to={`/map`}>Breweries Near You!</Link>
 				          </Menu.Item>
 				        </Menu.Menu>
 				    </Menu> : 
 					<Menu>
 				        <Menu.Item >
-				        	<Link to={'/signup'}><Button>Signup</Button></Link><br/>
+				        	<Link to={'/signup'}>Signup</Link><br/>
 				        </Menu.Item>
 				        	
 				        <Menu.Item >
-				        	<Link to={'/login'}><Button>Login</Button></Link>
+				        	<Link to={'/login'}>Login</Link>
 				        </Menu.Item>
-
+				        <Link style={{margin: 'auto'}} to={`/`}><h1 style={{ color: 'white', fontSize: '4em'}}>Brew For You</h1></Link>
 				        <Menu.Menu position='right'>
 				          <Menu.Item>
-				        	<Link to={`/map`}><Button>Breweries Near You!</Button></Link>
+				        	<Link to={`/map`}>Breweries Near You!</Link>
 				          </Menu.Item>
 				        </Menu.Menu>
 				    </Menu>}

@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
 .App {
   text-align: center;
-  background-color: rgba(0,0,0,.1)
+  background-color: rgba(0,0,0,.1);
 }
 
 .App-logo {
@@ -13,10 +15,12 @@
   height: 150px;
   padding: 20px;
   color: white;
+  font-family: 'Muli', sans-serif;
 }
 
 .App-intro {
   font-size: large;
+  font-family: 'Muli', sans-serif;
 }
 
 @keyframes App-logo-spin {
@@ -75,19 +79,25 @@ img.recipePic {
 
 div.ui.menu {
   background-color: rgba(0, 62, 73, .8);
+  font-family: 'Oswald', sans-serif;
 }
 
 button.ui.button {
   background: rgba(207, 212, 215, .8);
 }
 
-div.ui.text.vertical.menu {
+div.ui.menu a {
   margin: auto; 
+  font-family: 'Oswald', sans-serif;
 }
 
 div.ui.three.cards {
   margin-left: 50px;
   margin-right: 50px;
+}
+
+div.ui.header a {
+  font-family: 'Oswald', sans-serif;
 }
 
 .description.recipeDescription {
@@ -121,7 +131,26 @@ div.ui.three.cards {
   background-color: rgba(229,229,229,1);
   
 }
-
+h2 {
+  font-family: 'Oswald', sans-serif;
+}
+div h1 {
+  font-family: 'Oswald', sans-serif;
+}
+#root > div > div.ui.relaxed.grid > div:nth-child(1) > div.center.aligned.four.wide.column > div {
+  margin: auto;
+}
+#root > div > div.ui.relaxed.grid > div:nth-child(1) > div.center.aligned.four.wide.column > h1 {
+  font-size: 4em;
+  margin-bottom: 0px;
+}
+div.ui.segment h2 {
+  font-family: 'Oswald', sans-serif;
+}
+button.ui.button {
+  font-family: 'Muli', sans-serif;
+  background-color: rgba(112,174,151,1);
+}
 .chat {
   position: fixed;
   bottom: 30px;
@@ -137,6 +166,7 @@ div.ui.three.cards {
 p.welcome {
   color: rgba(255,255,255,1);
   font-size: 2em;
+  padding: 100px;
 }
 
 #react-select-2--value > div.Select-input > input {
@@ -147,4 +177,26 @@ p.welcome {
   margin: auto;
   margin-top: 30px;
   margin-bottom: 10px;
+}
+
+.ui.menu .item>a {
+  text-transform: uppercase;
+    color: white;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+
+}
+.welcomeDiv {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+50,0e0e0e+50&0+0,0.5+15,1+49,0.5+86,0+100 */
+background: -moz-linear-gradient(top, rgba(125,126,125,0) 0%, rgba(107,108,107,0.5) 8%, rgba(92,92,92,0.5) 15%, rgba(16,16,16,1) 49%, rgba(14,14,14,0.99) 50%, rgba(14,14,14,0.5) 86%, rgba(14,14,14,0.5) 93%, rgba(14,14,14,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(125,126,125,0) 0%,rgba(107,108,107,0.5) 8%,rgba(92,92,92,0.5) 15%,rgba(16,16,16,1) 49%,rgba(14,14,14,0.99) 50%,rgba(14,14,14,0.5) 86%,rgba(14,14,14,0.5) 93%,rgba(14,14,14,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(125,126,125,0) 0%,rgba(107,108,107,0.5) 8%,rgba(92,92,92,0.5) 15%,rgba(16,16,16,1) 49%,rgba(14,14,14,0.99) 50%,rgba(14,14,14,0.5) 86%,rgba(14,14,14,0.5) 93%,rgba(14,14,14,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', endColorstr='#000e0e0e',GradientType=0 ); /* IE6-9 */ /* IE6-9 */}
+
+h1.ui.header {
+  font-family: 'Oswald', sans-serif;
+}
+
+* {
+  font-family: 'Muli', sans-serif;
 }

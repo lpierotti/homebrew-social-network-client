@@ -33,11 +33,11 @@ class SignupForm extends React.Component {
 	render() {
 		console.log(this.state)
 		return (
-			<div style={{maxWidth: '500px', margin: 'auto'}}>
-				<Header size='huge' attached={true, 'bottom'}>Signup</Header>
-				<Segment>
+			<div style={{maxWidth: '500px', margin: 'auto' }}>
+				<Header size='huge' attached={true, 'bottom'} style={{backgroundColor: 'rgba(58,150,255,.3)'}}>Signup</Header>
+				<Segment style={{backgroundColor: 'rgba(58,150,255,.3)'}}>
 					
-					<Form onSubmit={this.handleSubmit}>
+					<Form onSubmit={this.handleSubmit} >
 						<Label>Username</Label>
 						<Form.Input onChange={this.handleInputChange} name='username' type='text' />
 						<Label>Email</Label>
