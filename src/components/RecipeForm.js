@@ -106,7 +106,7 @@ class RecipeForm extends React.Component {
 		return (
 			<div className={'recipeForm'}>
 				<Form onSubmit={this.handleSubmit} >
-					{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
+					{this.state.image ? <img className='profPic' src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					<Form.Group>
 						<Form.Input name='name' onChange={this.handleChange} placeholder='Name' width={8}/>
 						<Popup
