@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const RecipeContainerDisplay = (props) => {
 	var img;
-	{props.data.image ? img = props.data.image : img = '/default-beer.jpeg'}
+	props.data.image ? img = props.data.image : img = '/default-beer.jpeg'
 	return (
 		<Segment style={{minWidth: '700px', maxWidth: '700px', margin: 'auto'}}className={'recipeDisplay'}>
 			<Image floated='left' className='beerDisplay' src={img} alt=''/>

@@ -5,7 +5,7 @@ import { Image, Segment } from 'semantic-ui-react'
 
 function Review(props) {
 	var img;
-	{props.authorImage ? img = props.authorImage : img = '/default-profile.png'}
+	props.authorImage ? img = props.authorImage : img = '/default-profile.png'
 
 	return (
 		<Segment style={{minHeight: '170px'}}>

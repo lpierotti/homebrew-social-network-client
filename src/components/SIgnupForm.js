@@ -54,7 +54,7 @@ class SignupForm extends React.Component {
 					</Message> 
 					: null
 				}
-				<Header size='huge' attached={true, 'bottom'}>Signup</Header>
+				<Header size='huge' attached={true}>Signup</Header>
 				<Segment>
 					
 					<Form onSubmit={this.handleSubmit} >

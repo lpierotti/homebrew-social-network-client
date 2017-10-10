@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getRecipes } from '../actions/recipes'
 import RecipeDisplay from './RecipeDisplay'
-import { Card, Loader } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react'
 
 
 class RecipeList extends React.Component {
