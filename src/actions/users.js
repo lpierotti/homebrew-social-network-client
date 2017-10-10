@@ -7,7 +7,6 @@ export function loginUser(user, history) {
 	 		.then(userInfo => {
 	 			dispatch({type: "LOGIN_USER", payload: userInfo})
 	 		})
-	 		//.then(() => history.replace('/'))
 	 }
 }
 
