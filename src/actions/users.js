@@ -7,17 +7,16 @@ export function loginUser(user, history) {
 	 		.then(userInfo => {
 	 			dispatch({type: "LOGIN_USER", payload: userInfo})
 	 		})
-	 		.then(() => history.replace('/'))
+	 		//.then(() => history.replace('/'))
 	 }
 }
 
-export function signupUser(user, history) {
+export function signupUser(user) {
 	return function(dispatch) {
 	 	AuthAdapter.signup(user)
 	 		.then(userInfo => {
 	 			dispatch({type: "SIGNUP_USER", payload: userInfo})
 	 		})
-	 		.then(() => history.replace('/'))
 	 }
 }
 

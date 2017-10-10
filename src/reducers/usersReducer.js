@@ -1,11 +1,20 @@
-export default function usersReducer(state = {current: {}, userRecipes: [], userFollowers: [], userFollowees: [], viewingUser: {}, all: [], userGroups: []}, action) {
+export default function usersReducer(state = {current: {}, userRecipes: [], userFollowers: [], userFollowees: [], viewingUser: {}, all: [], userGroups: [], error: ''}, action) {
 	switch (action.type) {
 		case "LOGIN_USER":
-			localStorage.setItem("jwt", action.payload.jwt)
-			return Object.assign({}, state, {current: action.payload.user})
+			if (action.payload.jwt) {
+				localStorage.setItem("jwt", action.payload.jwt)
+				return Object.assign({}, state, {current: action.payload.user, error: ''})
+			} else {
+				return Object.assign({}, state, {error: action.payload.error})
+			}
 		case "SIGNUP_USER":
-			localStorage.setItem('jwt', action.payload.jwt)
-			return Object.assign({}, state, {current: action.payload.user})
+			if (action.payload.jwt) {
+				localStorage.setItem('jwt', action.payload.jwt)
+				return Object.assign({}, state, {current: action.payload.user, error: ''})
+			} else {
+				console.log(action.payload.error)
+				return Object.assign ({}, state, {error: action.payload.error})
+			}
 		case "GET_USER_RECIPES":
 			console.log("INREDUCER", action.payload.recipes)
 			return Object.assign({}, state, {userRecipes: action.payload.recipes})

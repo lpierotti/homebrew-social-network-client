@@ -43,14 +43,16 @@ class Recipe extends React.Component {
 						<h4>Type: {this.props.recipe.type_of_brew}</h4>
 						<h5>(OG: {this.props.recipe.og} - FG: {this.props.recipe.fg}) x 131.25 = ABV: {this.props.recipe.abv}%</h5>
 					</Segment>
+					<Segment compact={true}>
 					<h2>Ingredients</h2>
 					<List size='big' style={{float: 'left', textAlign: 'left', paddingLeft: '100px'}}>
 						{this.props.recipe.ingredients ? this.props.recipe.ingredients.map((ingredient, index) => <List.Item key={index}>{ingredient.amount} {ingredient.unit} {ingredient.name}</List.Item>) : null}
 					</List>
-					<div style={{clear: 'left'}}>
+					</Segment>
+					<Segment style={{clear: 'left'}}>
 						<h2>Instructions</h2>
 						<p style={{fontSize: '1.5em'}}>{this.props.recipe.instructions}</p>
-					</div>
+					</Segment>
 					<ReviewForm recipeId={this.props.id}/>
 					<Segment.Group>
 						{this.props.recipe.reviews ? this.props.recipe.reviews.map((review, index) => <Review key={index} author={review.author.username} authorID={review.author.id} authorImage={review.author.image} rating={review.rating} text={review.text} />) : null}

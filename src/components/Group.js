@@ -30,9 +30,9 @@ class Group extends React.Component {
 			<div style={{maxWidth: '1000px', margin: 'auto'}}>
 			<div style={{ float: 'left'}}>
 				<Segment floated='left' compact={true}>
-					{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
-					<h1>{this.props.groupInfo.name}</h1>
-					<h3>{this.props.groupInfo.description}</h3>
+					{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} className='profPic' alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
+					<h1 style={{float: 'left', clear: 'left'}}>{this.props.groupInfo.name}</h1>
+					<h3 style={{float: 'left', clear: 'left', maxWidth: '250px'}}>{this.props.groupInfo.description}</h3>
 				</Segment>
 				<Button onClick={this.handleClick}>Group Chat</Button>
 				

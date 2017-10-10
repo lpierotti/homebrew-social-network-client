@@ -13,6 +13,11 @@ class RecipeList extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.recipes.length)
+		if (this.props.recipes.length < 1) {
+			console.log("loading")
+			return <Loader active={true} size='large'>Loading</Loader>
+		}
 		return (
 			<div style={{backgroundColor: 'rgba(0,0,0,.1)'}}>
 				<h1>All Recipes</h1>

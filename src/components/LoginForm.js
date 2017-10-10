@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/users'
-import { Form, Label, Segment, Header } from 'semantic-ui-react'
+import { Form, Label, Segment, Header, Message } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 class LoginForm extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			email: '',
-			password: ''
+			password: '', 
+			submitted: false
 		}
 	}
 
@@ -32,8 +34,17 @@ class LoginForm extends React.Component {
 	}
 
 	render() {
+		if (localStorage['jwt']) {
+			return <Redirect to='/' />
+		}
 		return (
 			<div style={{maxWidth: '500px', margin: 'auto'}}>
+				{this.props.error ? 
+					<Message warning>
+					    <Message.Header>{this.props.error}</Message.Header>
+					</Message> :
+					null
+				}
 				<Header size='huge' attached={true}>Login</Header>
 				<Segment>
 					<Form onSubmit={this.handleSubmit}>
@@ -57,6 +68,12 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+function mapStateToProps(state) {
+	return {
+		error: state.users.error
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
 
 

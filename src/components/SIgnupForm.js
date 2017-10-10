@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { signupUser } from '../actions/users'
-import { Form, Segment, Label, Header } from 'semantic-ui-react'
-
+import { Form, Segment, Label, Header, Message } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 
 class SignupForm extends React.Component {
@@ -12,12 +12,12 @@ class SignupForm extends React.Component {
 		this.state = {
 			username: '',
 			password: '',
-			email: ''
+			email: '', 
+			error: ''
 		}
 	}
 
 	handleInputChange = (event) => {
-		console.log('INPUTCHANGE',event.target.name)
 		this.setState({
 			[event.target.name]: event.target.value
 		})
@@ -25,25 +25,45 @@ class SignupForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		this.props.signup(this.state, this.props.history)
+		if (this.state.username && this.state.password && this.state.email) {
+			this.props.signup(this.state, this.props.history)
+			this.setState({email: '', username: '', password: ''})
+		} else {
+			this.setState({error: "All inputs must be filled out!"})
+		}
 	}
 
 	
 
 	render() {
-		console.log(this.state)
+		console.log(localStorage.getItem('jwt'))
+		if (localStorage['jwt']) {
+			return <Redirect to={'/'} />
+		}
 		return (
 			<div style={{maxWidth: '500px', margin: 'auto' }}>
-				<Header size='huge' attached={true, 'bottom'} style={{backgroundColor: 'rgba(58,150,255,.3)'}}>Signup</Header>
-				<Segment style={{backgroundColor: 'rgba(58,150,255,.3)'}}>
+				{this.state.error ? 
+					<Message warning>
+					    <Message.Header>{this.state.error}</Message.Header>
+					</Message> 
+					: null
+				}
+				{this.props.error ? 
+					<Message warning>
+					    <Message.Header>{this.props.error}</Message.Header>
+					</Message> 
+					: null
+				}
+				<Header size='huge' attached={true, 'bottom'}>Signup</Header>
+				<Segment>
 					
 					<Form onSubmit={this.handleSubmit} >
 						<Label>Username</Label>
-						<Form.Input onChange={this.handleInputChange} name='username' type='text' />
+						<Form.Input value={this.state.username} onChange={this.handleInputChange} name='username' type='text' />
 						<Label>Email</Label>
-						<Form.Input onChange={this.handleInputChange} name='email' type='text' />
+						<Form.Input value={this.state.email} onChange={this.handleInputChange} name='email' type='text' />
 						<Label>Password</Label>
-						<Form.Input onChange={this.handleInputChange} name='password' type='password' />
+						<Form.Input value={this.state.password} onChange={this.handleInputChange} name='password' type='password' />
 						
 						<Form.Button>Submit</Form.Button>
 					</Form>
@@ -56,11 +76,17 @@ class SignupForm extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		signup: (userparams, history) => {
-			dispatch(signupUser(userparams, history))
+		signup: (userparams) => {
+			dispatch(signupUser(userparams))
 		}
 	}
 }
 
+function mapStateToProps(state) {
+	return {
+		error: state.users.error
+	}
+}
 
-export default connect(null, mapDispatchToProps)(SignupForm)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)
