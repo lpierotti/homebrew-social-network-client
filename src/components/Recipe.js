@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom'
 import UserAdapter from '../adapters/userAdapter'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
-import { Button, Image, Segment, List } from 'semantic-ui-react'
+import { Button, Image, Segment, List, Loader } from 'semantic-ui-react'
 
 class Recipe extends React.Component {
 
 	componentDidMount() {
-		const recipe = this.props.allRecipes.find(recipe => recipe.id === parseInt(this.props.id, 10))
-		console.log(this.props.allRecipes, this.props.id)
-		if (recipe) {
-			console.log('IN FRONTEND')
-			this.props.getRecipe(this.props.id)
-		} else {
+		// const recipe = this.props.allRecipes.find(recipe => recipe.id === parseInt(this.props.id, 10))
+		// console.log(this.props.allRecipes, this.props.id)
+		// if (recipe) {
+		// 	console.log('IN FRONTEND')
+		// 	this.props.getRecipe(this.props.id)
+		// } else {
 			this.props.getFromBackend(this.props.id)
-		}
+		// }
 	}
 
 	handleSave = (event) => {
@@ -28,6 +28,9 @@ class Recipe extends React.Component {
 
 	render() {
 		console.log("RECIPE PROPS", this.props)
+		if(this.props.recipe.id !== parseInt(this.props.id, 10)) {
+			return <Loader active={true} />
+		}
 		if (this.props.recipe) {
 			return (
 				<div style={{maxWidth: '1000px', margin: 'auto'}}>
