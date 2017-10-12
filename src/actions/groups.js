@@ -18,3 +18,11 @@ export function getGroupInfo(id) {
 	}
 }
 
+export function createEvent(params) {
+	return function(dispatch) {
+		GroupAdapter.createEvent(params)
+			.then(event => {
+				dispatch({type: 'CREATE_GROUP_EVENT', payload: event})
+			})
+	}
+}

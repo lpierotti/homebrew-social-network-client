@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 import { getGroupInfo } from '../actions/groups'
 import FollowDisplay from './FollowDisplay'
 import Chat from './Chat'
-import { Button, Image, Segment, Card } from 'semantic-ui-react'
+import { Button, Image, Segment, Card, Modal } from 'semantic-ui-react'
 import EventForm from './EventForm'
+import EventContainer from './EventContainer'
 
 class Group extends React.Component {
 
 	constructor() {
 		super()
 		this.state = {
-			chatOpen: false,
-			createEvent: false
+			chatOpen: false
 		}
 	}
 
@@ -42,8 +42,8 @@ class Group extends React.Component {
 							<h3 style={{float: 'left', clear: 'left', maxWidth: '250px'}}>{this.props.groupInfo.description}</h3>
 						</Segment>
 						<Button onClick={this.handleClick}>Group Chat</Button>
-						<Button onClick={this.handleEventForm}>Create Event</Button>
-						{this.state.createEvent ? <EventForm /> : null}
+						<Modal trigger={<Button onClick={this.handleEventForm}>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
+						<EventContainer events={this.props.groupInfo.events}/>
 						<div style={{maxWidth: '600px', float: 'right'}}>
 							<h3>Members</h3>
 							<Card.Group>

@@ -2,6 +2,8 @@ import React from 'react'
 import { Form, Label } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { connect } from 'react-redux'
+import { createEvent } from '../actions/groups'
 
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
@@ -19,7 +21,8 @@ class EventForm extends React.Component {
 			city: '',
 			state: '',
 			start: moment(),
-			end: moment()
+			end: moment(), 
+			submitted: false
 		}
 	}
 
@@ -31,15 +34,24 @@ class EventForm extends React.Component {
 		this.setState({start: date})
 	}
 
-	handleStartEndChange = (date) => {
+	handleEndDateChange = (date) => {
 		this.setState({end: date})
 	}
 
+	handleSubmit = (event) => {
+		event.preventDefault()
+		this.props.createEvent({...this.state, id: this.props.id})
+		this.setState({submitted: true})
+	}
 
 	render() {
+		if (this.state.submitted) {
+			return <h3>{this.state.name} was created</h3>
+		}
 		return (
-			<div> 
-				<Form>
+			<div style={{minHeight: '500px'}}>
+				<h2 style={{textAlign: 'center'}}>Create an Event</h2>
+				<Form style={{maxWidth: '400px', margin: 'auto'}}onSubmit={this.handleSubmit}>
 					<Form.Group>
 						<Form.Input placeholder='Name'name='name' type='text' onChange={this.handleChange}/>
 						<Form.Input placeholder='Description'name='description' type='text' onChange={this.handleChange}/>
@@ -70,6 +82,7 @@ class EventForm extends React.Component {
 					    dateFormat="LLL"
 					    minDate={moment()}
 					/>
+					<Form.Button>Submit</Form.Button>
 				</Form>
 			</div>
 
@@ -77,5 +90,11 @@ class EventForm extends React.Component {
 	}
 }
 
+function mapDispatchToProps(dispatch) {
+	return {
+		createEvent: (params) => dispatch(createEvent(params))
+	}
+}
 
-export default EventForm
+export default connect(null, mapDispatchToProps)(EventForm)
+
