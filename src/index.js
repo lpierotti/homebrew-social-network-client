@@ -13,8 +13,9 @@ import recipesReducer from './reducers/recipesReducer'
 import groupsReducer from './reducers/groupsReducer'
 import breweriesReducer from './reducers/breweriesReducer'
 import 'semantic-ui-css/semantic.min.css';
+import eventsReducer from './reducers/eventsReducer'
 
-const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer, groups: groupsReducer, breweries: breweriesReducer})
+const rootReducer = combineReducers({users: usersReducer, recipes: recipesReducer, groups: groupsReducer, breweries: breweriesReducer, events: eventsReducer})
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 

@@ -3,7 +3,7 @@ import { Form, Label } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { createEvent } from '../actions/groups'
+import { createEvent } from '../actions/events'
 
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'

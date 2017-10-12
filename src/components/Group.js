@@ -6,6 +6,7 @@ import Chat from './Chat'
 import { Button, Image, Segment, Card, Modal } from 'semantic-ui-react'
 import EventForm from './EventForm'
 import EventContainer from './EventContainer'
+import { getEvents } from '../actions/events'
 
 class Group extends React.Component {
 
@@ -18,6 +19,7 @@ class Group extends React.Component {
 
 	componentDidMount() {
 		this.props.getGroupInfo(this.props.id)
+		this.props.getEvents(this.props.id)
 	}
 
 	handleClick = (event) => {
@@ -43,7 +45,7 @@ class Group extends React.Component {
 						</Segment>
 						<Button onClick={this.handleClick}>Group Chat</Button>
 						<Modal trigger={<Button onClick={this.handleEventForm}>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
-						<EventContainer events={this.props.groupInfo.events}/>
+						<EventContainer events={this.props.events}/>
 						<div style={{maxWidth: '600px', float: 'right'}}>
 							<h3>Members</h3>
 							<Card.Group>
@@ -60,13 +62,15 @@ class Group extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		groupInfo: state.groups.currentGroup
+		groupInfo: state.groups.currentGroup,
+		events: state.events.all
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		getGroupInfo: (id) => {dispatch(getGroupInfo(id))}
+		getGroupInfo: (id) => {dispatch(getGroupInfo(id))},
+		getEvents: (id) => {dispatch(getEvents(id))}
 	}
 }
 

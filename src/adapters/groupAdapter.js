@@ -28,19 +28,6 @@ export default class GroupAdapter {
 			.then(res => res.json())
 	}
 
-	static createEvent(params) {
-		const eventJSON = JSON.stringify(params)
-		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/event/new`, {
-			method: 'POST',
-			body: eventJSON,
-			headers: {
-				'Authorization': token,
-				'Content-Type': 'application/json',
-				'Accept': 'application/json'
-			}
-		})
-			.then(res => res.json())
-	}
+	
 
 }
