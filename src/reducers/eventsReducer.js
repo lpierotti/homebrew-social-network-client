@@ -5,7 +5,7 @@ export default function EventsReducer(state = {all: [], current: {}}, action) {
 		case 'GET_EVENTS':
 			return Object.assign({}, state, {all: action.payload.events})
 		case 'GET_EVENT':
-			const event = state.all.find(event => {event.id === action.payload})
+			const event = state.all.find(event => event.id === action.payload)
 			return Object.assign({}, state, {current: event})
 		default:
 			return state
