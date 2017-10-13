@@ -21,15 +21,17 @@ export function getEvents(id) {
 export function addGuest(id) {
 	return function(dispatch) {
 		EventAdapter.addGuest(id)
-			.then(guest => {
-				dispatch({type: 'ADD_GUEST', payload: guest})
+			.then(updatedEvent => {
+				dispatch({type: 'ADD_GUEST', payload: updatedEvent})
 			})
 	}
 }
 
 export function getEvent(id) {
-	return {
-		type: 'GET_EVENT',
-		payload: id
+	return function(dispatch) {
+		EventAdapter.getEvent(id)
+			.then(event => {
+				dispatch({type: 'GET_EVENT', payload: event})
+			})
 	}
 }
