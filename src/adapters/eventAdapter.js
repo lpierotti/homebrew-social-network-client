@@ -43,7 +43,7 @@ export default class EventAdapter {
 
 	static getEvent(id) {
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/group/${id}`, {
+		return fetch(`http://localhost:3000/api/v1/event/${id}`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,

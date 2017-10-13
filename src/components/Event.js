@@ -4,17 +4,30 @@ import { addGuest, getEvent } from '../actions/events'
 
 class Event extends React.Component {
 
+	componentDidMount() {
+		console.log("GETTING EVENT")
+		this.props.getEvent(this.props.id)
+	}
 
 
 	render() {
+		console.log(this.props.event)
 		return (
-
+			<div>
+				<h1>{this.props.event.name}</h1>
+				<h2>{this.props.event.description}</h2>
+				<p>{this.props.event.number} {this.props.event.street}, {this.props.event.city}, {this.props.event.state}</p>
+			</div>
 		)
 	}
 }
 
 function mapStateToProps(state) {
-	current: state.users.current
+	return {
+		currentUser: state.users.current,
+		event: state.events.current
+	}
+	
 }
 
 function mapDispatchToProps(dispatch) {
