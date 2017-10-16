@@ -7,6 +7,7 @@ import { Button, Image, Segment, Card, Modal } from 'semantic-ui-react'
 import EventForm from './EventForm'
 import EventContainer from './EventContainer'
 import { getEvents } from '../actions/events'
+import EventMap from './EventMap'
 
 class Group extends React.Component {
 
@@ -46,12 +47,16 @@ class Group extends React.Component {
 						<Button onClick={this.handleClick}>Group Chat</Button>
 						<Modal trigger={<Button onClick={this.handleEventForm}>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
 						<EventContainer events={this.props.events}/>
+						<div style={{maxWidth: '600px', maxHeight: '400px', float: 'left', clear: 'left'}}>
+							<EventMap events={this.props.events} />
+						</div>
 						<div style={{maxWidth: '600px', float: 'right'}}>
 							<h3>Members</h3>
 							<Card.Group>
 								{this.props.groupInfo.members ? this.props.groupInfo.members.map((member, index) => <FollowDisplay key={index} data={member}/>) : null}
 							</Card.Group>
 						</div>
+						
 						{this.state.chatOpen ? <Chat id={this.props.id} messages={this.props.groupInfo.messages} getGroupInfo={this.props.getGroupInfo}/> : null}
 					</div>
 				</div>

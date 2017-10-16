@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addGuest, getEvent } from '../actions/events'
+import EventMap from './EventMap'
 
 class Event extends React.Component {
 
@@ -17,6 +18,7 @@ class Event extends React.Component {
 				<h1>{this.props.event.name}</h1>
 				<h2>{this.props.event.description}</h2>
 				<p>{this.props.event.number} {this.props.event.street}, {this.props.event.city}, {this.props.event.state}</p>
+				<EventMap events={[this.props.event]} />
 			</div>
 		)
 	}
