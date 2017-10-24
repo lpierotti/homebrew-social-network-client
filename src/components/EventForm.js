@@ -46,7 +46,7 @@ class EventForm extends React.Component {
 
 	render() {
 		if (this.state.submitted) {
-			return <h3>{this.state.name} was created</h3>
+			return <div style={{minHeight: '500px'}}><h3 style={{margin:'auto'}}>{this.state.name} was created</h3></div>
 		}
 		return (
 			<div style={{minHeight: '500px'}}>

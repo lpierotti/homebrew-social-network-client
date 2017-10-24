@@ -32,9 +32,7 @@ class MapContainer extends React.Component {
 		console.log(this.state, 'PROPS', this.props)
 		if (this.state.lat === 0) {
 			return (
-				<div>
-					<Loader active={true} size='large'>Loading</Loader>
-				</div>
+					null//<Loader active={true} size='large'>Loading</Loader>
 			)
 		} else {
 			return (
@@ -57,6 +55,10 @@ class MapContainer extends React.Component {
 							position={{lat: event.lat, lng: event.lng}}
 							onClick={this.handleMarkerClick}
 							description={event.description}
+							number={event.number}
+							street={event.street}
+							city={event.city}
+							state={event.state}
 						/>
 					)
 				})}
@@ -66,6 +68,7 @@ class MapContainer extends React.Component {
 		            <div>
 		              <h3>{this.state.selectedPlace.name}</h3>
 		              <p>{this.state.selectedPlace.description}</p>
+		              <p>{this.state.selectedPlace.number} {this.state.selectedPlace.street}, {this.state.selectedPlace.city} {this.state.selectedPlace.state}</p>
 		            </div>
 		        </InfoWindow>
 				</Map>

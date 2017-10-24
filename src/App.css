@@ -200,3 +200,7 @@ h1.ui.header {
 * {
   font-family: 'Muli', sans-serif;
 }
+
+#root > div > div:nth-child(2) > div > div > div:nth-child(5) > div > div:nth-child(1) > div {
+  height:600px;
+}

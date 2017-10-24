@@ -47,7 +47,9 @@ class Group extends React.Component {
 						<Button onClick={this.handleClick}>Group Chat</Button>
 						<Modal trigger={<Button onClick={this.handleEventForm}>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
 						<EventContainer events={this.props.events}/>
+
 						<div style={{maxWidth: '600px', maxHeight: '400px', float: 'left', clear: 'left'}}>
+							<h1>Events</h1>
 							<EventMap events={this.props.events} />
 						</div>
 						<div style={{maxWidth: '600px', float: 'right'}}>
