@@ -39,14 +39,14 @@ class MapContainer extends React.Component {
 		} else {
 			return (
 				<Map google={this.props.google}
-					zoom={13}
+					zoom={10}
 					initialCenter={{
 						lat: this.state.lat,
 						lng: this.state.lng
 					}}
 					style={{
-						width: '600px',
-						heigth: '400px'
+						width: '400px',
+						maxHeigth: '50%'
 					}}
 				>
 				{this.props.events.map((event, index) => {
