@@ -8,6 +8,8 @@ export default function EventsReducer(state = {all: [], current: {}}, action) {
 			return Object.assign({}, state, {current: action.payload.event})
 		case 'ADD_GUEST':
 			return Object.assign({}, state, {current: action.payload.event})
+		case 'REMOVE_GUEST':
+			return Object.assign({}, state, {current: action.payload.event})
 		default:
 			return state
 	}

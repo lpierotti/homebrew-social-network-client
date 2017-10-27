@@ -62,6 +62,15 @@ export function follow(id) {
 	}
 }
 
+export function unfollow(id) {
+	return function(dispatch) {
+		UserAdapter.unfollow(id)
+			.then(followInfo => {
+				dispatch({type: 'REMOVE_FOLLOW', payload: followInfo})
+			})
+	}
+}
+
 export function getUserInfo(id) {
 	return function(dispatch) {
 		UserAdapter.getInfo(id)

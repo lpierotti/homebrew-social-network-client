@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { connect } from 'react-redux'
 import { createEvent } from '../actions/events'
+import Select from 'react-select'
 
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
@@ -38,6 +39,10 @@ class EventForm extends React.Component {
 		this.setState({end: date})
 	}
 
+	handleSelect = (selected) => {
+		this.setState({state: selected.value})
+	}
+
 	handleSubmit = (event) => {
 		event.preventDefault()
 		this.props.createEvent({...this.state, id: this.props.id})
@@ -45,6 +50,7 @@ class EventForm extends React.Component {
 	}
 
 	render() {
+		var options = ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"].map(abbreviation => ({value: abbreviation, label: abbreviation}))
 		if (this.state.submitted) {
 			return <div style={{minHeight: '500px'}}><h3 style={{margin:'auto'}}>{this.state.name} was created</h3></div>
 		}
@@ -62,7 +68,11 @@ class EventForm extends React.Component {
 					</Form.Group>
 					<Form.Group>
 						<Form.Input placeholder='City'name='city' type='text' onChange={this.handleChange}/>
-						<Form.Input placeholder='State'name='state' type='text' onChange={this.handleChange}/>
+						<Select 
+							options={options}
+							onChange={this.handleSelect}
+							placeholder={'State'}
+						/>
 					</Form.Group>
 					<Label>Start Time</Label>
 					<DatePicker name='start' 

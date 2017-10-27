@@ -35,3 +35,12 @@ export function getEvent(id) {
 			})
 	}
 }
+
+export function removeGuest(id) {
+	return function(dispatch) {
+		EventAdapter.removeGuest(id)
+			.then(event => {
+				dispatch({type: 'REMOVE_GUEST', payload: event})
+			})
+	}
+}

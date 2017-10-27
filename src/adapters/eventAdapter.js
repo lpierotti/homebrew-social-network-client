@@ -30,7 +30,7 @@ export default class EventAdapter {
 
 	static addGuest(id) {
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/event/${id}/update`, {
+		return fetch(`http://localhost:3000/api/v1/event/${id}/addGuest`, {
 			method: 'POST',
 			headers: {
 				'Authorization': token,
@@ -45,6 +45,19 @@ export default class EventAdapter {
 		const token = localStorage.getItem("jwt")
 		return fetch(`http://localhost:3000/api/v1/event/${id}`, {
 			method: 'GET',
+			headers: {
+				'Authorization': token,
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		})
+			.then(res => res.json())
+	}
+
+	static removeGuest(id) {
+		const token = localStorage.getItem("jwt")
+		return fetch(`http://localhost:3000/api/v1/event/${id}/removeGuest`, {
+			method: 'POST',
 			headers: {
 				'Authorization': token,
 				'Content-Type': 'application/json',

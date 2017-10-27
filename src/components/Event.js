@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addGuest, getEvent } from '../actions/events'
+import { addGuest, getEvent, removeGuest } from '../actions/events'
 import EventMap from './EventMap'
 import { Card, Icon, Button } from 'semantic-ui-react'
 import FollowDisplay from './FollowDisplay'
@@ -17,6 +17,11 @@ class Event extends React.Component {
 		this.props.addGuest(this.props.id)
 	}
 
+	handleRemoveGuest = (event) => {
+		event.preventDefault()
+		this.props.removeGuest(this.props.id)
+	}
+
 
 	render() {
 		console.log(this.props.event)
@@ -29,7 +34,7 @@ class Event extends React.Component {
 		return (
 			<div style={{maxWidth: '1000px', margin: 'auto'}}>
 				<h1>{this.props.event.name}</h1>
-				{this.props.event.guests && this.props.event.guests.find(guest => guest.id === this.props.currentUser.id) ? <Button>Going <Icon name={'checkmark'}/></Button> : <Button onClick={this.handleClick}>Going?</Button>}
+				{this.props.event.guests && this.props.event.guests.find(guest => guest.id === this.props.currentUser.id) ? <Button onClick={this.handleRemoveGuest}>Going <Icon name={'checkmark'}/></Button> : <Button onClick={this.handleClick}>Going?</Button>}
 				<h2>{this.props.event.description}</h2>
 				<p>{this.props.event.number} {this.props.event.street}, {this.props.event.city}, {this.props.event.state}</p>
 				<p>Start Time: {start}</p>
@@ -60,7 +65,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		getEvent: (id) => {dispatch(getEvent(id))},
-		addGuest: (id) => {dispatch(addGuest(id))}
+		addGuest: (id) => {dispatch(addGuest(id))},
+		removeGuest: (id) => {dispatch(removeGuest(id))}
 	}
 }
 

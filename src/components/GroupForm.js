@@ -83,6 +83,7 @@ class GroupForm extends React.Component {
 						<Select 
 							options={options}
 							onChange={this.handleSelect}
+							placeholder={'Members'}
 						/>
 						<Form.Button style={{marginTop: '10px', marginBottom: '10px'}}>Submit</Form.Button>
 					</Form>

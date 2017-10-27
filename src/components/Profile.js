@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RecipesContainer from './RecipesContainer'
-import { setProfilePic, getUserInfo, follow, clearUserProfile } from '../actions/users'
+import { setProfilePic, getUserInfo, follow, clearUserProfile, unfollow } from '../actions/users'
 import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
@@ -42,6 +42,11 @@ class Profile extends React.Component {
 		this.props.followUser(this.props.id)
 	}
 
+	handleUnfollow = (event) => {
+		event.preventDefault()
+		this.props.unfollowUser(this.props.id)
+	}
+
 	handleDrop = (files) => {
 		const formData = new FormData();
 		formData.append('file', files[0])
@@ -70,7 +75,7 @@ class Profile extends React.Component {
 							{this.props.viewing.image ? <img className='profPic' src={this.props.viewing.image} alt=''/> : <img className='profPic' src='/default-profile.png' alt=''/>}
 							<Menu text vertical>
 						        {this.props.viewing.image || parseInt(this.props.id, 10) !== this.props.currentUser.id ? null : <Menu.Item><Dropzone onDrop={this.handleDrop} accept="image/*" className={'imgUpload'}><Button>Upload Profile Picture</Button></Dropzone></Menu.Item>}
-						        {this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <Menu.Item><Button onClick={this.handleFollow}>Follow</Button></Menu.Item> : <div>{this.props.currentUser.id === this.props.viewing.id ? null : <Menu.Item><Button >Following <Icon name={'checkmark'}/></Button></Menu.Item>}</div>}
+						        {this.props.currentUser.id !== this.props.viewing.id && !this.props.followers.find(follower => follower.id === this.props.currentUser.id) ? <Menu.Item><Button onClick={this.handleFollow}>Follow</Button></Menu.Item> : <div>{this.props.currentUser.id === this.props.viewing.id ? null : <Menu.Item><Button onClick={this.handleUnfollow}>Following <Icon name={'checkmark'}/></Button></Menu.Item>}</div>}
 						        {this.props.currentUser.id === this.props.viewing.id ? <Menu.Item><Link to={'/recipes/new'}><Button>Add a Recipe!</Button></Link></Menu.Item> : null}
 						        {this.props.currentUser.id === this.props.viewing.id ? <Menu.Item><Link to={'/groups/new'}><Button>Create Group</Button></Link></Menu.Item> : null}
 						    </Menu>
@@ -107,7 +112,8 @@ function mapDispatchToProps(dispatch) {
 		setProfilePic: (file) => {dispatch(setProfilePic(file))},
 		getUserInfo: (id) => {dispatch(getUserInfo(id))},
 		followUser: (id) => {dispatch(follow(id))},
-		clearUserProfile: () => {dispatch(clearUserProfile())}
+		clearUserProfile: () => {dispatch(clearUserProfile())},
+		unfollowUser: (id) => {dispatch(unfollow(id))}
 	}
 }
 

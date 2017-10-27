@@ -123,4 +123,19 @@ export default class UserAdapter {
 		})
 			.then(res => res.json())
 	}
+
+	static unfollow(id) {
+		const token = localStorage.getItem('jwt')
+		const followeeJSON = JSON.stringify({id: id})
+		return fetch('http://localhost:3000/api/v1/follow/delete', {
+			method: 'POST',
+			body: followeeJSON,
+			headers: {
+				'Authorization': token,
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		})
+		.then(res => res.json())
+	}
 }
