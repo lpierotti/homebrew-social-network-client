@@ -29,7 +29,7 @@ class Recipe extends React.Component {
 	render() {
 		console.log("RECIPE PROPS", this.props)
 		if(this.props.recipe.id !== parseInt(this.props.id, 10)) {
-			return <Loader active={true} />
+			return <Loader size='large' active={true}>Brewing...</Loader>
 		}
 		if (this.props.recipe) {
 			return (

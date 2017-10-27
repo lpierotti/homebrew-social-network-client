@@ -26,7 +26,10 @@ export default function usersReducer(state = {current: {}, userRecipes: [], user
 		case 'GET_USER_FOLLOWS':
 			return Object.assign({}, state, {userFollowers: action.payload.followers, userFollowees: action.payload.followees})
 		case 'SAVE_FOLLOW':
-			return Object.assign({}, state, {current: {...state.current, followees: [state.current.followees, action.payload.followee]}, userFollowers: [...state.userFollowers, action.payload.follower ]})
+			return Object.assign({}, state, {userFollowers: [...state.userFollowers, action.payload.follower ]})
+		case 'REMOVE_FOLLOW': 
+			var followers = state.userFollowers.filter(follower => follower.id !== action.payload.follower.id)
+			return Object.assign({}, state, {userFollowers: followers})
 		case 'GET_INFO':
 			console.log('IN REDUCER FOR INFO', action.payload)
 			return Object.assign({}, state, {viewingUser: action.payload.viewing_user})
