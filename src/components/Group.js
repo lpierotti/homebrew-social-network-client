@@ -11,21 +11,9 @@ import EventMap from './EventMap'
 
 class Group extends React.Component {
 
-	constructor() {
-		super()
-		this.state = {
-			chatOpen: false
-		}
-	}
-
 	componentDidMount() {
 		this.props.getGroupInfo(this.props.id)
 		this.props.getEvents(this.props.id)
-	}
-
-	handleClick = (event) => {
-		event.preventDefault()
-		this.setState({chatOpen: !this.state.chatOpen})
 	}
 
 	handleEventForm = (event) => {
@@ -44,7 +32,7 @@ class Group extends React.Component {
 							<h1 style={{float: 'left', clear: 'left'}}>{this.props.groupInfo.name}</h1>
 							<h3 style={{float: 'left', clear: 'left', maxWidth: '250px'}}>{this.props.groupInfo.description}</h3>
 						</Segment>
-						<Button onClick={this.handleClick}>Group Chat</Button>
+						
 						<Modal trigger={<Button onClick={this.handleEventForm}>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
 						<EventContainer events={this.props.events}/>
 
@@ -59,7 +47,7 @@ class Group extends React.Component {
 							</Card.Group>
 						</div>
 						
-						{this.state.chatOpen ? <Chat id={this.props.id} messages={this.props.groupInfo.messages} getGroupInfo={this.props.getGroupInfo}/> : null}
+						<Chat id={this.props.id} messages={this.props.groupInfo.messages} getGroupInfo={this.props.getGroupInfo}/>
 					</div>
 				</div>
 			</div>

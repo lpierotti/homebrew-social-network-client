@@ -1,17 +1,22 @@
 import React from 'react'
 import {ActionCable} from 'react-actioncable-provider'
 import ChatBubble from 'react-chat-bubble';
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 
 class Chat extends React.Component {
 
     constructor() {
         super()
         this.state = {
-            text: ""
+            text: "",
+            open: false
         }
     }
     
+    handleClick = (event) => {
+        event.preventDefault()
+        this.setState({open: !this.state.open})
+    }
 
     onReceived = (message) => {
         console.log('RECEIVING', message.message)
@@ -33,22 +38,28 @@ class Chat extends React.Component {
 
     render () {
         console.log(this.props)
-        return (
-            <div>
-                <div className='chat'>
-                    <ChatBubble messages = {this.props.messages} />
-                    <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
+        if (this.state.open) {
+            return (
+                <div>
+                    <div className='chat'>
+                        <Button className='chatTop' onClick={this.handleClick}>Group Chat</Button>
+                        <ChatBubble messages = {this.props.messages} />
+                        <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
+                    </div>
+                    <div className='chatSubmit'>
+                        <Form onSubmit={this.sendMessage}>
+                            <Form.Group>
+                                <Form.Input onChange={this.handleChange} value={this.state.text}/>
+                                <Form.Input type='submit' />
+                            </Form.Group>
+                        </Form>
+                    </div>
                 </div>
-                <div className='chatSubmit'>
-                    <Form onSubmit={this.sendMessage}>
-                        <Form.Group>
-                            <Form.Input onChange={this.handleChange} value={this.state.text}/>
-                            <Form.Input type='submit' />
-                        </Form.Group>
-                    </Form>
-                </div>
-            </div>
-        )
+            )
+        } else {
+            return <Button className='chatSubmit' onClick={this.handleClick}>Group Chat</Button>
+        }
+        
     }
 }
 

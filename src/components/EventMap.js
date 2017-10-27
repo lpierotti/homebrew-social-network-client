@@ -44,7 +44,7 @@ class MapContainer extends React.Component {
 					}}
 					style={{
 						width: '400px',
-						maxHeigth: '50%'
+						height: '600px'
 					}}
 				>
 				{this.props.events.map((event, index) => {
