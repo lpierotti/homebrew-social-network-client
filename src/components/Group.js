@@ -16,11 +16,6 @@ class Group extends React.Component {
 		this.props.getEvents(this.props.id)
 	}
 
-	handleEventForm = (event) => {
-		event.preventDefault()
-		this.setState({createEvent: !this.state.createEvent})
-	}
-
 	render() {
 		console.log(this.props.groupInfo)
 		return (
@@ -33,7 +28,7 @@ class Group extends React.Component {
 							<h3 style={{float: 'left', clear: 'left', maxWidth: '250px'}}>{this.props.groupInfo.description}</h3>
 						</Segment>
 						
-						<Modal trigger={<Button onClick={this.handleEventForm}>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
+						<Modal trigger={<Button>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
 						<EventContainer events={this.props.events}/>
 
 						<div style={{maxWidth: '600px', maxHeight: '400px', float: 'left', clear: 'left'}}>
