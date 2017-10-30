@@ -74,7 +74,7 @@ class GroupForm extends React.Component {
 			return (
 				<div className='recipeForm'>
 					<Form onSubmit={this.handleSubmit}>
-					{this.state.image ? <img src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Add a group picture here!</p></Dropzone>}
+					{this.state.image ? <img className='profPic' src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Add a group picture here!</p></Dropzone>}
 						<label>Name</label>
 						<Form.Input onChange={this.handleChange} name='name' type='text' />
 						<label>Description</label>

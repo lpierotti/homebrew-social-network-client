@@ -1,6 +1,7 @@
 import React from 'react'
 import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
-import { Loader } from 'semantic-ui-react'
+import config from '../config'
+
 
 
 class MapContainer extends React.Component {
@@ -32,7 +33,7 @@ class MapContainer extends React.Component {
 		console.log(this.state, 'PROPS', this.props)
 		if (this.state.lat === 0) {
 			return (
-					null//<Loader active={true} size='large'>Loading</Loader>
+					null
 			)
 		} else {
 			return (
@@ -79,5 +80,5 @@ class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: ("AIzaSyDvg8oPEvdVVQpUY2KZ_-vDEkSzHaYwCQk")
+	apiKey: (config.googleKey)
 })(MapContainer)

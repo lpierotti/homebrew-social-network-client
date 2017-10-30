@@ -3,6 +3,7 @@ import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import { connect } from 'react-redux'
 import { getBreweries } from '../actions/breweries'
 import { Loader } from 'semantic-ui-react'
+import config from '../config.js'
 
 
 class MapContainer extends React.Component {
@@ -96,5 +97,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default GoogleApiWrapper({
-	apiKey: ("AIzaSyDvg8oPEvdVVQpUY2KZ_-vDEkSzHaYwCQk")
+	apiKey: (config.googleKey)
 })(connect(mapStateToProps, mapDispatchToProps)(MapContainer))
