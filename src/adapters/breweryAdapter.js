@@ -3,7 +3,7 @@ export default class BreweryAdapter {
 	static getBreweries(locationParams) {
 		const locationJSON = JSON.stringify(locationParams)
 		const token = localStorage.getItem("jwt")
-		return fetch('https://brewforyouapi.herokuapp.com/api/v1/breweries', {
+		return fetch('brewforyouapi.herokuapp.com/api/v1/breweries', {
 			method: 'POST',
 			body: locationJSON,
 			headers: {
