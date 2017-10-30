@@ -44,7 +44,7 @@ class MapContainer extends React.Component {
 						lng: this.state.lng
 					}}
 					style={{
-						width: '400px',
+						width: '390px',
 						height: '600px'
 					}}
 				>

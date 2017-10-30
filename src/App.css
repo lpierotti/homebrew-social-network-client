@@ -122,12 +122,19 @@ div.ui.header a {
   overflow-x: hidden;
 }
 
-.chatTop {
+button.ui.button.chatTop {
   position: fixed;
   bottom: 380px;
   right: 20px;
   width: 300px;
   padding-left: 10px;
+  background-color: rgba(90,174,238,1);
+  font-size: 1.2em;
+}
+
+button.ui.button.chatSubmit {
+  background-color: rgba(90,174,238,1);
+  font-size: 1.2em;
 }
 
 .chatSubmit {
@@ -167,7 +174,6 @@ button.ui.button {
   overflow: scroll;
   width: 300px;
   background-color: rgba(229,229,229,1);
-  
   box-shadow: 10px 10px 5px rgba(0,0,0,.3);
 }
 
