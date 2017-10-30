@@ -2,7 +2,7 @@ export default class AuthAdapter {
 
 	static login(userParams) {
 		const userJSON = JSON.stringify(userParams)
-		return fetch('http://localhost:3000/api/v1/login', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/login', {
 			method: 'POST',
 			body: userJSON,
 			headers: {
@@ -15,7 +15,7 @@ export default class AuthAdapter {
 
 	static signup(userParams) {
 		const userJSON = JSON.stringify(userParams)
-		return fetch('http://localhost:3000/api/v1/signup', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/signup', {
 			method: 'POST', 
 			body: userJSON,
 			headers: {

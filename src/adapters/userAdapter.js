@@ -2,7 +2,7 @@ export default class UserAdapter {
 
 	static getUserRecipes(id) {
 		const token = localStorage.getItem('jwt')
-		return fetch('http://localhost:3000/api/v1/user/recipes', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/user/recipes', {
 			method: 'POST',
 			body: JSON.stringify({id: id}),
 			headers: {
@@ -17,7 +17,7 @@ export default class UserAdapter {
 	static setUserImage(file) {
 		const token =localStorage.getItem('jwt')
 		const fileJSON = JSON.stringify({user: {url: file}})
-		return fetch('http://localhost:3000/api/v1/user/edit', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/user/edit', {
 			method: 'POST',
 			body: fileJSON,
 			headers: {
@@ -31,7 +31,7 @@ export default class UserAdapter {
 
 	static getUserFollows(id) {
 		const token = localStorage.getItem('jwt')
-		return fetch('http://localhost:3000/api/v1/follows', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/follows', {
 			method: 'POST',
 			body: JSON.stringify({id: id}),
 			headers: {
@@ -46,7 +46,7 @@ export default class UserAdapter {
 	static saveRecipeToUser(recipeId) {
 		const token = localStorage.getItem('jwt')
 		const recipeJSON = JSON.stringify({id: recipeId})
-		return fetch('http://localhost:3000/api/v1/user_recipes', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/user_recipes', {
 			method: 'POST',
 			body: recipeJSON,
 			headers: {
@@ -60,7 +60,7 @@ export default class UserAdapter {
 	static saveFollow(id) {
 		const token = localStorage.getItem('jwt')
 		const followeeJSON = JSON.stringify({id: id})
-		return fetch('http://localhost:3000/api/v1/follow/new', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/follow/new', {
 			method: 'POST',
 			body: followeeJSON,
 			headers: {
@@ -74,7 +74,7 @@ export default class UserAdapter {
 
 	static getInfo(id) {
 		const token = localStorage.getItem('jwt')
-		return fetch(`http://localhost:3000/api/v1/user/${id}`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/user/${id}`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,
@@ -87,7 +87,7 @@ export default class UserAdapter {
 
 	static getCurrent() {
 		const token = localStorage.getItem('jwt')
-		return fetch(`http://localhost:3000/api/v1/user/current`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/user/current`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,
@@ -100,7 +100,7 @@ export default class UserAdapter {
 
 	static getAllUsers(){
 		const token = localStorage.getItem('jwt')
-		return fetch(`http://localhost:3000/api/v1/users`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/users`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,
@@ -113,7 +113,7 @@ export default class UserAdapter {
 
 	static getUserGroups() {
 		const token = localStorage.getItem('jwt')
-		return fetch(`http://localhost:3000/api/v1/user/groups`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/user/groups`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,
@@ -127,7 +127,7 @@ export default class UserAdapter {
 	static unfollow(id) {
 		const token = localStorage.getItem('jwt')
 		const followeeJSON = JSON.stringify({id: id})
-		return fetch('http://localhost:3000/api/v1/follow/delete', {
+		return fetch('https://brewforyouapi.herokuapp.com/api/v1/follow/delete', {
 			method: 'POST',
 			body: followeeJSON,
 			headers: {

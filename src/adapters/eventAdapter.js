@@ -3,7 +3,7 @@ export default class EventAdapter {
 	static createEvent(params) {
 		const eventJSON = JSON.stringify(params)
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/event/new`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/event/new`, {
 			method: 'POST',
 			body: eventJSON,
 			headers: {
@@ -17,7 +17,7 @@ export default class EventAdapter {
 
 	static getEvents(id) {
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/group/${id}/events`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/group/${id}/events`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,
@@ -30,7 +30,7 @@ export default class EventAdapter {
 
 	static addGuest(id) {
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/event/${id}/addGuest`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/event/${id}/addGuest`, {
 			method: 'POST',
 			headers: {
 				'Authorization': token,
@@ -43,7 +43,7 @@ export default class EventAdapter {
 
 	static getEvent(id) {
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/event/${id}`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/event/${id}`, {
 			method: 'GET',
 			headers: {
 				'Authorization': token,
@@ -56,7 +56,7 @@ export default class EventAdapter {
 
 	static removeGuest(id) {
 		const token = localStorage.getItem("jwt")
-		return fetch(`http://localhost:3000/api/v1/event/${id}/removeGuest`, {
+		return fetch(`https://brewforyouapi.herokuapp.com/api/v1/event/${id}/removeGuest`, {
 			method: 'POST',
 			headers: {
 				'Authorization': token,
