@@ -3,7 +3,7 @@ import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import { connect } from 'react-redux'
 import { getBreweries } from '../actions/breweries'
 import { Loader } from 'semantic-ui-react'
-import config from '../config.js'
+import config from '../config'
 
 
 class MapContainer extends React.Component {
