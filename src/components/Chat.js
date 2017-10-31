@@ -43,7 +43,7 @@ class Chat extends React.Component {
                 <div>
                     <div className='chat'>
                         <Button className='chatTop' onClick={this.handleClick}>Group Chat</Button>
-                        <ChatBubble messages = {this.props.messages} />
+                        <ChatBubble messages={this.props.messages} />
                         <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
                     </div>
                     <div className='chatSubmit'>
