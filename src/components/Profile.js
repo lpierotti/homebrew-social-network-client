@@ -66,7 +66,7 @@ class Profile extends React.Component {
 
 	render() {
 		console.log(this.props, this.state)
-		if (localStorage['jwt']) {
+		if (!localStorage['jwt']) {
 			return <Redirect to={'/'} />
 		}
 		if (this.props.viewing){
