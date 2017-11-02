@@ -20,18 +20,18 @@ class Group extends React.Component {
 		console.log(this.props.groupInfo)
 		return (
 			<div style={{width: '100%', height: '100vh', backgroundColor: 'rgba(0,0,0,.1)'}}>
-				<div style={{maxWidth: '1000px', margin: 'auto'}}>
+				<div className={'basic-margins'}>
 					<div style={{ float: 'left'}}>
 						<Segment floated='left' compact={true}>
 							{this.props.groupInfo.image ? <Image src={this.props.groupInfo.image} className='profPic' alt='' floated='left'/> : <Image className='profPic' src='/default-profile.png' alt='' floated='left'/>}
-							<h1 style={{float: 'left', clear: 'left'}}>{this.props.groupInfo.name}</h1>
-							<h3 style={{float: 'left', clear: 'left', maxWidth: '250px'}}>{this.props.groupInfo.description}</h3>
+							<h1 className={'group-info'}>{this.props.groupInfo.name}</h1>
+							<h3 className={'group-info'}>{this.props.groupInfo.description}</h3>
 						</Segment>
 						
 						<Modal trigger={<Button>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
 						<EventContainer events={this.props.events}/>
 
-						<div className{'event-map'}>
+						<div className={'event-map'}>
 							<h1>Events</h1>
 							<EventMap events={this.props.events} />
 						</div>

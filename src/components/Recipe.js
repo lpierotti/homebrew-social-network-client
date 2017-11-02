@@ -33,7 +33,7 @@ class Recipe extends React.Component {
 		}
 		if (this.props.recipe) {
 			return (
-				<div style={{maxWidth: '1000px', margin: 'auto'}}>
+				<div className={'basic-margins'}style={{maxWidth: '1000px', margin: 'auto'}}>
 					<Segment floated='right' compact={true}>
 						{this.props.recipe.image ? <Image className='recipePic' src={this.props.recipe.image} alt=''/> : <Image  className='recipePic' src='/default-beer.jpeg' alt=''/> }
 						{this.props.recipe.author && this.props.recipe.author.id !== this.props.currentUser.id && !this.props.userRecipes.find(recipe => recipe.id === this.props.recipe.id) ? <Button  onClick={this.handleSave}>Save Recipe</Button> : null}

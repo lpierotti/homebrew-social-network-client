@@ -244,3 +244,14 @@ div.event-map {
   float: left;
   clear: left;
 }
+
+div.basic-margins {
+  max-width: 1000px; 
+  margin: auto;
+}
+
+.group-info {
+  float: left;
+  clear: left; 
+  max-width: 250px;
+}

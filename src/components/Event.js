@@ -32,7 +32,7 @@ class Event extends React.Component {
 			console.log(this.props.event.start)
 		}
 		return (
-			<div style={{maxWidth: '1000px', margin: 'auto'}}>
+			<div className={'basic-margins'}>
 				<h1>{this.props.event.name}</h1>
 				{this.props.event.guests && this.props.event.guests.find(guest => guest.id === this.props.currentUser.id) ? <Button onClick={this.handleRemoveGuest}>Going <Icon name={'checkmark'}/></Button> : <Button onClick={this.handleClick}>Going?</Button>}
 				<h2>{this.props.event.description}</h2>
@@ -45,7 +45,7 @@ class Event extends React.Component {
 						{this.props.event.guests ? this.props.event.guests.map((guest, index) => <FollowDisplay key={index} data={guest}/>) : null}
 					</Card.Group>
 				</div>
-				<div className{'event-map'}>
+				<div className={'event-map'}>
 					<EventMap events={[this.props.event]} />
 				</div>	
 				
