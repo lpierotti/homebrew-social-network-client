@@ -24,12 +24,12 @@ class FollowingContainer extends React.Component {
 					<h2>{this.props.currentUser === this.props.viewing ? 'Your' : `People ${this.props.viewing}` } Follows</h2>
 					<Divider />
 					<Card.Group itemsPerRow={4} textAlign='center'>
-						{this.props.follows ? this.props.follows.map((follow, index) => <FollowDisplay key={index} data={follow}/>) : <div className={'half-container'}><h3>Not following anyone</h3></div>}
+						{this.props.follows.length ? this.props.follows.map((follow, index) => <FollowDisplay key={index} data={follow}/>) : <div className={'half-container'}><h3>Not following anyone</h3></div>}
 					</Card.Group>
 					<h2>Followers</h2>
 					<Divider />
 					<Card.Group itemsPerRow={4} textAlign='center'>
-						{this.props.followers ? this.props.followers.map((follower, index) => <FollowDisplay key={index} data={follower}/>) : <div className={'half-container'}><h3>No one following</h3></div>}
+						{this.props.followers.length ? this.props.followers.map((follower, index) => <FollowDisplay key={index} data={follower}/>) : <div className={'half-container'}><h3>No one following</h3></div>}
 					</Card.Group>
 				</Segment>
 			</div>
