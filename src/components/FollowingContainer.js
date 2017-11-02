@@ -20,17 +20,21 @@ class FollowingContainer extends React.Component {
 		console.log(this.props)
 		return (
 			<div className={'followingContainer'}>
-				<Segment className='container'>
-					<h2>{this.props.currentUser === this.props.viewing ? 'Your' : `People ${this.props.viewing}` } Follows</h2>
-					<Divider />
-					<Card.Group itemsPerRow={4} textAlign='center'>
-						{this.props.follows ? this.props.follows.map((follow, index) => <FollowDisplay key={index} data={follow}/>) : null}
-					</Card.Group>
-					<h2>Followers</h2>
-					<Divider />
-					<Card.Group itemsPerRow={4} textAlign='center'>
-						{this.props.followers ? this.props.followers.map((follower, index) => <FollowDisplay key={index} data={follower}/>) : null}
-					</Card.Group>
+				<Segment className={'container'}>
+					<div className={'half-container'}>
+						<h2>{this.props.currentUser === this.props.viewing ? 'Your' : `People ${this.props.viewing}` } Follows</h2>
+						<Divider />
+						<Card.Group itemsPerRow={4} textAlign='center'>
+							{this.props.follows ? this.props.follows.map((follow, index) => <FollowDisplay key={index} data={follow}/>) : null}
+						</Card.Group>
+					</div>
+					<div className={'half-container'}>
+						<h2>Followers</h2>
+						<Divider />
+						<Card.Group itemsPerRow={4} textAlign='center'>
+							{this.props.followers ? this.props.followers.map((follower, index) => <FollowDisplay key={index} data={follower}/>) : null}
+						</Card.Group>
+					</div>
 				</Segment>
 			</div>
 		)

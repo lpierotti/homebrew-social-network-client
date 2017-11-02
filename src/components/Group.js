@@ -31,7 +31,7 @@ class Group extends React.Component {
 						<Modal trigger={<Button>Create Event</Button>}><EventForm id={this.props.id}/></Modal>
 						<EventContainer events={this.props.events}/>
 
-						<div style={{maxWidth: '600px', maxHeight: '400px', float: 'left', clear: 'left'}}>
+						<div className{'event-map'}>
 							<h1>Events</h1>
 							<EventMap events={this.props.events} />
 						</div>

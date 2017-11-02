@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 const EventContainer = (props) => {
 
 	return (
-		<div style={{float: 'right', minHeight: '400px'}}>
-			<Segment  style={{minHeight: '400px', minWidth: '600px'}}>
+		<div className={'group-events'}>
+			<Segment  className={'events'}>
 				<h1>Group Events</h1>
 				<Divider />
 				{props.events ? props.events.map((event, index) => <div key={index}><Link to={`/event/${event.id}`}>{event.name}</Link></div>) : null}

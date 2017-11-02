@@ -45,7 +45,7 @@ class Event extends React.Component {
 						{this.props.event.guests ? this.props.event.guests.map((guest, index) => <FollowDisplay key={index} data={guest}/>) : null}
 					</Card.Group>
 				</div>
-				<div style={{maxWidth: '600px', maxHeight: '400px', float: 'left', clear: 'left'}}>
+				<div className{'event-map'}>
 					<EventMap events={[this.props.event]} />
 				</div>	
 				

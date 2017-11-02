@@ -219,7 +219,28 @@ h1.ui.header {
   height:600px;
 }
 
-.container {
+div.ui.segment.container {
   background-color: rgba(255,185,0,.5);
   min-height: 400px;
+}
+
+div.half-container {
+  height: 50%;
+}
+
+div.group-events {
+  float: right;
+  min-height: 400px;
+}
+
+div.ui.segement.events {
+  min-height: 400px;
+  min-width: 60%;
+}
+
+div.event-map {
+  max-width: 60%;
+  max-height: 400px;
+  float: left;
+  clear: left;
 }
