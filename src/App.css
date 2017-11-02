@@ -226,7 +226,7 @@ div.ui.segment.container {
 
 div.half-container {
   min-height: 180px;
-  text-align: center
+  margin: auto;
 }
 
 div.group-events {
@@ -257,6 +257,6 @@ div.basic-margins {
   max-width: 250px;
 }
 
-h3 {
+div h3 {
   font-family: 'Muli', sans-serif;
 }
