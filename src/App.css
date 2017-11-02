@@ -225,17 +225,17 @@ div.ui.segment.container {
 }
 
 div.half-container {
-  height: 50%;
+  min-height: 200px;
 }
 
 div.group-events {
   float: right;
   min-height: 400px;
+  width: 60%;
 }
 
 div.ui.segement.events {
   min-height: 400px;
-  min-width: 60%;
 }
 
 div.event-map {
