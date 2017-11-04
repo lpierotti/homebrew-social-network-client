@@ -36,7 +36,6 @@ class SignupForm extends React.Component {
 	
 
 	render() {
-		console.log(localStorage.getItem('jwt'))
 		if (localStorage['jwt']) {
 			return <Redirect to={'/'} />
 		}

@@ -17,7 +17,6 @@ class RecipesContainer extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className='savedRecipes'>
 				<Segment className='container'>

@@ -17,7 +17,6 @@ class Group extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.groupInfo)
 		return (
 			<div style={{width: '100%', height: '100vh', backgroundColor: 'rgba(0,0,0,.1)'}}>
 				<div className={'basic-margins'}>

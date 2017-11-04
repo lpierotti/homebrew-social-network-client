@@ -19,7 +19,6 @@ class Chat extends React.Component {
     }
 
     onReceived = (message) => {
-        console.log('RECEIVING', message.message)
         this.props.getGroupInfo(this.props.id)
         
     }
@@ -37,7 +36,6 @@ class Chat extends React.Component {
     }
 
     render () {
-        console.log(this.props)
         if (this.state.open) {
             return (
                 <div>

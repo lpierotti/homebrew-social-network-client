@@ -8,7 +8,6 @@ import FollowDisplay from './FollowDisplay'
 class Event extends React.Component {
 
 	componentDidMount() {
-		console.log("GETTING EVENT")
 		this.props.getEvent(this.props.id)
 	}
 
@@ -24,12 +23,10 @@ class Event extends React.Component {
 
 
 	render() {
-		console.log(this.props.event)
 		var start, end;
 		if(this.props.event.start) {
 			start = new Date(this.props.event.start).toString().replace(/\b(GMT-0400)\b/gi, "") 
 			end = new Date(this.props.event.end).toString().replace(/\b(GMT-0400)\b/gi, "")
-			console.log(this.props.event.start)
 		}
 		return (
 			<div className={'basic-margins'}>

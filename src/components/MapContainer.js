@@ -35,7 +35,6 @@ class MapContainer extends React.Component {
 	}
 
 	render(){
-		console.log(this.state, 'PROPS', this.props)
 		if (this.state.lat === 0) {
 			return (
 				<div>

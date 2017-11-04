@@ -21,7 +21,6 @@ class Profile extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props.id)
 		this.props.getUserInfo(this.props.id)
 	}
 
@@ -34,7 +33,6 @@ class Profile extends React.Component {
 	}
 
 	componentWillUnmount() {
-		console.log('CLEARING')
 		this.props.clearUserProfile()
 	}
 
@@ -65,7 +63,6 @@ class Profile extends React.Component {
 	}
 
 	render() {
-		console.log(this.props, this.state)
 		if (!localStorage['jwt']) {
 			return <Redirect to={'/'} />
 		}
