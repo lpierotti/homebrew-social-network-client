@@ -260,3 +260,7 @@ div.basic-margins {
 div h3 {
   font-family: 'Muli', sans-serif;
 }
+
+div.nav {
+  width: 100vw;
+}
