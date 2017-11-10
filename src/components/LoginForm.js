@@ -21,16 +21,9 @@ class LoginForm extends React.Component {
 	}
 
 	handleInputChange = (event) => {
-		switch (event.target.name) {
-			case 'email':
-				this.setState({email: event.target.value});
-				break;
-			case 'password':
-				this.setState({password: event.target.value});
-				break;
-			default:
-				return;
-		}
+		this.setState({
+			[event.target.name]: event.target.value
+		})
 	}
 
 	render() {
