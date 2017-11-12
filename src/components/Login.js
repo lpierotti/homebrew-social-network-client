@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+
 class Login extends React.Component {
 
 	constructor() {
@@ -22,11 +22,11 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form className='login'>
 				<label>Username</label>
-				<input onChange={this.handleInputChange} name='email' type='text' />
+				<input id='email' onChange={this.handleInputChange} name='email' type='text' />
 				<label>Password</label>
-				<input onChange={this.handleInputChange} name='password' type='password' />
+				<input id='password' onChange={this.handleInputChange} name='password' type='password' />
 				<button>Submit</button>
 			</form>
 		)
@@ -34,4 +34,4 @@ class Login extends React.Component {
 }
 
 
-export default withRouter(Login)
+export default Login

@@ -2,8 +2,27 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import Login from '../Login'
 
-describe('Login Component', () => {
-	it('should render without throwing an error', () => {
-		expect(shallow(<Login />).contains(<form></form>).toBe(true))
+describe('Login Component', function() {
+	
+	it('should render without throwing an error', function() {
+		expect(shallow(<Login />).exists(<form className='login'></form>)).toBe(true)
+	})
+	
+	describe('Email input', function() {
+		
+		it('should respond change and change the state of the Login Component', function() {
+			const wrapper = shallow(<Login />)
+			wrapper.find('#email').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}})
+			expect(wrapper.state('email')).toEqual('blah@gmail.com')
+		})
+	})
+	
+	describe('Password input', function() {
+		
+		it('should respond change and change the state of the Login Component', function() {
+			const wrapper = shallow(<Login />)
+			wrapper.find('#password').simulate('change', {target: {name: 'password', value: 'cats'}})
+			expect(wrapper.state('password')).toEqual('cats')
+		})
 	})
 })
