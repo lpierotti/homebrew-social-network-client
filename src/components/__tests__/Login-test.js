@@ -7,6 +7,14 @@ describe('Login Component', function() {
 	it('should render without throwing an error', function() {
 		expect(shallow(<Login />).exists(<form className='login'></form>)).toBe(true)
 	})
+
+	it('renders a email input', function() {
+		expect(shallow(<Login />).find('#email').length).toEqual(1)
+	})
+
+	it('renders a password input', function() {
+		expect(shallow(<Login />).find('#password').length).toEqual(1)
+	})
 	
 	describe('Email input', function() {
 		
