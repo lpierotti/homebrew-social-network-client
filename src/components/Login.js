@@ -16,10 +16,6 @@ class Login extends React.Component {
 		})
 	}
 
-	handleSubmit = (event) => {
-
-	}
-
 	render() {
 		return (
 			<form className='login'>
