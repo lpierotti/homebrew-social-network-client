@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GravityABV component renders correctly 1`] = `
+<div
+  className="equal width fields"
+>
+  <div
+    className="field"
+  >
+    <div
+      className="ui input"
+    >
+      <input
+        disabled={undefined}
+        name="og"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        placeholder="OG"
+        required={undefined}
+        step="0.01"
+        tabIndex={undefined}
+        type="number"
+      />
+    </div>
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="ui input"
+    >
+      <input
+        disabled={undefined}
+        name="fg"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        placeholder="FG"
+        required={undefined}
+        step="0.01"
+        tabIndex={undefined}
+        type="number"
+      />
+    </div>
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="ui input"
+    >
+      <input
+        disabled={undefined}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        placeholder="ABV"
+        required={undefined}
+        tabIndex={undefined}
+        type="text"
+        value="undefined%"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventForm component renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "minHeight": "500px",
+    }
+  }
+>
+  <h2
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    Create an Event
+  </h2>
+  <form
+    action={undefined}
+    className="ui form"
+    onSubmit={[Function]}
+    style={
+      Object {
+        "margin": "auto",
+        "maxWidth": "400px",
+      }
+    }
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="field"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            name="name"
+            onChange={[Function]}
+            placeholder="Name"
+            required={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            name="description"
+            onChange={[Function]}
+            placeholder="Description"
+            required={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="field"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            name="number"
+            onChange={[Function]}
+            placeholder="Address Number"
+            required={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            name="street"
+            onChange={[Function]}
+            placeholder="Street"
+            required={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="field"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            name="city"
+            onChange={[Function]}
+            placeholder="City"
+            required={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            name="state"
+            onChange={[Function]}
+            placeholder="State"
+            required={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui label"
+      onClick={[Function]}
+    >
+      Start Time
+    </div>
+    <div>
+      <div
+        className="react-datepicker-wrapper"
+      >
+        <div
+          className="react-datepicker__input-container"
+        >
+          <input
+            autoComplete={undefined}
+            autoFocus={undefined}
+            className=""
+            disabled={false}
+            id={undefined}
+            name="start"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            placeholder={undefined}
+            readOnly={undefined}
+            required={undefined}
+            tabIndex={undefined}
+            title={undefined}
+            type="text"
+            value="November 20, 2017 5:05 PM"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui label"
+      onClick={[Function]}
+    >
+      End Time
+    </div>
+    <div>
+      <div
+        className="react-datepicker-wrapper"
+      >
+        <div
+          className="react-datepicker__input-container"
+        >
+          <input
+            autoComplete={undefined}
+            autoFocus={undefined}
+            className=""
+            disabled={false}
+            id={undefined}
+            name="end"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            placeholder={undefined}
+            readOnly={undefined}
+            required={undefined}
+            tabIndex={undefined}
+            title={undefined}
+            type="text"
+            value="November 20, 2017 5:05 PM"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="field"
+    >
+      <button
+        className="ui button"
+        disabled={undefined}
+        onClick={[Function]}
+        required={undefined}
+        role="button"
+        tabIndex={undefined}
+        type={undefined}
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+`;

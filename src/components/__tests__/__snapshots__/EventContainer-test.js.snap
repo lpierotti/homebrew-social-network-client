@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventContainer component renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "float": "right",
+      "minHeight": "400px",
+    }
+  }
+>
+  <div
+    className="ui segment"
+    style={
+      Object {
+        "minHeight": "400px",
+        "minWidth": "600px",
+      }
+    }
+  >
+    <h1>
+      Group Events
+    </h1>
+    <div
+      className="ui divider"
+    />
+  </div>
+</div>
+`;
