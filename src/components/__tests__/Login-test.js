@@ -3,20 +3,20 @@ import { shallow, mount, render } from 'enzyme';
 import { Login } from '../Login'
 import renderer from 'react-test-renderer';
 
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <Login />
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-
 
 describe('Login Component', () => {
 	let wrapper;
 	const mockLoginfn = jest.fn();
+	
 	beforeEach(() => {
 		wrapper = shallow(<Login login={mockLoginfn}/>)
+	})
+
+	it('renders correctly', () => {
+		const tree = renderer.create(
+			<Login />
+		).toJSON();
+		expect(tree).toMatchSnapshot();
 	})
 	
 	it('should render without throwing an error', () => {
@@ -30,6 +30,8 @@ describe('Login Component', () => {
 	it('renders a password input', () => {
 		expect(wrapper.find('#password').length).toEqual(1)
 	})
+
+	
 	
 	describe('Email input', () => {
 		
@@ -47,10 +49,11 @@ describe('Login Component', () => {
 		})
 	})
 
-
-	it('should call the mock login function', () => {
-		wrapper.find('#loginForm').simulate('submit', {preventDefault() {}})
-		expect(wrapper.find('#loginForm').length).toBe(1)
-		expect(mockLoginfn.mock.calls.length).toBe(1)
+	describe('When the form is submitted', () => {
+		it('should call the mock login function', () => {
+			wrapper.find('#loginForm').simulate('submit', {preventDefault() {}})
+			expect(mockLoginfn.mock.calls.length).toBe(1)
+		})
 	})
+	
 })
