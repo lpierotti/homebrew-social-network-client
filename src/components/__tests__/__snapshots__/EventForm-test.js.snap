@@ -173,7 +173,7 @@ exports[`EventForm component renders correctly 1`] = `
             tabIndex={undefined}
             title={undefined}
             type="text"
-            value="November 20, 2017 5:05 PM"
+            value="November 25, 2017 9:58 AM"
           />
         </div>
       </div>
@@ -209,7 +209,7 @@ exports[`EventForm component renders correctly 1`] = `
             tabIndex={undefined}
             title={undefined}
             type="text"
-            value="November 20, 2017 5:05 PM"
+            value="November 25, 2017 9:58 AM"
           />
         </div>
       </div>

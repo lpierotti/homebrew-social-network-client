@@ -105,7 +105,7 @@ div.ui.header a {
   text-overflow: ellipsis;
 }
 
-.recipeForm {
+.Form {
   max-width: 800px;
   margin: auto;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-class Login extends React.Component {
+export class Login extends React.Component {
 
 	constructor() {
 		super()
@@ -16,18 +17,30 @@ class Login extends React.Component {
 		})
 	}
 
+	handleSubmit = (event) => {
+		event.preventDefault()
+		this.props.login(this.state)
+	}
+
 	render() {
 		return (
-			<form className='login'>
+			<form id='loginForm' className='login' onSubmit={this.handleSubmit}>
 				<label>Username</label>
 				<input id='email' onChange={this.handleInputChange} name='email' type='text' />
 				<label>Password</label>
 				<input id='password' onChange={this.handleInputChange} name='password' type='password' />
-				<button>Submit</button>
+				<button id='submit'>Submit</button>
 			</form>
 		)
 	}
 }
 
+function mapDispatchToProps(dispatch) {
+	return {
+		login: (userparams, history) => {
+			dispatch(loginUser(userparams, history))
+		}
+	}
+}
 
-export default Login
+export default connect(mapDispatchToProps)(Login)

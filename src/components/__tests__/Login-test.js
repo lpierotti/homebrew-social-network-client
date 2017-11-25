@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
-import Login from '../Login'
+import { Login } from '../Login'
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
@@ -11,25 +11,29 @@ it('renders correctly', () => {
 });
 
 
-describe('Login Component', () => {
 
+describe('Login Component', () => {
+	let wrapper;
+	const mockLoginfn = jest.fn();
+	beforeEach(() => {
+		wrapper = shallow(<Login login={mockLoginfn}/>)
+	})
 	
 	it('should render without throwing an error', () => {
-		expect(shallow(<Login />).exists(<form className='login'></form>)).toBe(true)
+		expect(wrapper.exists(<form className='login'></form>)).toBe(true)
 	})
 
 	it('renders a email input', () => {
-		expect(shallow(<Login />).find('#email').length).toEqual(1)
+		expect(wrapper.find('#email').length).toEqual(1)
 	})
 
 	it('renders a password input', () => {
-		expect(shallow(<Login />).find('#password').length).toEqual(1)
+		expect(wrapper.find('#password').length).toEqual(1)
 	})
 	
 	describe('Email input', () => {
 		
 		it('should respond to change event and change the state of the Login Component', () => {
-			const wrapper = shallow(<Login />)
 			wrapper.find('#email').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}})
 			expect(wrapper.state('email')).toEqual('blah@gmail.com')
 		})
@@ -38,9 +42,15 @@ describe('Login Component', () => {
 	describe('Password input', () => {
 		
 		it('should respond to change event and change the state of the Login Component', () => {
-			const wrapper = shallow(<Login />)
 			wrapper.find('#password').simulate('change', {target: {name: 'password', value: 'cats'}})
 			expect(wrapper.state('password')).toEqual('cats')
 		})
+	})
+
+
+	it('should call the mock login function', () => {
+		wrapper.find('#loginForm').simulate('submit', {preventDefault() {}})
+		expect(wrapper.find('#loginForm').length).toBe(1)
+		expect(mockLoginfn.mock.calls.length).toBe(1)
 	})
 })

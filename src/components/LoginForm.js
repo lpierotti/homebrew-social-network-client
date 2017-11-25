@@ -4,7 +4,7 @@ import { loginUser } from '../actions/users'
 import { Form, Label, Segment, Header, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {

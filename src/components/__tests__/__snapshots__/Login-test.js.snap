@@ -3,6 +3,8 @@
 exports[`renders correctly 1`] = `
 <form
   className="login"
+  id="loginForm"
+  onSubmit={[Function]}
 >
   <label>
     Username
@@ -22,7 +24,9 @@ exports[`renders correctly 1`] = `
     onChange={[Function]}
     type="password"
   />
-  <button>
+  <button
+    id="submit"
+  >
     Submit
   </button>
 </form>

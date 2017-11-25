@@ -18,7 +18,7 @@ import GroupList from './components/GroupList'
 import ActionCableProvider from 'react-actioncable-provider'
 
 
-class App extends Component {
+export class App extends Component {
   
   componentWillMount() {
     this.props.getCurrentUser()
