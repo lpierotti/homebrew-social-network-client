@@ -6,7 +6,7 @@ export class Login extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			username: '',
+			email: '',
 			password: ''
 		}
 	}

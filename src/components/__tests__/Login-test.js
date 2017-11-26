@@ -54,6 +54,13 @@ describe('Login Component', () => {
 			wrapper.find('#loginForm').simulate('submit', {preventDefault() {}})
 			expect(mockLoginfn.mock.calls.length).toBe(1)
 		})
+
+		it('should be called with the email and password in the state as arguments', () => {
+			wrapper.find('#email').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}})
+			wrapper.find('#password').simulate('change', {target: {name: 'password', value: 'cats'}})
+			wrapper.find('#loginForm').simulate('submit', {preventDefault() {}})
+			expect(mockLoginfn.mock.calls[1][0]).toEqual({email: 'blah@gmail.com', password: 'cats'})
+		})
 	})
 	
 })
