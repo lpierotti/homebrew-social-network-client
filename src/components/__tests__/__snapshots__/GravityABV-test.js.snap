@@ -21,7 +21,7 @@ exports[`GravityABV component renders correctly 1`] = `
         onMouseLeave={[Function]}
         placeholder="OG"
         required={undefined}
-        step="0.01"
+        step="0.001"
         tabIndex={undefined}
         type="number"
       />
@@ -44,7 +44,7 @@ exports[`GravityABV component renders correctly 1`] = `
         onMouseLeave={[Function]}
         placeholder="FG"
         required={undefined}
-        step="0.01"
+        step="0.001"
         tabIndex={undefined}
         type="number"
       />
