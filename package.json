@@ -6,7 +6,6 @@
     "actioncable": "^5.1.4",
     "axios": "^0.16.2",
     "google-maps-react": "^1.1.0",
-    "jest-cli": "^21.2.1",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-actioncable-provider": "^1.0.0",
@@ -45,6 +44,7 @@
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-15": "^1.0.5",
     "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "react-test-renderer": "^15.6.2"
   }
 }

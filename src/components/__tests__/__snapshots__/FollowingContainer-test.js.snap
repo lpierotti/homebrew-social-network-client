@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Following container renders correctly 1`] = `
+<div
+  className="followingContainer"
+>
+  <div
+    className="ui segment"
+    style={
+      Object {
+        "backgroundColor": "rgba(255,185,0,.5)",
+      }
+    }
+  >
+    <h2>
+      Your
+       Follows
+    </h2>
+    <div
+      className="ui divider"
+    />
+    <div
+      className="ui center aligned four cards"
+    />
+    <h2>
+      Followers
+    </h2>
+    <div
+      className="ui divider"
+    />
+    <div
+      className="ui center aligned four cards"
+    />
+  </div>
+</div>
+`;
