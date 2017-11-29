@@ -3,7 +3,6 @@ import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import { connect } from 'react-redux'
 import { getBreweries } from '../actions/breweries'
 import { Loader } from 'semantic-ui-react'
-import config from '../config.js'
 
 
 class MapContainer extends React.Component {
@@ -36,7 +35,6 @@ class MapContainer extends React.Component {
 	}
 
 	render(){
-		console.log(this.state, 'PROPS', this.props)
 		if (this.state.lat === 0) {
 			return (
 				<div>
@@ -97,5 +95,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default GoogleApiWrapper({
-	apiKey: (config.googleKey)
+	apiKey: ("AIzaSyDvg8oPEvdVVQpUY2KZ_-vDEkSzHaYwCQk")
 })(connect(mapStateToProps, mapDispatchToProps)(MapContainer))

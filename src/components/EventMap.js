@@ -1,6 +1,5 @@
 import React from 'react'
 import { Map, Marker, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
-import config from '../config'
 
 
 
@@ -30,7 +29,6 @@ class MapContainer extends React.Component {
 	}
 
 	render(){
-		console.log(this.state, 'PROPS', this.props)
 		if (this.state.lat === 0) {
 			return (
 					null
@@ -80,5 +78,5 @@ class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: (config.googleKey)
+	apiKey: ("AIzaSyDvg8oPEvdVVQpUY2KZ_-vDEkSzHaYwCQk")
 })(MapContainer)

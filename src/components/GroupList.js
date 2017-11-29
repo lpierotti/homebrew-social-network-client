@@ -12,7 +12,6 @@ export class GroupList extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div style={{maxWidth: '1250px', margin: 'auto'}}>
 			<Card.Group itemsPerRow={2}>

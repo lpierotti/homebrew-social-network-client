@@ -9,13 +9,10 @@ class RecipeList extends React.Component {
 
 	componentDidMount() {
 		this.props.getRecipes()
-		console.log(this.props)
 	}
 
 	render() {
-		console.log(this.props.recipes.length)
 		if (this.props.recipes.length < 1) {
-			console.log("loading")
 			return <Loader active={true} size='large'>Loading</Loader>
 		}
 		return (

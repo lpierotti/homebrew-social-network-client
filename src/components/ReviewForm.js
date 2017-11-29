@@ -33,7 +33,6 @@ class ReviewForm extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
 		return (
 			<Segment style={{maxWidth: '500px', margin: 'auto'}}>
 				<h2>Leave a Review</h2>

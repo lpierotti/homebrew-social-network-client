@@ -19,7 +19,6 @@ class Chat extends React.Component {
     }
 
     onReceived = (message) => {
-        console.log('RECEIVING', message.message)
         this.props.getGroupInfo(this.props.id)
         
     }
@@ -37,13 +36,12 @@ class Chat extends React.Component {
     }
 
     render () {
-        console.log(this.props)
         if (this.state.open) {
             return (
                 <div>
                     <div className='chat'>
                         <Button className='chatTop' onClick={this.handleClick}>Group Chat</Button>
-                        <ChatBubble messages = {this.props.messages} />
+                        <ChatBubble messages={this.props.messages} />
                         <ActionCable ref='roomChannel' channel={{channel: 'ChatroomChannel', room: `Group${this.props.id}`}} onReceived={this.onReceived} />
                     </div>
                     <div className='chatSubmit'>

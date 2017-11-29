@@ -218,3 +218,49 @@ h1.ui.header {
 #root > div > div:nth-child(2) > div > div > div:nth-child(5) > div > div:nth-child(1) > div {
   height:600px;
 }
+
+div.ui.segment.container {
+  background-color: rgba(255,185,0,.5);
+  min-height: 400px;
+}
+
+div.half-container {
+  min-height: 180px;
+  margin: auto;
+}
+
+div.group-events {
+  float: right;
+  min-height: 400px;
+  width: 60%;
+}
+
+div.ui.segement.events {
+  min-height: 400px;
+}
+
+div.event-map {
+  max-width: 60%;
+  max-height: 400px;
+  float: left;
+  clear: left;
+}
+
+div.basic-margins {
+  max-width: 1000px; 
+  margin: auto;
+}
+
+.group-info {
+  float: left;
+  clear: left; 
+  max-width: 250px;
+}
+
+div h3 {
+  font-family: 'Muli', sans-serif;
+}
+
+div.nav {
+  width: 100vw;
+}

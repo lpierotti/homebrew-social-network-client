@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import FollowingContainer from './FollowingContainer'
 import { Grid, Button, Menu, Icon, Header } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 
 class Profile extends React.Component {
@@ -20,7 +21,6 @@ class Profile extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props.id)
 		this.props.getUserInfo(this.props.id)
 	}
 
@@ -33,7 +33,6 @@ class Profile extends React.Component {
 	}
 
 	componentWillUnmount() {
-		console.log('CLEARING')
 		this.props.clearUserProfile()
 	}
 
@@ -64,7 +63,9 @@ class Profile extends React.Component {
 	}
 
 	render() {
-		console.log(this.props, this.state)
+		if (!localStorage['jwt']) {
+			return <Redirect to={'/'} />
+		}
 		if (this.props.viewing){
 			return (
 				<Grid relaxed >

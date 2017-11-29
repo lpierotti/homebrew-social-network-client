@@ -8,7 +8,6 @@ import FollowDisplay from './FollowDisplay'
 class Event extends React.Component {
 
 	componentDidMount() {
-		console.log("GETTING EVENT")
 		this.props.getEvent(this.props.id)
 	}
 
@@ -24,15 +23,13 @@ class Event extends React.Component {
 
 
 	render() {
-		console.log(this.props.event)
 		var start, end;
 		if(this.props.event.start) {
 			start = new Date(this.props.event.start).toString().replace(/\b(GMT-0400)\b/gi, "") 
 			end = new Date(this.props.event.end).toString().replace(/\b(GMT-0400)\b/gi, "")
-			console.log(this.props.event.start)
 		}
 		return (
-			<div style={{maxWidth: '1000px', margin: 'auto'}}>
+			<div className={'basic-margins'}>
 				<h1>{this.props.event.name}</h1>
 				{this.props.event.guests && this.props.event.guests.find(guest => guest.id === this.props.currentUser.id) ? <Button onClick={this.handleRemoveGuest}>Going <Icon name={'checkmark'}/></Button> : <Button onClick={this.handleClick}>Going?</Button>}
 				<h2>{this.props.event.description}</h2>
@@ -45,7 +42,7 @@ class Event extends React.Component {
 						{this.props.event.guests ? this.props.event.guests.map((guest, index) => <FollowDisplay key={index} data={guest}/>) : null}
 					</Card.Group>
 				</div>
-				<div style={{maxWidth: '600px', maxHeight: '400px', float: 'left', clear: 'left'}}>
+				<div className={'event-map'}>
 					<EventMap events={[this.props.event]} />
 				</div>	
 				

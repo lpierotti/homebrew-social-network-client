@@ -39,7 +39,6 @@ export class EventForm extends React.Component {
 	}
 
 	handleSelect = (event, data) => {
-		console.log(data)
 		this.setState({state: data.value})
 	}
 
@@ -51,7 +50,6 @@ export class EventForm extends React.Component {
 
 	render() {
 		var options = ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"].map(abbreviation => ({value: abbreviation, label: abbreviation}))
-		console.log(options)
 		if (this.state.submitted) {
 			return <div style={{minHeight: '500px'}}><h3 style={{margin:'auto'}}>{this.state.name} was created</h3></div>
 		}

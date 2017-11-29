@@ -86,7 +86,6 @@ export class RecipeForm extends React.Component {
 	}
 
 	calculateABV = () => {
-		console.log(this.state.abvCalc)
 		return ((this.state.abvCalc.og - this.state.abvCalc.fg) * 131.25).toFixed(2)
 	}
 

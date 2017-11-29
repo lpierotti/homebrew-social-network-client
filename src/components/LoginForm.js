@@ -16,7 +16,6 @@ export class LoginForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log('LOGIN')
 		this.props.login(this.state, this.props.history)
 	}
 

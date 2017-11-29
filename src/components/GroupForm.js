@@ -58,7 +58,6 @@ export class GroupForm extends React.Component {
 	}
 
 	render() {
-		console.log(this.props, this.state.members)
 		if (this.state.submitted) {
 			return <Redirect to={`/user/${this.props.currentUser.id}/profile`}/>
 		}
