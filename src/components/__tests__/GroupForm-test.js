@@ -5,7 +5,15 @@ import renderer from 'react-test-renderer';
 
 describe('GroupForm component', () => {
 
+	let wrapper;
+	let mockCreateGroupfn, mockGetAllUsersfn;
+	beforeAll(() => {
+		mockCreateGroupfn = jest.fn();
+		mockGetAllUsersfn = jest.fn();
+		wrapper = shallow(<GroupForm getAllUsers={mockGetAllUsersfn} createGroup={mockCreateGroupfn} allUsers={[]} curretnUser={{}}/>);
+	})
+
 	it('should render without throwing an error', () => {
-		expect(shallow(<GroupForm getAllUsers={() => {}}/>).exists(<div className='Form'></div>)).toBe(true)
+		expect(wrapper.exists(<div className='Form'></div>)).toBe(true)
 	})
 })

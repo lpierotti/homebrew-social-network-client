@@ -8,7 +8,7 @@ describe('Group component', () => {
 
 	it('renders correctly', () => {
 		const tree = renderer.create(
-			<StaticRouter context={{}}><Group id={1}/></StaticRouter>
+			<StaticRouter context={{}}><Group id={1} groupInfo={{}} events={[]}/></StaticRouter>
 		).toJSON();
 		expect(tree).toMatchSnapshot();
 	})

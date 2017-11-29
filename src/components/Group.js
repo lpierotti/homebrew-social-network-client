@@ -8,7 +8,7 @@ import EventForm from './EventForm'
 import EventContainer from './EventContainer'
 import { getEvents } from '../actions/events'
 
-class Group extends React.Component {
+export class Group extends React.Component {
 
 	constructor() {
 		super()
