@@ -4,7 +4,7 @@ import { loginUser } from '../actions/users'
 import { Form, Label, Segment, Header, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -21,16 +21,9 @@ class LoginForm extends React.Component {
 	}
 
 	handleInputChange = (event) => {
-		switch (event.target.name) {
-			case 'email':
-				this.setState({email: event.target.value});
-				break;
-			case 'password':
-				this.setState({password: event.target.value});
-				break;
-			default:
-				return;
-		}
+		this.setState({
+			[event.target.name]: event.target.value
+		})
 	}
 
 	render() {

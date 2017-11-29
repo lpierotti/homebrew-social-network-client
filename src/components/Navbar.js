@@ -5,7 +5,7 @@ import { logUserOut } from '../actions/users'
 import { Menu } from 'semantic-ui-react'
 
 
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
 
 	handleClick = (event) => {
 	    event.preventDefault()

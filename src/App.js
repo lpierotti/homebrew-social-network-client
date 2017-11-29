@@ -19,7 +19,7 @@ import ActionCableProvider from 'react-actioncable-provider'
 import Event from './components/Event'
 
 
-class App extends Component {
+export class App extends Component {
   
   componentWillMount() {
     this.props.getCurrentUser()

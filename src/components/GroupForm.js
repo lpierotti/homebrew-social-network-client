@@ -12,7 +12,7 @@ import { Form, Card } from 'semantic-ui-react'
 
 
 
-class GroupForm extends React.Component {
+export class GroupForm extends React.Component {
 
 	constructor() {
 		super()
@@ -72,7 +72,7 @@ class GroupForm extends React.Component {
 				}
 			})
 			return (
-				<div className='recipeForm'>
+				<div className='Form'>
 					<Form onSubmit={this.handleSubmit}>
 					{this.state.image ? <img className='profPic' src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Add a group picture here!</p></Dropzone>}
 						<label>Name</label>

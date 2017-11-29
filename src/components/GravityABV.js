@@ -11,11 +11,11 @@ function GravityABV(props) {
 		
 		<Form.Group widths={'equal'}>
 			<Popup
-			    trigger={<Form.Input name='og' type='number' step="0.01" onChange={handleChange} placeholder='OG' />}
+			    trigger={<Form.Input name='og' type='number' step="0.001" onChange={handleChange} placeholder='OG' />}
 			    content='Original Gravity as measured by your hydrometer'
 			/>
 			<Popup
-			    trigger={<Form.Input name='fg' type='number' step="0.01" onChange={handleChange} placeholder='FG' />}
+			    trigger={<Form.Input name='fg' type='number' step="0.001" onChange={handleChange} placeholder='FG' />}
 			    content='Final Gravity as measured by your hydrometer'
 			/>
 			<Popup

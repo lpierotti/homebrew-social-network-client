@@ -4,7 +4,7 @@ import { getFollows } from '../actions/users'
 import FollowDisplay from './FollowDisplay'
 import { Segment, Divider, Card } from 'semantic-ui-react'
 
-class FollowingContainer extends React.Component {
+export class FollowingContainer extends React.Component {
 
 	componentDidMount() {
 		this.props.getFollows(this.props.id)
@@ -17,7 +17,6 @@ class FollowingContainer extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className={'followingContainer'}>
 				<Segment style={{backgroundColor: 'rgba(255,185,0,.5)'}}>

@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 
-class EventForm extends React.Component {
+export class EventForm extends React.Component {
 
 	constructor() {
 		super()

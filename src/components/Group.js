@@ -9,7 +9,7 @@ import EventContainer from './EventContainer'
 import { getEvents } from '../actions/events'
 import EventMap from './EventMap'
 
-class Group extends React.Component {
+export class Group extends React.Component {
 
 	componentDidMount() {
 		this.props.getGroupInfo(this.props.id)

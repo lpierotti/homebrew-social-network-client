@@ -7,7 +7,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import { Button, Form, Popup } from 'semantic-ui-react'
 
-class RecipeForm extends React.Component {
+export class RecipeForm extends React.Component {
 
 	constructor() {
 		super()
@@ -104,7 +104,7 @@ class RecipeForm extends React.Component {
 
 	render() {
 		return (
-			<div className={'recipeForm'}>
+			<div className={'Form'}>
 				<Form onSubmit={this.handleSubmit} >
 					{this.state.image ? <img className='profPic' src={this.state.image} alt=''/> : <Dropzone onDrop={this.handleDrop} accept="image/*" ><p>Drop your files or click here to upload</p></Dropzone>}
 					<Form.Group>

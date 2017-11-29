@@ -5,7 +5,7 @@ import FollowDisplay from './FollowDisplay'
 import { Link } from 'react-router-dom'
 import { Segment, Card, Divider } from 'semantic-ui-react'
 
-class GroupList extends React.Component {
+export class GroupList extends React.Component {
 
 	componentDidMount() {
 		this.props.getGroups()
